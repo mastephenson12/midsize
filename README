@@ -1,1 +1,38 @@
+# 🚀 MidSize AI Roofing - Master Workspace
 
+Welcome to the central tech repository for **MidSize AI Roofing** and the **Honest Roofer Podcast**. This workspace handles our customer-facing marketing hub, automated voice agent documentation, and content pipelines.
+
+---
+
+## 🌐 Brand Assets & Live Connections
+
+*   **Main Website:** [midsizeai.com](https://midsizeai.com) *(In Development)*
+*   **Live AI Demo Line:** `+1 (725) 257-1810`
+*   **Primary Voice Agent:** Samantha AI (Hosted via GoHighLevel)
+*   **Target Audience:** Local roofing contractors, field crews, and honest trade owners.
+
+---
+
+## 🗂️ Repository Architecture
+
+This workspace is strictly organized to keep our marketing site, AI scripts, and media content separated and scalable:
+
+```text
+midsizeai/
+│
+├── .github/                 # Project tracking & workflow task templates
+│
+├── website/                 # Core front-end website files
+│   ├── index.html           # Main landing page for MidSize AI Roofing
+│   ├── CSS/                 # Custom layout styling (style.css)
+│   ├── JS/                  # Dynamic button logic & widget triggers (main.js)
+│   └── honest-roofer/       # Listener landing page for the podcast (index.html)
+│
+├── ai-agents/               # Samantha AI configuration scripts
+│   ├── samantha_prompt.md   # Version-controlled master prompt & roleplay logic
+│   └── crm_mappings.json    # Data blueprint for Jobber & Housecall Pro push
+│
+└── podcast-hub/             # Content marketing & lead generation pipeline
+    ├── guest-backlog.md     # Roofer vetting pipeline (Replied "GUEST")
+    ├── episode-notes/       # Production outlines & homeowner education notes
+    └── assets/              # Short-form video scripts (YouTube/TikTok)
