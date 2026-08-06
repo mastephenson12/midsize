@@ -1,81 +1,136 @@
-export default function App() {
+import React, { useState } from 'react';
+
+export default function RoofingEstimator() {
+  const [sqft, setSqft] = useState(2000);
+  const [pitch, setPitch] = useState('standard'); // standard, steep, ultra
+  const [material, setMaterial] = useState('shingle'); // shingle, metal, tile
+
+  // Calculation Logic
+  const materialRates = {
+    shingle: 4.50, // base cost per sqft
+    metal: 9.00,
+    tile: 11.50,
+  };
+
+  const pitchMultipliers = {
+    standard: 1.0,
+    steep: 1.25,
+    ultra: 1.45,
+  };
+
+  const basePrice = sqft * materialRates[material] * pitchMultipliers[pitch];
+  const lowEstimate = Math.round(basePrice * 0.9);
+  const highEstimate = Math.round(basePrice * 1.15);
+
   return (
-    <div class="min-h-screen bg-slate-900 text-white font-sans">
-      {/* Navbar */}
-      <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
-        <div class="text-2xl font-black tracking-wider text-cyan-400">
-          MIDSIZE<span class="text-white">AI</span>
-        </div>
-        <div class="space-x-6 hidden md:flex text-slate-300">
-          <a href="#features" class="hover:text-white transition">Features</a>
-          <a href="#podcast" class="hover:text-white transition text-yellow-400 font-semibold">
-            🎙️ Honest Roofer Podcast
-          </a>
-        </div>
-        <a 
-          href="tel:7252571810" 
-          class="bg-cyan-500 hover:bg-cyan-600 text-slate-950 font-bold px-5 py-2 rounded-lg transition shadow-lg shadow-cyan-500/20"
-        >
-          Call Samantha Demo
-        </a>
-      </nav>
-
-      {/* Hero Section */}
-      <header class="max-w-5xl mx-auto text-center py-20 px-4">
-        <span class="bg-slate-800 text-cyan-400 text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest border border-slate-700">
-          Built Exclusively for Home Services
+    <div className="max-w-4xl mx-auto p-6 bg-slate-900 text-white rounded-2xl shadow-xl border border-slate-800 my-10">
+      <div className="text-center mb-8">
+        <span className="text-amber-400 font-semibold tracking-wider uppercase text-sm">
+          The Honest Roofer Podcast Tool
         </span>
-        <h1 class="text-5xl md:text-7xl font-extrabold mt-6 tracking-tight leading-tight">
-          Stop Losing Jobs Because You're <span class="text-cyan-400">On A Roof.</span>
-        </h1>
-        <p class="text-xl text-slate-400 mt-6 max-w-2xl mx-auto">
-          MidsizeAI deploys automated receptionists and hyper-local marketing review systems that capture leads, qualify them, and book appointments 24/7.
+        <h2 className="text-3xl font-bold mt-1">Instant Roof Cost Estimator</h2>
+        <p className="text-slate-400 text-sm mt-2">
+          Get an honest, uninflated ballpark price before talking to sales reps.
         </p>
+      </div>
 
-        {/* Live Call Action Box */}
-        <div class="mt-10 max-w-md mx-auto bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-2xl">
-          <p class="text-sm uppercase tracking-wider text-slate-400 font-semibold">Test the AI Receptionist Right Now</p>
-          <a href="tel:7252571810" class="block text-3xl font-black text-cyan-400 my-3 hover:underline">
-            725-257-1810
-          </a>
-          <p class="text-xs text-slate-500">Call from your cell. See how Samantha qualifies your trade business.</p>
-        </div>
-      </header>
-
-      {/* The Podcast Integration Section */}
-      <section id="podcast" class="bg-slate-950 border-t border-slate-800 py-20 px-4">
-        <div class="max-w-4xl mx-auto text-center">
-          <div class="text-amber-400 text-4xl mb-4">🎙️</div>
-          <h2 class="text-3xl md:text-4xl font-bold">The Honest Roofer Podcast Ecosystem</h2>
-          <p class="text-slate-400 mt-4 max-w-xl mx-auto">
-            We don't just build tech; we champion the pros who do good work. Our community is built to expose storm chasers and help honest contractors dominate their local markets.
-          </p>
-          
-          <div class="grid md:grid-cols-2 gap-6 mt-12 text-left">
-            {/* GHL Snapshot / Lead Magnet 1 */}
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-              <h3 class="text-xl font-bold text-white mb-2">Are you a Roofer?</h3>
-              <p class="text-slate-400 text-sm mb-4">
-                Get featured on the podcast, clean up the trade's reputation, and test our GHL snapshot built for missed call text-back.
-              </p>
-              <a href="https://link.midsizeai.com/widget/form/YOUR_GHL_FORM_ID" class="text-cyan-400 font-bold text-sm hover:underline">
-                Apply to be a Guest →
-              </a>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        {/* Controls */}
+        <div className="space-y-6">
+          {/* Square Footage Slider */}
+          <div>
+            <div className="flex justify-between items-center mb-2">
+              <label className="text-sm font-medium text-slate-300">Estimated Roof Size</label>
+              <span className="text-amber-400 font-bold">{sqft.toLocaleString()} sq ft</span>
             </div>
+            <input
+              type="range"
+              min="800"
+              max="6000"
+              step="100"
+              value={sqft}
+              onChange={(e) => setSqft(Number(e.target.value))}
+              className="w-full accent-amber-400 cursor-pointer"
+            />
+          </div>
 
-            {/* Homeowner Magnet 2 */}
-            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
-              <h3 class="text-xl font-bold text-white mb-2">Are you a Homeowner?</h3>
-              <p class="text-slate-400 text-sm mb-4">
-                Learn how to spot roofing scams, verify local deductibles, and find a certified contractor using our vetted network.
-              </p>
-              <a href="#newsletter" class="text-amber-400 font-bold text-sm hover:underline">
-                Download the Scam Guide →
-              </a>
+          {/* Roof Pitch */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Roof Steepness / Pitch</label>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { id: 'standard', label: 'Walkable' },
+                { id: 'steep', label: 'Steep' },
+                { id: 'ultra', label: 'Very Steep' },
+              ].map((p) => (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => setPitch(p.id)}
+                  className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all ${
+                    pitch === p.id
+                      ? 'bg-amber-400 text-slate-950 border-amber-400'
+                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500'
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Material Type */}
+          <div>
+            <label className="block text-sm font-medium text-slate-300 mb-2">Material Type</label>
+            <div className="grid grid-cols-3 gap-2">
+              {[
+                { id: 'shingle', label: 'Architectural Shingle' },
+                { id: 'metal', label: 'Standing Seam Metal' },
+                { id: 'tile', label: 'Concrete / Clay Tile' },
+              ].map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  onClick={() => setMaterial(m.id)}
+                  className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-all ${
+                    material === m.id
+                      ? 'bg-amber-400 text-slate-950 border-amber-400'
+                      : 'bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500'
+                  }`}
+                >
+                  {m.label}
+                </button>
+              ))}
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Output Display Card */}
+        <div className="bg-slate-950 p-6 rounded-xl border border-slate-800 text-center flex flex-col justify-between h-full">
+          <div>
+            <span className="text-xs text-slate-400 uppercase tracking-widest">Estimated Price Range</span>
+            <div className="text-3xl md:text-4xl font-extrabold text-amber-400 my-4">
+              ${lowEstimate.toLocaleString()} - ${highEstimate.toLocaleString()}
+            </div>
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Based on realistic regional labor and material costs. Includes tear-off, underlayment, and standard labor.
+            </p>
+          </div>
+
+          <div className="mt-6 pt-6 border-t border-slate-800">
+            <button
+              onClick={() => {
+                // Scroll to or open GoHighLevel form modal
+                const formEl = document.getElementById('ghl-form');
+                if (formEl) formEl.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full py-3 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold rounded-lg transition-colors text-sm"
+            >
+              Lock In This Estimate via Samantha
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
