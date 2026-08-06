@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState('samantha');
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleContactSubmit = (e) => {
     e.preventDefault();
     if (email) {
       setSubmitted(true);
@@ -12,147 +13,232 @@ export default function App() {
     }
   };
 
-  const scrollToSection = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
-      {/* Navigation */}
-      <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center max-w-7xl mx-auto">
-        <div className="flex items-center gap-3">
-          <span className="text-xl font-black tracking-tight text-white">
-            MidSize<span className="text-amber-400">AI</span>
-          </span>
-          <span className="hidden sm:inline-block text-xs bg-amber-400/10 text-amber-400 border border-amber-400/20 px-3 py-1 rounded-full font-medium">
-            The Honest Roofer Podcast
-          </span>
-        </div>
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => scrollToSection('podcast')}
-            className="hidden md:inline-block text-sm text-slate-300 hover:text-white transition-colors"
-          >
-            Podcast
-          </button>
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all shadow-md"
-          >
-            Get Early Access
-          </button>
+      {/* Top Utility Bar */}
+      <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
+        Looking for a quick roof replacement estimate?{' '}
+        <a 
+          href="https://estimator.midsizeai.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="underline hover:text-amber-200 font-bold ml-1"
+        >
+          Try estimator.midsizeai.com &rarr;
+        </a>
+      </div>
+
+      {/* Main Navigation */}
+      <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl font-black tracking-tight text-white">
+              MidSize<span className="text-amber-400">AI</span>
+            </span>
+            <span className="text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
+              Home Services
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a 
+              href="#ecosystem" 
+              className="hidden md:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Solutions
+            </a>
+            <a 
+              href="#contact" 
+              className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
+            >
+              Get Started
+            </a>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <header className="max-w-5xl mx-auto text-center px-6 pt-24 pb-20">
+      <header className="max-w-5xl mx-auto text-center px-6 pt-20 pb-16">
         <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 text-xs text-amber-400 font-semibold mb-8">
-          <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-          Meet Samantha: The 24/7 AI Receptionist for Contractors
+          AI Automation Built for Growing Contractors & Business Operators
         </div>
         
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          Never Miss a Lead. <br />
+          Intelligent AI Infrastructure for <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
-            Dominate Your Local Market.
+            MidSize Home Services
           </span>
         </h1>
         
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Built for roofing contractors and home service pros. Samantha answers calls instantly, qualifies homeowners, and schedules estimates straight to your calendar while you're out on the job.
+          From 24/7 automated call intake to industry-defining media platforms and self-serve estimator tools, MidSize AI bridges the gap between contractors and homeowners.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
-            onClick={() => scrollToSection('contact')}
-            className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-xl hover:shadow-amber-400/20"
+          <a
+            href="#samantha"
+            className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Get Started with Samantha
-          </button>
-          <button
-            onClick={() => scrollToSection('podcast')}
+            Explore Samantha AI for Roofers
+          </a>
+          <a
+            href="https://estimator.midsizeai.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Listen to The Honest Roofer Podcast
-          </button>
+            Launch Roof Estimator &rarr;
+          </a>
         </div>
       </header>
 
-      {/* Features Grid */}
-      <section className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-slate-900/40 border border-slate-800/80 p-8 rounded-2xl">
-            <div className="w-12 h-12 bg-amber-400/10 border border-amber-400/20 rounded-xl flex items-center justify-center text-amber-400 text-xl font-bold mb-6">
-              ⚡
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Instant First-Ring Pickup</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Homeowners call the next contractor if you don't answer in 3 rings. Samantha picks up instantly, every single time, day or night.
-            </p>
+      {/* Interactive Ecosystem Switcher */}
+      <section id="ecosystem" className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white">The MidSize AI Platform</h2>
+          <p className="text-slate-400 text-sm mt-2">Select a product to view its dedicated workflow and audience target.</p>
+          
+          <div className="flex justify-center gap-2 mt-8 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 max-w-xl mx-auto">
+            <button
+              onClick={() => setActiveTab('samantha')}
+              className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeTab === 'samantha'
+                  ? 'bg-amber-400 text-slate-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Samantha AI (Roofers)
+            </button>
+            <button
+              onClick={() => setActiveTab('podcast')}
+              className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeTab === 'podcast'
+                  ? 'bg-amber-400 text-slate-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Honest Roofer Podcast
+            </button>
+            <button
+              onClick={() => setActiveTab('estimator')}
+              className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                activeTab === 'estimator'
+                  ? 'bg-amber-400 text-slate-950 shadow-md'
+                  : 'text-slate-400 hover:text-white'
+              }`}
+            >
+              Roof Estimator
+            </button>
           </div>
+        </div>
 
-          <div className="bg-slate-900/40 border border-slate-800/80 p-8 rounded-2xl">
-            <div className="w-12 h-12 bg-amber-400/10 border border-amber-400/20 rounded-xl flex items-center justify-center text-amber-400 text-xl font-bold mb-6">
-              🎯
+        {/* Dynamic Tab Content */}
+        <div className="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-8 sm:p-12">
+          {activeTab === 'samantha' && (
+            <div id="samantha" className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Built Exclusively for Roofing Contractors</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Samantha: The 24/7 Inbound AI Receptionist</h3>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                  Roofers lose thousands when calls go to voicemail while crews are on top of a job. Samantha answers on the first ring, captures address/roof details, qualifies project budget, and books appointments directly to your calendar.
+                </p>
+                <ul className="space-y-3 text-sm text-slate-300 mb-8">
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> 100% First-Ring Call Capture</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Automated Qualification & Calendar Booking</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Direct Integration with Roofing CRMs</li>
+                </ul>
+                <a href="#contact" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+                  Request Samantha Demo
+                </a>
+              </div>
+              <div className="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
+                <div className="text-xs text-slate-500 font-mono mb-4">// Live Call Intake Simulation</div>
+                <div className="space-y-3 text-xs">
+                  <div className="bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-300">
+                    <span className="text-amber-400 font-bold">Homeowner:</span> "Hi, we had hail damage last night and need an inspection."
+                  </div>
+                  <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/20 text-amber-200">
+                    <span className="font-bold">Samantha AI:</span> "I can help with that right away! What is the property address and how old is the current roof?"
+                  </div>
+                  <div className="bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-300">
+                    <span className="text-amber-400 font-bold">Homeowner:</span> "1248 Oak St, roof is about 14 years old."
+                  </div>
+                  <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/20 text-amber-200">
+                    <span className="font-bold">Samantha AI:</span> "Got it. I have an inspection slot open tomorrow at 10 AM. Should I lock that in for you?"
+                  </div>
+                </div>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Smart Lead Qualification</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              She filters out spam, captures roof age, material preferences, and property address before you ever spend time calling them back.
-            </p>
-          </div>
+          )}
 
-          <div className="bg-slate-900/40 border border-slate-800/80 p-8 rounded-2xl">
-            <div className="w-12 h-12 bg-amber-400/10 border border-amber-400/20 rounded-xl flex items-center justify-center text-amber-400 text-xl font-bold mb-6">
-              🗓️
+          {activeTab === 'podcast' && (
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Homeowners & Elite Roofers</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">The Honest Roofer Podcast</h3>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                  Cutting through industry noise to bring complete transparency to roofing. We educate homeowners on avoiding storm-chaser scams while providing high-quality contractors a platform to reach educated leads.
+                </p>
+                <div className="flex gap-4">
+                  <a href="#contact" className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+                    Apply as a Podcast Guest
+                  </a>
+                </div>
+              </div>
+              <div className="bg-slate-950 border border-slate-800 p-8 rounded-2xl text-center">
+                <div className="text-5xl mb-4">🎙️</div>
+                <h4 className="text-lg font-bold text-white mb-2">Streaming Across All Platforms</h4>
+                <p className="text-xs text-slate-400">Weekly episodes uncovering contractor marketing, material breakdowns, and industry insider interviews.</p>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Automated Calendar Booking</h3>
-            <p className="text-slate-400 text-sm leading-relaxed">
-              Qualified homeowners are booked directly onto your calendar with zero back-and-forth text chains or phone tag.
-            </p>
-          </div>
+          )}
+
+          {activeTab === 'estimator' && (
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Self-Serve Homeowner Tool</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Instant Roof Replacement Calculator</h3>
+                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+                  Hosted at <code className="text-amber-400 bg-slate-950 px-2 py-1 rounded">estimator.midsizeai.com</code>, this standalone calculator gives homeowners realistic ballpark pricing based on square footage, pitch, and material choices before speaking to sales reps.
+                </p>
+                <a 
+                  href="https://estimator.midsizeai.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all"
+                >
+                  Open Estimator Tool &rarr;
+                </a>
+              </div>
+              <div className="bg-slate-950 border border-slate-800 p-8 rounded-2xl text-center">
+                <div className="text-5xl mb-4">🏠</div>
+                <h4 className="text-lg font-bold text-white mb-2">Transparent Ballpark Pricing</h4>
+                <p className="text-xs text-slate-400">Calculates materials, pitch difficulty, and labor estimates in seconds.</p>
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Podcast Teaser Section */}
-      <section id="podcast" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900">
-        <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8">
-          <div className="w-24 h-24 sm:w-32 sm:h-32 bg-amber-400/10 border border-amber-400/30 rounded-2xl flex items-center justify-center text-amber-400 text-4xl font-extrabold shrink-0">
-            🎙️
-          </div>
-          <div>
-            <span className="text-xs uppercase tracking-widest text-amber-400 font-bold">Industry Leadership</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-1 mb-3">The Honest Roofer Podcast</h2>
-            <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-              Exposing industry secrets, breaking down contractor marketing myths, and interviewing top-tier operators scaling modern roofing businesses with transparency and tech.
-            </p>
-            <span className="inline-block text-xs font-semibold text-slate-300 bg-slate-800 px-3 py-1.5 rounded-lg">
-              New Episodes Streaming Weekly
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Clean Contact Form Section (No GHL Dependency) */}
+      {/* Clean Direct Contact Section */}
       <section id="contact" className="max-w-3xl mx-auto px-6 py-20 border-t border-slate-900">
         <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Get Connected with MidSize AI
+            Connect With MidSize AI
           </h2>
           <p className="text-slate-400 text-sm sm:text-base mb-8 max-w-lg mx-auto">
-            Drop your email below to request early deployment access for your roofing company or inquire about podcast guest spots.
+            Ready to deploy Samantha for your roofing business or inquire about podcast feature opportunities? Reach out below.
           </p>
 
           {submitted ? (
             <div className="bg-amber-400/10 border border-amber-400/30 text-amber-300 p-6 rounded-2xl text-sm font-medium">
-              Thank you! We've received your request and will be in touch shortly.
+              Thank you! Your message has been received. Our team will reach out shortly.
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <form onSubmit={handleContactSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
                 required
-                placeholder="Enter your business email..."
+                placeholder="Enter your email address..."
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
@@ -161,7 +247,7 @@ export default function App() {
                 type="submit"
                 className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all shrink-0"
               >
-                Request Access
+                Get Started
               </button>
             </form>
           )}
