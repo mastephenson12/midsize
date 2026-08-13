@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReadinessAssessment from './ReadinessAssessment.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
@@ -43,7 +44,7 @@ export default function App() {
               href="#contact" 
               className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
             >
-              Get Started
+              Take Assessment
             </a>
           </div>
         </div>
@@ -56,35 +57,33 @@ export default function App() {
         </div>
         
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          Intelligent AI Infrastructure for <br />
+          Practical AI Systems for <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
             MidSize Home Services
           </span>
         </h1>
         
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          From 24/7 automated call intake to industry-defining media platforms and self-serve estimator tools, MidSize AI bridges the gap between contractors and homeowners.
+          MidSize AI helps growing home-service companies improve call coverage, lead response, scheduling, and follow-up with focused automation built around the way their teams already work.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/samantha.html"
+            href="#assessment"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Explore Samantha AI for Roofers
+            Take the Free AI Assessment
           </a>
           <a
-            href="https://estimator.midsizeai.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://roofers.midsizeai.com"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Launch Roof Estimator &rarr;
+            Explore the Roofing Division &rarr;
           </a>
         </div>
       </header>
 
-      {/* Interactive Ecosystem Switcher */}
+      <ReadinessAssessment />\n\n      {/* Interactive Ecosystem Switcher */}
       <section id="ecosystem" className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white">The MidSize AI Platform</h2>
