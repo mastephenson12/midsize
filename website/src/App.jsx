@@ -23,7 +23,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <a href="/" aria-label="MidSize AI home" className="shrink-0 rounded-lg bg-white px-2 py-1">
               <img
-                src="/midsize-ai-logo.png"
+                src="/midsize-ai-logo.webp"
                 alt="MidSize AI — Smart AI solutions for home service businesses"
                 className="h-14 sm:h-16 w-auto"
               />
