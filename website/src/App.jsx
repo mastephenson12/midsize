@@ -18,13 +18,17 @@ export default function App() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+      <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 sm:px-6 py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <span className="text-2xl font-black tracking-tight text-white">
-              MidSize<span className="text-amber-400">AI</span>
-            </span>
-            <span className="text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
+            <a href="/" aria-label="MidSize AI home" className="shrink-0 rounded-lg bg-white px-2 py-1">
+              <img
+                src="/midsize-ai-logo.png"
+                alt="MidSize AI — Smart AI solutions for home service businesses"
+                className="h-14 sm:h-16 w-auto"
+              />
+            </a>
+            <span className="hidden sm:inline-flex text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
               Home Services
             </span>
           </div>
