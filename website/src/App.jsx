@@ -2,17 +2,6 @@ import React, { useState } from 'react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail('');
-    }
-  };
-
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
       {/* Top Utility Bar */}
@@ -75,7 +64,7 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="#samantha"
+            href="/samantha.html"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
             Explore Samantha AI for Roofers
@@ -146,9 +135,7 @@ export default function App() {
                   <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Automated Qualification & Calendar Booking</li>
                   <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Direct Integration with Roofing CRMs</li>
                 </ul>
-                <a href="#contact" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
-                  Request Samantha Demo
-                </a>
+                <a href="/samantha.html" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">\n                  Explore Samantha & Request a Demo\n                </a>
               </div>
               <div className="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
                 <div className="text-xs text-slate-500 font-mono mb-4">// Live Call Intake Simulation</div>
@@ -219,38 +206,21 @@ export default function App() {
         </div>
       </section>
 
-      {/* Clean Direct Contact Section */}
-      <section id="contact" className="max-w-3xl mx-auto px-6 py-20 border-t border-slate-900">
-        <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-            Connect With MidSize AI
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base mb-8 max-w-lg mx-auto">
-            Ready to deploy Samantha for your roofing business or inquire about podcast feature opportunities? Reach out below.
-          </p>
-
-          {submitted ? (
-            <div className="bg-amber-400/10 border border-amber-400/30 text-amber-300 p-6 rounded-2xl text-sm font-medium">
-              Thank you! Your message has been received. Our team will reach out shortly.
-            </div>
-          ) : (
-            <form onSubmit={handleContactSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                required
-                placeholder="Enter your email address..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
-              />
-              <button
-                type="submit"
-                className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all shrink-0"
-              >
-                Get Started
-              </button>
-            </form>
-          )}
+      {/* Clear Next Steps */}
+      <section id="contact" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900">
+        <div className="grid md:grid-cols-2 gap-5">
+          <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Homeowners</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Plan a roof replacement without a sales call</h2>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Use the free MidSize AI estimator to build an educational low-to-high roof replacement range. No email is required to see the result.</p>
+            <a href="https://estimator.midsizeai.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Estimate My Roof Cost</a>
+          </article>
+          <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Roofing Contractors</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">See how Samantha handles missed calls</h2>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Review the roofing-specific intake workflow, common questions, and request a tailored demonstration for your company.</p>
+            <a href="/samantha.html" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Explore Samantha AI</a>
+          </article>
         </div>
       </section>
 
