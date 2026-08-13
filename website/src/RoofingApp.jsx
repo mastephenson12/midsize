@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 const ESTIMATOR_URL = 'https://estimator.midsizeai.com';
 const APPLICATION_URL = 'https://apply.midsizeai.com/application';
+const CHECKLIST_URL = '/downloads/10-questions-before-hiring-a-roofer.pdf';
 
 const contractorSolutions = [
   ['Answer when your team cannot', 'Samantha supports consistent first-line and after-hours call intake using information and escalation rules approved by your company.'],
@@ -67,7 +68,7 @@ function RoofingApp() {
         <section id="podcast" className="border-t border-slate-900 bg-slate-900/35 px-6 py-20">
           <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
             <div className="rounded-3xl border border-amber-400/20 bg-slate-950 p-4 text-center sm:p-6"><img src="/honest-roofer-podcast-logo.jpg" alt="The Honest Roofer Podcast logo featuring homeowners, roofers, microphones, and roofing tools" width="1080" height="1080" loading="lazy" decoding="async" className="mx-auto aspect-square w-full rounded-2xl object-cover" /><p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-amber-400">The Honest Roofer Podcast</p><p className="mt-3 text-sm leading-relaxed text-slate-400">Roofing transparency for homeowners and modern operators.</p></div>
-            <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Trust before technology</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Better roofing decisions begin with clearer information.</h2><p className="mt-5 text-lg leading-relaxed text-slate-300">The Honest Roofer Podcast is being built as an education hub: proposal breakdowns, warranty questions, maintenance, storm preparation, communication standards, and conversations with roofers who value trust.</p><div className="mt-7 rounded-2xl border border-slate-800 bg-slate-950 p-5"><p className="font-bold text-white">Coming first</p><p className="mt-2 text-slate-400">The 10 Questions Every Homeowner Should Ask Before Hiring a Roofer, with a companion checklist for comparing estimates.</p></div></div>
+            <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Trust before technology</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Better roofing decisions begin with clearer information.</h2><p className="mt-5 text-lg leading-relaxed text-slate-300">The Honest Roofer Podcast is being built as an education hub: proposal breakdowns, warranty questions, maintenance, storm preparation, communication standards, and conversations with roofers who value trust.</p><div className="mt-7 rounded-2xl border border-slate-800 bg-slate-950 p-5"><p className="font-bold text-white">Free homeowner checklist</p><p className="mt-2 text-slate-400">Use 10 practical questions and a three-contractor comparison sheet before you sign a roofing agreement.</p><a href={CHECKLIST_URL} download className="mt-5 inline-flex rounded-xl bg-amber-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-300">Download the Free Checklist →</a><p className="mt-3 text-xs text-slate-500">Four-page PDF · No email required</p></div></div>
           </div>
         </section>
         <section id="contractors" className="border-t border-slate-900 px-6 py-20">
