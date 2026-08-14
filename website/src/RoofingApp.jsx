@@ -60,7 +60,7 @@ function RoofingMissedLeadEstimate() {
             <p className="mt-1 break-words text-4xl font-extrabold text-amber-300">{money.format(estimate.revenue)}</p>
           </div>
           <p className="mt-5 text-xs leading-relaxed text-slate-500">This is not a revenue promise. It assumes missed leads resemble your normal qualified leads and could close at the rate entered. Verify the opportunity against real records, capacity, margins, duplicates, and lead quality.</p>
-          <a href={`${APPLICATION_URL}?utm_source=roofers.midsizeai.com&utm_medium=calculator&utm_campaign=roofing_missed_leads&utm_content=result`} className="mt-6 block rounded-xl bg-amber-400 px-6 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300">Request a Free Workflow Review →</a>
+          <a href={`${APPLICATION_URL}?utm_source=roofer.midsizeai.com&utm_medium=calculator&utm_campaign=roofing_missed_leads&utm_content=result`} className="mt-6 block rounded-xl bg-amber-400 px-6 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300">Request a Free Workflow Review →</a>
         </div>
       </div>
     </section>
@@ -69,14 +69,14 @@ function RoofingMissedLeadEstimate() {
 
 function RoofingApp() {
   useEffect(() => {
-    document.title = 'MidSize AI for Roofers | Education, Estimating and AI Intake';
-    const description = 'MidSize AI for Roofers connects homeowner education and roof cost planning with modern communication and lead-intake systems for roofing companies.';
+    document.title = 'AI Call Answering and Lead Follow-Up for Roofers | MidSize AI';
+    const description = 'Help your roofing company answer more calls, respond faster, qualify homeowners, and book inspections with a focused AI workflow built around your team.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) { meta = document.createElement('meta'); meta.name = 'description'; document.head.appendChild(meta); }
     meta.content = description;
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = 'https://roofers.midsizeai.com/';
+    canonical.href = 'https://roofer.midsizeai.com/';
   }, []);
 
   return (
@@ -91,9 +91,8 @@ function RoofingApp() {
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:block">Roofing Division</span>
           </a>
           <div className="flex items-center gap-3 text-sm">
-            <a className="hidden text-slate-400 transition hover:text-white md:block" href="#podcast">Podcast</a>
-            <a className="hidden text-slate-400 transition hover:text-white md:block" href="#contractors">For Contractors</a>
-            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href={APPLICATION_URL}>See If We Fit</a>
+            <a className="hidden text-slate-400 transition hover:text-white md:block" href="#how-it-works">How It Works</a>
+            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
           </div>
         </div>
       </nav>
@@ -101,39 +100,35 @@ function RoofingApp() {
         <header className="relative overflow-hidden px-6 py-20 sm:py-28">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,.2),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(251,191,36,.13),transparent_38%)]" />
           <div className="relative mx-auto max-w-6xl text-center">
-            <p className="mb-6 text-xs font-extrabold uppercase tracking-[0.25em] text-amber-400">MidSize AI · Roofing Division</p>
+            <p className="mb-6 text-xs font-extrabold uppercase tracking-[0.25em] text-amber-400">MidSize AI for Roofing Companies</p>
             <h1 className="mx-auto max-w-5xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Smarter roofing experiences for <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">homeowners and contractors</span>
+              Turn More Roofing Calls Into <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Booked Opportunities</span>
             </h1>
-            <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">Practical roofing education and cost-planning tools for homeowners. Modern communication and lead-intake systems for roofing companies.</p>
+            <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">Answer missed and after-hours calls, capture the right project details, and move qualified homeowners toward the next step—without adding another full-time office role or replacing the systems your team already uses.</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={ESTIMATOR_URL} className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">I&apos;m a Homeowner</a>
-              <a href="#contractors" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">I Run a Roofing Company</a>
+              <a href="#missed-lead-estimate" className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Calculate My Missed-Lead Opportunity</a>
+              <a href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=hero&utm_campaign=workflow_review" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Request My Free Workflow Review</a>
             </div>
-            <p className="mt-4 text-xs text-slate-500">The estimator requires no email to display its educational range. Contractor contact details are requested only after you choose to apply.</p>
+            <p className="mt-4 text-xs text-slate-500">Use the calculator without an email. Share contact details only if you choose to request a workflow review.</p>
           </div>
         </header>
-        <section className="border-t border-slate-900 px-6 py-20">
+        <section className="border-t border-slate-900 px-6 py-16">
           <div className="mx-auto max-w-6xl">
-            <div className="mb-10 text-center"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Choose your path</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Useful before we ask for your information</h2></div>
-            <div className="grid gap-5 md:grid-cols-2">
-              <article className="rounded-3xl border border-slate-800 bg-slate-900 p-8 sm:p-10"><span className="text-xs font-bold uppercase tracking-widest text-amber-400">For Homeowners</span><h3 className="mt-3 text-2xl font-bold text-white">Start with a realistic cost range</h3><p className="mt-4 leading-relaxed text-slate-400">Use the free roof estimator to understand the variables that shape a replacement budget before scheduling a sales conversation.</p><a href={ESTIMATOR_URL} className="mt-7 inline-flex rounded-xl bg-amber-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-300">Estimate My Roof Cost →</a></article>
-              <article className="rounded-3xl border border-slate-800 bg-slate-900 p-8 sm:p-10"><span className="text-xs font-bold uppercase tracking-widest text-amber-400">For Homeowners</span><h3 className="mt-3 text-2xl font-bold text-white">Learn how to compare proposals</h3><p className="mt-4 leading-relaxed text-slate-400">The Honest Roofer Podcast will break down scope, materials, warranties, communication, and the questions worth asking.</p><a href="#podcast" className="mt-7 inline-flex rounded-xl bg-amber-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-300">Explore the Podcast →</a></article>
+            <div className="mb-10 text-center"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">A practical path to more captured opportunities</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">The outcome matters. So does how you get there.</h2></div>
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Dream outcome</p><h3 className="mt-3 text-xl font-bold text-white">More qualified appointments</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Give more inbound homeowners a fast, professional response and a clear next step instead of sending good opportunities to voicemail.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Believable path</p><h3 className="mt-3 text-xl font-bold text-white">Test the workflow first</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Review the questions, qualification rules, escalation points, and booking logic. Test calls before anything touches a real customer.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Shorter time to value</p><h3 className="mt-3 text-xl font-bold text-white">Start with one call type</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Begin with a focused missed-call or after-hours workflow and see the proposed customer experience before a larger rollout.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Less effort and sacrifice</p><h3 className="mt-3 text-xl font-bold text-white">Keep the systems that work</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Your team approves the script and exceptions. We build around your phone, calendar, CRM, and human handoff—not a forced rebuild.</p></article>
             </div>
-          </div>
-        </section>
-        <section id="podcast" className="border-t border-slate-900 bg-slate-900/35 px-6 py-20">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div className="rounded-3xl border border-amber-400/20 bg-slate-950 p-4 text-center sm:p-6"><img src="/honest-roofer-podcast-logo.jpg" alt="The Honest Roofer Podcast logo featuring homeowners, roofers, microphones, and roofing tools" width="1080" height="1080" loading="lazy" decoding="async" className="mx-auto aspect-square w-full rounded-2xl object-cover" /><p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-amber-400">The Honest Roofer Podcast</p><p className="mt-3 text-sm leading-relaxed text-slate-400">Roofing transparency for homeowners and modern operators.</p></div>
-            <div><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Trust before technology</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Better roofing decisions begin with clearer information.</h2><p className="mt-5 text-lg leading-relaxed text-slate-300">The Honest Roofer Podcast is being built as an education hub: proposal breakdowns, warranty questions, maintenance, storm preparation, communication standards, and conversations with roofers who value trust.</p><div className="mt-7 rounded-2xl border border-slate-800 bg-slate-950 p-5"><p className="font-bold text-white">Free homeowner checklist</p><p className="mt-2 text-slate-400">Use 10 practical questions and a three-contractor comparison sheet before you sign a roofing agreement.</p><a href={CHECKLIST_URL} download className="mt-5 inline-flex rounded-xl bg-amber-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:bg-amber-300">Download the Free Checklist →</a><p className="mt-3 text-xs text-slate-500">Four-page PDF · No email required</p></div></div>
           </div>
         </section>
         <section id="contractors" className="border-t border-slate-900 px-6 py-20">
           <div className="mx-auto max-w-6xl">
-            <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Make responsiveness part of the customer experience.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI helps roofing companies examine what happens from the first call through qualification and follow-up. The goal is a reliable process configured around your company—not a generic bot making promises.</p></div>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
+            <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Capture more roofing opportunities without rebuilding your company.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI maps what happens from the first ring through qualification, scheduling, and follow-up. Then we design one controlled workflow around your company’s rules, capacity, service area, and customer experience.</p></div>
+            <div id="how-it-works" className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
             <RoofingMissedLeadEstimate />
-            <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">Ready to show interest?</h3><p className="mt-2 max-w-2xl text-slate-300">The short application helps us understand your company, service area, and current lead-handling process before recommending a next step.</p></div><a href={APPLICATION_URL} className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Start Contractor Application →</a></div>
+            <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">See the exact workflow before you commit.</h3><p className="mt-2 max-w-2xl text-slate-300">The free review identifies where leads wait or disappear, shows the first workflow we would test, and clarifies what your team would need to approve. No rip-and-replace commitment.</p></div><a href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=cta&utm_campaign=workflow_review&utm_content=closing" className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Request My Free Workflow Review →</a></div>
           </div>
         </section>
         <section className="border-t border-slate-900 bg-slate-900/35 px-6 py-16"><div className="mx-auto max-w-4xl text-center"><h2 className="text-2xl font-bold text-white">Clear roles across the MidSize AI ecosystem</h2><p className="mt-4 leading-relaxed text-slate-400">This site provides education, planning tools, and information about technology services. MidSize AI is not a roofing contractor, home inspector, insurer, adjuster, law firm, or emergency service. Estimates are educational ranges, and contractors remain responsible for their professional work, representations, pricing, and compliance.</p></div></section>
