@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 const ESTIMATOR_URL = 'https://estimator.midsizeai.com';
 const APPLICATION_URL = 'https://apply.midsizeai.com/application';
@@ -9,6 +9,63 @@ const contractorSolutions = [
   ['Capture usable project details', 'Collect the property address, reason for the call, timing, contact preferences, and other information your team needs for follow-up.'],
   ['Build a clearer next step', 'Route qualified opportunities toward the calendar, CRM, or follow-up workflow selected during implementation.'],
 ];
+
+function RoofingMissedLeadEstimate() {
+  const [monthlyCalls, setMonthlyCalls] = useState(100);
+  const [missedRate, setMissedRate] = useState(20);
+  const [averageJob, setAverageJob] = useState(12000);
+  const [closeRate, setCloseRate] = useState(25);
+
+  const estimate = useMemo(() => {
+    const calls = Math.max(0, Number(monthlyCalls) || 0);
+    const missed = calls * Math.min(100, Math.max(0, Number(missedRate) || 0)) / 100;
+    const jobs = missed * Math.min(100, Math.max(0, Number(closeRate) || 0)) / 100;
+    const revenue = jobs * Math.max(0, Number(averageJob) || 0);
+    return { missed, jobs, revenue };
+  }, [monthlyCalls, missedRate, averageJob, closeRate]);
+
+  const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+  const fields = [
+    ['Monthly inbound leads', monthlyCalls, setMonthlyCalls, 1, 'Calls, forms, texts, and other new inquiries.'],
+    ['Leads not reached promptly (%)', missedRate, setMissedRate, 1, 'Use call and CRM data when available.'],
+    ['Average sold roofing job ($)', averageJob, setAverageJob, 100, 'Use your normal collected or contracted average.'],
+    ['Close rate on qualified leads (%)', closeRate, setCloseRate, 1, 'Use your actual sold-job rate when known.'],
+  ];
+
+  return (
+    <section id="missed-lead-estimate" className="mt-12 rounded-3xl border border-amber-400/25 bg-gradient-to-br from-amber-400/10 via-slate-900 to-blue-500/10 p-6 sm:p-9">
+      <div className="grid gap-9 lg:grid-cols-[1fr_.9fr] lg:items-start">
+        <div>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">No email required</p>
+          <h3 className="mt-3 text-3xl font-extrabold text-white">Estimate what missed roofing leads may represent.</h3>
+          <p className="mt-4 leading-relaxed text-slate-400">Adjust four assumptions. The result updates immediately and gives you a starting point for checking your real call and CRM data.</p>
+          <div className="mt-7 grid gap-5 sm:grid-cols-2">
+            {fields.map(([label, value, setter, step, help]) => (
+              <label key={label} className="block">
+                <span className="text-sm font-bold text-white">{label}</span>
+                <input type="number" min="0" step={step} value={value} onChange={(event) => setter(event.target.value)} className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none transition focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20" />
+                <span className="mt-2 block text-xs leading-relaxed text-slate-500">{help}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+        <div aria-live="polite" className="rounded-2xl border border-slate-700 bg-slate-950/80 p-6">
+          <p className="text-sm text-slate-400">Estimated leads not reached each month</p>
+          <p className="mt-1 text-4xl font-extrabold text-white">{estimate.missed.toFixed(1)}</p>
+          <p className="mt-6 text-sm text-slate-400">Potential jobs represented</p>
+          <p className="mt-1 text-3xl font-extrabold text-white">{estimate.jobs.toFixed(1)}</p>
+          <div className="mt-6 border-t border-slate-800 pt-6">
+            <p className="text-sm text-slate-400">Directional monthly revenue opportunity</p>
+            <p className="mt-1 break-words text-4xl font-extrabold text-amber-300">{money.format(estimate.revenue)}</p>
+          </div>
+          <p className="mt-5 text-xs leading-relaxed text-slate-500">This is not a revenue promise. It assumes missed leads resemble your normal qualified leads and could close at the rate entered. Verify the opportunity against real records, capacity, margins, duplicates, and lead quality.</p>
+          <a href={`${APPLICATION_URL}?utm_source=roofers.midsizeai.com&utm_medium=calculator&utm_campaign=roofing_missed_leads&utm_content=result`} className="mt-6 block rounded-xl bg-amber-400 px-6 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300">Request a Free Workflow Review →</a>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function RoofingApp() {
   useEffect(() => {
@@ -75,6 +132,7 @@ function RoofingApp() {
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Make responsiveness part of the customer experience.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI helps roofing companies examine what happens from the first call through qualification and follow-up. The goal is a reliable process configured around your company—not a generic bot making promises.</p></div>
             <div className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
+            <RoofingMissedLeadEstimate />
             <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">Ready to show interest?</h3><p className="mt-2 max-w-2xl text-slate-300">The short application helps us understand your company, service area, and current lead-handling process before recommending a next step.</p></div><a href={APPLICATION_URL} className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Start Contractor Application →</a></div>
           </div>
         </section>
