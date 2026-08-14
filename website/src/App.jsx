@@ -59,18 +59,18 @@ export default function App() {
       {/* Hero Section */}
       <header className="max-w-5xl mx-auto text-center px-6 pt-20 pb-16">
         <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 text-xs text-amber-400 font-semibold mb-8">
-          AI Automation Built for Growing Contractors & Business Operators
+          AI Call Coverage and Lead Follow-Up Built for Roofing Companies
         </div>
         
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          Practical AI Systems for <br />
+          Stop Losing Roofing Leads <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
-            MidSize Home Services
+            When Nobody Answers
           </span>
         </h1>
         
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          MidSize AI helps growing home-service companies improve call coverage, lead response, scheduling, and follow-up with focused automation built around the way their teams already work.
+          MidSize AI helps roofing companies answer calls, respond to new leads, qualify homeowners, schedule inspections, and follow up automatically—without replacing the team or systems they already trust.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -78,25 +78,30 @@ export default function App() {
             href="/missed-lead-calculator"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Calculate Missed-Lead Revenue
+            Calculate My Missed-Lead Revenue
           </a>
           <a
-            href="#assessment"
+            href="#samantha"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Take the AI Assessment
+            Hear How Samantha Handles a Call
           </a>
           
         </div>
+        <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
+          <span>✓ Roofing-specific call intake</span>
+          <span>✓ Works after hours</span>
+          <span>✓ Connects to your calendar and CRM</span>
+        </div>
       </header>
 
-      <ReadinessAssessment />\n\n      {/* Interactive Ecosystem Switcher */}
+      {/* Roofing Conversion Path */}
       <section id="ecosystem" className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white">The MidSize AI Platform</h2>
-          <p className="text-slate-400 text-sm mt-2">Select a product to view its dedicated workflow and audience target.</p>
+          <h2 className="text-3xl font-bold text-white">See How MidSize AI Captures More Roofing Leads</h2>
+          <p className="text-slate-400 text-sm mt-2">Start with Samantha’s roofing call workflow, then see the homeowner estimator that can support your lead pipeline.</p>
           
-          <div className="flex justify-center gap-2 mt-8 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 max-w-xl mx-auto">
+          <div className="flex justify-center gap-2 mt-8 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 max-w-md mx-auto">
             <button
               onClick={() => setActiveTab('samantha')}
               className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
@@ -106,16 +111,6 @@ export default function App() {
               }`}
             >
               Samantha AI (Roofers)
-            </button>
-            <button
-              onClick={() => setActiveTab('podcast')}
-              className={`flex-1 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                activeTab === 'podcast'
-                  ? 'bg-amber-400 text-slate-950 shadow-md'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              Honest Roofer Podcast
             </button>
             <button
               onClick={() => setActiveTab('estimator')}
@@ -216,6 +211,8 @@ export default function App() {
         </div>
       </section>
 
+      <ReadinessAssessment />
+
       {/* Clear Next Steps */}
       <section id="contact" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900">
         <div className="grid md:grid-cols-2 gap-5">
@@ -227,9 +224,9 @@ export default function App() {
           </article>
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Roofing Contractors</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">See how Samantha handles missed calls</h2>
-            <p className="text-slate-400 text-sm sm:text-base mb-7">Review the roofing-specific intake workflow, common questions, and request a tailored demonstration for your company.</p>
-            <a href="/samantha.html" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Explore Samantha AI</a>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Ready to stop losing roofing opportunities?</h2>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Request a free review of your call coverage, speed-to-lead, scheduling, and follow-up workflow. You’ll receive a practical starting recommendation—not a generic software pitch.</p>
+            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=cta&utm_campaign=workflow_audit&utm_content=closing_cta" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Request My Free Workflow Audit</a>
           </article>
         </div>
       </section>
