@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import RoofingApp from './RoofingApp.jsx'
+import MissedLeadCalculator from './MissedLeadCalculator.jsx'
+
+const isCalculatorPath = window.location.pathname.replace(/\/$/, '') === '/missed-lead-calculator'
 
 const isRoofingDomain =
   window.location.hostname === 'roofers.midsizeai.com' ||
@@ -9,6 +12,6 @@ const isRoofingDomain =
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isRoofingDomain ? <RoofingApp /> : <App />}
+    {isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain ? <RoofingApp /> : <App />}
   </StrictMode>,
 )
