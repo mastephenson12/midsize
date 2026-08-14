@@ -82,7 +82,7 @@ function RoofingApp() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
       <div className="border-b border-amber-400/20 bg-amber-400/10 px-6 py-2 text-center text-xs font-semibold text-amber-300">
-        A specialized roofing division of <a className="font-bold underline hover:text-amber-200" href="https://www.midsizeai.com">MidSize AI</a>
+        A specialized roofing division of <a className="font-bold underline hover:text-amber-200" href="https://midsizeai.com">MidSize AI</a>
       </div>
       <nav className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 px-4 py-2 backdrop-blur-md sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
@@ -131,9 +131,9 @@ function RoofingApp() {
             <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">See the exact workflow before you commit.</h3><p className="mt-2 max-w-2xl text-slate-300">The free review identifies where leads wait or disappear, shows the first workflow we would test, and clarifies what your team would need to approve. No rip-and-replace commitment.</p></div><a href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=cta&utm_campaign=workflow_review&utm_content=closing" className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Request My Free Workflow Review →</a></div>
           </div>
         </section>
-        <section className="border-t border-slate-900 bg-slate-900/35 px-6 py-16"><div className="mx-auto max-w-4xl text-center"><h2 className="text-2xl font-bold text-white">Clear roles across the MidSize AI ecosystem</h2><p className="mt-4 leading-relaxed text-slate-400">This site provides education, planning tools, and information about technology services. MidSize AI is not a roofing contractor, home inspector, insurer, adjuster, law firm, or emergency service. Estimates are educational ranges, and contractors remain responsible for their professional work, representations, pricing, and compliance.</p></div></section>
+        <section className="border-t border-slate-900 bg-slate-900/35 px-6 py-16"><div className="mx-auto max-w-4xl text-center"><h2 className="text-2xl font-bold text-white">Clear roles across the MidSize AI ecosystem</h2><p className="mt-4 leading-relaxed text-slate-400">This site explains technology and workflow services for roofing companies. MidSize AI is not a roofing contractor, insurer, adjuster, law firm, or emergency service. Roofing companies remain responsible for their professional work, representations, pricing, customer communication, and compliance.</p></div></section>
       </main>
-      <footer className="border-t border-slate-900 px-6 py-10 text-sm text-slate-500"><div className="mx-auto flex max-w-6xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"><p>© {new Date().getFullYear()} MidSize AI · Roofing Division</p><div className="flex flex-wrap justify-center gap-5"><a className="hover:text-white" href="https://www.midsizeai.com">MidSize AI Home</a><a className="hover:text-white" href={ESTIMATOR_URL}>Roof Estimator</a><a className="hover:text-white" href={APPLICATION_URL}>Contractor Application</a></div></div></footer>
+      <footer className="border-t border-slate-900 px-6 py-10 text-sm text-slate-500"><div className="mx-auto flex max-w-6xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"><p>© {new Date().getFullYear()} MidSize AI · Roofing Division</p><div className="flex flex-wrap justify-center gap-5"><a className="hover:text-white" href="https://midsizeai.com">MidSize AI Home</a><a className="hover:text-white" href={APPLICATION_URL}>Free Workflow Review</a></div></div></footer>
     </div>
   );
 }
