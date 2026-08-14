@@ -7,6 +7,7 @@ import MissedLeadCalculator from './MissedLeadCalculator.jsx'
 const isCalculatorPath = window.location.pathname.replace(/\/$/, '') === '/missed-lead-calculator'
 
 const isRoofingDomain =
+  window.location.hostname === 'roofer.midsizeai.com' ||
   window.location.hostname === 'roofers.midsizeai.com' ||
   new URLSearchParams(window.location.search).get('site') === 'roofers'
 
