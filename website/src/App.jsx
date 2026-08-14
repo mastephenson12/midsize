@@ -47,10 +47,10 @@ export default function App() {
               Missed Lead Calculator
             </a>
             <a 
-              href="#contact" 
+              href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=header_cta" 
               className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
             >
-              Take Assessment
+              Request Free Audit
             </a>
           </div>
         </div>
@@ -84,14 +84,14 @@ export default function App() {
             href="#samantha"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Hear How Samantha Handles a Call
+            See Samantha Handle a Call
           </a>
           
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
           <span>✓ Roofing-specific call intake</span>
           <span>✓ Works after hours</span>
-          <span>✓ Connects to your calendar and CRM</span>
+          <span>✓ Built around your calendar and CRM workflow</span>
         </div>
       </header>
 
@@ -133,14 +133,16 @@ export default function App() {
                 <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Built Exclusively for Roofing Contractors</span>
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Samantha: The 24/7 Inbound AI Receptionist</h3>
                 <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-                  Roofers lose thousands when calls go to voicemail while crews are on top of a job. Samantha answers on the first ring, captures address/roof details, qualifies project budget, and books appointments directly to your calendar.
+                  When calls go to voicemail while your team is on a roof or helping another customer, the next contractor may win the job. Samantha can answer immediately, capture the property and project details you approve, and route or schedule qualified opportunities.
                 </p>
                 <ul className="space-y-3 text-sm text-slate-300 mb-8">
-                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> 100% First-Ring Call Capture</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Consistent First-Ring Call Coverage</li>
                   <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Automated Qualification & Calendar Booking</li>
-                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Direct Integration with Roofing CRMs</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Workflow Built Around Your Approved CRM</li>
                 </ul>
-                <a href="/samantha.html" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">\n                  Explore Samantha & Request a Demo\n                </a>
+                <a href="/samantha.html" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+                  Explore Samantha & Request a Demo
+                </a>
               </div>
               <div className="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
                 <div className="text-xs text-slate-500 font-mono mb-4">// Live Call Intake Simulation</div>
