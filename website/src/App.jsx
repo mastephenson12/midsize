@@ -59,18 +59,18 @@ export default function App() {
       {/* Hero Section */}
       <header className="max-w-5xl mx-auto text-center px-6 pt-20 pb-16">
         <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 text-xs text-amber-400 font-semibold mb-8">
-          AI Call Coverage and Lead Follow-Up Built for Roofing Companies
+          AI Call Coverage and Lead Follow-Up for Home-Service Companies
         </div>
         
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          Stop Losing Roofing Leads <br />
+          Capture More Home-Service Leads <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
-            When Nobody Answers
+            Without Adding More Admin Work
           </span>
         </h1>
         
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          MidSize AI helps roofing companies answer calls, respond to new leads, qualify homeowners, schedule inspections, and follow up automatically—without replacing the team or systems they already trust.
+          MidSize AI helps roofing, HVAC, plumbing, electrical, remodeling, and other home-service companies answer calls, respond faster, schedule work, and follow up consistently—without replacing the team or systems they already trust.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -81,25 +81,40 @@ export default function App() {
             Calculate My Missed-Lead Revenue
           </a>
           <a
-            href="#samantha"
+            href="#value-equation"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            See Samantha Handle a Call
+            See How the System Fits
           </a>
           
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
-          <span>✓ Roofing-specific call intake</span>
+          <span>✓ Home-service call intake</span>
           <span>✓ Works after hours</span>
-          <span>✓ Built around your calendar and CRM workflow</span>
+          <span>✓ Built around your current workflow</span>
         </div>
       </header>
 
-      {/* Roofing Conversion Path */}
+      <section id="value-equation" className="border-t border-slate-900 px-6 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Practical automation—not AI theater</p>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">More captured opportunities with less operational drag</h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Dream outcome</p><h3 className="mt-3 text-xl font-bold text-white">More booked work</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Give more callers and web leads a fast response, capture the right details, and guide qualified customers toward a scheduled next step.</p></article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Believable path</p><h3 className="mt-3 text-xl font-bold text-white">Use your real workflow</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">We review your calls, lead sources, questions, service area, capacity, calendar, and handoff rules before recommending automation.</p></article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Shorter time to value</p><h3 className="mt-3 text-xl font-bold text-white">Pilot one bottleneck</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Start with one missed-call, after-hours, speed-to-lead, scheduling, or follow-up workflow instead of waiting for a company-wide transformation.</p></article>
+            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Less effort and sacrifice</p><h3 className="mt-3 text-xl font-bold text-white">No forced rebuild</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Keep the people and systems that work. Your team approves the script, exceptions, escalation rules, and final customer handoff.</p></article>
+          </div>
+        </div>
+      </section>
+
+      {/* Home-Service Conversion Path */}
       <section id="ecosystem" className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white">See How MidSize AI Captures More Roofing Leads</h2>
-          <p className="text-slate-400 text-sm mt-2">Start with Samantha’s roofing call workflow, then see the homeowner estimator that can support your lead pipeline.</p>
+          <h2 className="text-3xl font-bold text-white">See a Focused Home-Service Workflow in Action</h2>
+          <p className="text-slate-400 text-sm mt-2">Samantha shows the roofing-specific version. The same workflow method begins with your trade, customer questions, service area, capacity, and approved next steps.</p>
           
           <div className="flex justify-center gap-2 mt-8 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 max-w-md mx-auto">
             <button
@@ -110,7 +125,7 @@ export default function App() {
                   : 'text-slate-400 hover:text-white'
               }`}
             >
-              Samantha AI (Roofers)
+              Roofing Example
             </button>
             <button
               onClick={() => setActiveTab('estimator')}
