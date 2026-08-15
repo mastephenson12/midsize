@@ -2,7 +2,26 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/robots.txt",
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "destination": "/roofers-robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "destination": "/roofers-sitemap.xml"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "destination": "/roofers.html"
+    },
+    {
       "source": "/missed-lead-calculator",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/missed-lead-calculator/",
       "destination": "/index.html"
     }
   ]

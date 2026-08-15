@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://midsizeai.com/sitemap.xml
+Sitemap: https://www.midsizeai.com/sitemap.xml

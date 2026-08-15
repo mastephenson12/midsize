@@ -60,7 +60,7 @@ function RoofingMissedLeadEstimate() {
             <p className="mt-1 break-words text-4xl font-extrabold text-amber-300">{money.format(estimate.revenue)}</p>
           </div>
           <p className="mt-5 text-xs leading-relaxed text-slate-500">This is not a revenue promise. It assumes missed leads resemble your normal qualified leads and could close at the rate entered. Verify the opportunity against real records, capacity, margins, duplicates, and lead quality.</p>
-          <a href={`${APPLICATION_URL}?utm_source=roofer.midsizeai.com&utm_medium=calculator&utm_campaign=roofing_missed_leads&utm_content=result`} className="mt-6 block rounded-xl bg-amber-400 px-6 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300">Request a Free Workflow Review →</a>
+          <a href={`${APPLICATION_URL}?utm_source=roofers.midsizeai.com&utm_medium=calculator&utm_campaign=roofing_missed_leads&utm_content=result`} className="mt-6 block rounded-xl bg-amber-400 px-6 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300">Request a Free Workflow Review →</a>
         </div>
       </div>
     </section>
@@ -76,7 +76,7 @@ function RoofingApp() {
     meta.content = description;
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
-    canonical.href = 'https://roofer.midsizeai.com/';
+    canonical.href = 'https://roofers.midsizeai.com/';
   }, []);
 
   return (
@@ -94,7 +94,7 @@ function RoofingApp() {
             <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/roofing-after-hours-call-script/">Free Call Script</a>
             <a className="hidden text-slate-400 transition hover:text-white xl:block" href="https://midsizeai.com/guides/ai-receptionist-for-roofing-companies/">AI Guide</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
-            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
+            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
           </div>
         </div>
       </nav>
@@ -109,7 +109,7 @@ function RoofingApp() {
             <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">Answer missed and after-hours calls, capture the right project details, and move qualified homeowners toward the next step—without adding another full-time office role or replacing the systems your team already uses.</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a href="#missed-lead-estimate" className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Calculate My Missed-Lead Opportunity</a>
-              <a href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=hero&utm_campaign=workflow_review" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Request My Free Workflow Review</a>
+              <a href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=hero&utm_campaign=workflow_review" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Request My Free Workflow Review</a>
             </div>
             <p className="mt-4 text-xs text-slate-500">Use the calculator without an email. Share contact details only if you choose to request a workflow review.</p>
           </div>
@@ -130,7 +130,7 @@ function RoofingApp() {
             <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Capture more roofing opportunities without rebuilding your company.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI maps what happens from the first ring through qualification, scheduling, and follow-up. Then we design one controlled workflow around your company’s rules, capacity, service area, and customer experience.</p></div>
             <div id="how-it-works" className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
             <RoofingMissedLeadEstimate />
-            <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">See the exact workflow before you commit.</h3><p className="mt-2 max-w-2xl text-slate-300">The free review identifies where leads wait or disappear, shows the first workflow we would test, and clarifies what your team would need to approve. No rip-and-replace commitment.</p></div><a href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=cta&utm_campaign=workflow_review&utm_content=closing" className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Request My Free Workflow Review →</a></div>
+            <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">See the exact workflow before you commit.</h3><p className="mt-2 max-w-2xl text-slate-300">The free review identifies where leads wait or disappear, shows the first workflow we would test, and clarifies what your team would need to approve. No rip-and-replace commitment.</p></div><a href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=cta&utm_campaign=workflow_review&utm_content=closing" className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Request My Free Workflow Review →</a></div>
           </div>
         </section>
         <section className="border-t border-slate-900 bg-slate-900/35 px-6 py-16"><div className="mx-auto max-w-4xl text-center"><h2 className="text-2xl font-bold text-white">Clear roles across the MidSize AI ecosystem</h2><p className="mt-4 leading-relaxed text-slate-400">This site explains technology and workflow services for roofing companies. MidSize AI is not a roofing contractor, insurer, adjuster, law firm, or emergency service. Roofing companies remain responsible for their professional work, representations, pricing, customer communication, and compliance.</p></div></section>
