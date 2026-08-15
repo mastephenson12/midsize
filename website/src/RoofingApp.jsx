@@ -91,7 +91,8 @@ function RoofingApp() {
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:block">Roofing Division</span>
           </a>
           <div className="flex items-center gap-3 text-sm">
-            <a className="hidden text-slate-400 transition hover:text-white md:block" href="#how-it-works">How It Works</a>
+            <a className="hidden text-slate-400 transition hover:text-white md:block" href="https://midsizeai.com/guides/ai-receptionist-for-roofing-companies/">Free Guide</a>
+            <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
             <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
           </div>
         </div>
