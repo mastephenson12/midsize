@@ -14,15 +14,15 @@
     {
       "source": "/",
       "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
-      "destination": "/roofers.html"
+      "destination": "/roofers"
     },
     {
       "source": "/missed-lead-calculator",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/missed-lead-calculator/",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }

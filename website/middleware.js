@@ -9,7 +9,7 @@ export default function middleware(request) {
   const isRoofingDomain = url.hostname === 'roofers.midsizeai.com';
 
   if (isRoofingDomain && url.pathname === '/') {
-    return rewrite(new URL('/roofers.html', request.url));
+    return rewrite(new URL('/roofers', request.url));
   }
 
   if (isRoofingDomain && url.pathname === '/robots.txt') {
@@ -21,6 +21,6 @@ export default function middleware(request) {
   }
 
   if (url.pathname.replace(/\/$/, '') === '/missed-lead-calculator') {
-    return rewrite(new URL('/index.html', request.url));
+    return rewrite(new URL('/', request.url));
   }
 }
