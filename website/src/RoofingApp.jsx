@@ -91,7 +91,8 @@ function RoofingApp() {
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:block">Roofing Division</span>
           </a>
           <div className="flex items-center gap-3 text-sm">
-            <a className="hidden text-slate-400 transition hover:text-white md:block" href="#how-it-works">How It Works</a>
+            <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/roofing-after-hours-call-script/">Free Call Script</a>
+            <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
             <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofer.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
           </div>
         </div>
@@ -133,7 +134,7 @@ function RoofingApp() {
         </section>
         <section className="border-t border-slate-900 bg-slate-900/35 px-6 py-16"><div className="mx-auto max-w-4xl text-center"><h2 className="text-2xl font-bold text-white">Clear roles across the MidSize AI ecosystem</h2><p className="mt-4 leading-relaxed text-slate-400">This site explains technology and workflow services for roofing companies. MidSize AI is not a roofing contractor, insurer, adjuster, law firm, or emergency service. Roofing companies remain responsible for their professional work, representations, pricing, customer communication, and compliance.</p></div></section>
       </main>
-      <footer className="border-t border-slate-900 px-6 py-10 text-sm text-slate-500"><div className="mx-auto flex max-w-6xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"><p>© {new Date().getFullYear()} MidSize AI · Roofing Division</p><div className="flex flex-wrap justify-center gap-5"><a className="hover:text-white" href="https://midsizeai.com">MidSize AI Home</a><a className="hover:text-white" href={APPLICATION_URL}>Free Workflow Review</a></div></div></footer>
+      <footer className="border-t border-slate-900 px-6 py-10 text-sm text-slate-500"><div className="mx-auto flex max-w-6xl flex-col gap-4 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left"><p>© {new Date().getFullYear()} MidSize AI · Roofing Division</p><div className="flex flex-wrap justify-center gap-5"><a className="hover:text-white" href="https://midsizeai.com">MidSize AI Home</a><a className="hover:text-white" href="/resources/roofing-after-hours-call-script/">Free Call Script</a><a className="hover:text-white" href={APPLICATION_URL}>Free Workflow Review</a></div></div></footer>
     </div>
   );
 }
