@@ -41,6 +41,12 @@ export default function App() {
               Solutions
             </a>
             <a
+              href="/guides/ai-receptionist-for-roofing-companies/"
+              className="hidden lg:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Roofing AI Guide
+            </a>
+            <a
               href="/missed-lead-calculator"
               className="hidden lg:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
