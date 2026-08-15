@@ -18,11 +18,11 @@
     },
     {
       "source": "/missed-lead-calculator",
-      "destination": "/"
+      "destination": "/calculator"
     },
     {
       "source": "/missed-lead-calculator/",
-      "destination": "/"
+      "destination": "/calculator"
     }
   ]
 }

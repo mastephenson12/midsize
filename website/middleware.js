@@ -21,6 +21,6 @@ export default function middleware(request) {
   }
 
   if (url.pathname.replace(/\/$/, '') === '/missed-lead-calculator') {
-    return rewrite(new URL('/', request.url));
+    return rewrite(new URL('/calculator', request.url));
   }
 }
