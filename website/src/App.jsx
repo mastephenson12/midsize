@@ -161,8 +161,8 @@ export default function App() {
                   <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Automated Qualification & Calendar Booking</li>
                   <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Workflow Built Around Your Approved CRM</li>
                 </ul>
-                <a href="/samantha.html" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
-                  Explore Samantha & Request a Demo
+                <a href="/samantha-demo" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+                  Try the Interactive Samantha Demo
                 </a>
               </div>
               <div className="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
