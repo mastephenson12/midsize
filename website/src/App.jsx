@@ -151,34 +151,34 @@ export default function App() {
           {activeTab === 'samantha' && (
             <div id="samantha" className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">Built Exclusively for Roofing Contractors</span>
-                <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Samantha: The 24/7 Inbound AI Receptionist</h3>
+                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">MidSize AI Sales Agent</span>
+                <h3 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Samantha: Explore the Right AI Agent for Your Business</h3>
                 <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
-                  When calls go to voicemail while your team is on a roof or helping another customer, the next contractor may win the job. Samantha can answer immediately, capture the property and project details you approve, and route or schedule qualified opportunities.
+                  Samantha is MidSize AI’s sales agent. She asks about your trade, call volume, missed-lead process, systems, and concerns; explains where an AI agent may fit; and schedules a workflow review when there is a credible use case.
                 </p>
                 <ul className="space-y-3 text-sm text-slate-300 mb-8">
-                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Consistent First-Ring Call Coverage</li>
-                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Automated Qualification & Calendar Booking</li>
-                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Workflow Built Around Your Approved CRM</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Needs Discovery Without a Generic Software Pitch</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Fit Assessment and Objection Handling</li>
+                  <li className="flex items-center gap-2"><span className="text-amber-400">✓</span> Workflow Review Booking and CRM Handoff</li>
                 </ul>
-                <a href="/samantha.html" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
-                  Explore Samantha & Request a Demo
+                <a href="/samantha-demo" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">
+                  Try the Interactive Samantha Demo
                 </a>
               </div>
               <div className="bg-slate-950 border border-slate-800 p-6 rounded-2xl">
-                <div className="text-xs text-slate-500 font-mono mb-4">// Live Call Intake Simulation</div>
+                <div className="text-xs text-slate-500 font-mono mb-4">// Sample AI-Agent Sales Conversation</div>
                 <div className="space-y-3 text-xs">
                   <div className="bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-300">
-                    <span className="text-amber-400 font-bold">Homeowner:</span> "Hi, we had hail damage last night and need an inspection."
+                    <span className="text-amber-400 font-bold">Business owner:</span> "We miss calls when everyone is in the field. Can an AI agent help without frustrating customers?"
                   </div>
                   <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/20 text-amber-200">
-                    <span className="font-bold">Samantha AI:</span> "I can help with that right away! What is the property address and how old is the current roof?"
+                    <span className="font-bold">Samantha:</span> "Possibly. About how many new calls do you receive, and what happens when nobody answers?"
                   </div>
                   <div className="bg-slate-900 p-3 rounded-lg border border-slate-800 text-slate-300">
-                    <span className="text-amber-400 font-bold">Homeowner:</span> "1248 Oak St, roof is about 14 years old."
+                    <span className="text-amber-400 font-bold">Business owner:</span> "Around 100 each month. Most missed calls go to voicemail."
                   </div>
                   <div className="bg-amber-400/10 p-3 rounded-lg border border-amber-400/20 text-amber-200">
-                    <span className="font-bold">Samantha AI:</span> "Got it. I have an inspection slot open tomorrow at 10 AM. Should I lock that in for you?"
+                    <span className="font-bold">Samantha:</span> "That may be a good fit for a controlled missed-call pilot. Let’s map your questions, escalation rules, CRM, and human handoff before recommending anything."
                   </div>
                 </div>
               </div>
