@@ -116,6 +116,35 @@ export default function App() {
         </div>
       </section>
 
+      {/* Founder / Field Context */}
+      <section className="border-t border-slate-900 px-6 py-16">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/60 lg:grid-cols-[0.9fr_1.1fr]">
+          <figure className="h-full min-h-80 bg-slate-900">
+            <img
+              src="/mid-size-ai-founder-field-context.webp"
+              alt="MidSize AI founder Mark Stephenson observing the working conditions home-service teams face in the field"
+              className="h-full w-full object-cover"
+              loading="lazy"
+              width="1536"
+              height="1024"
+            />
+          </figure>
+          <div className="px-7 pb-9 lg:px-4 lg:pb-0 lg:pr-12">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Built with respect for the field</p>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">AI support for the calls that arrive while your team is working.</h2>
+            <p className="mt-5 text-base leading-7 text-slate-300">
+              MidSize AI does not sell roofing services or replace field crews. We design practical AI-agent workflows for home-service businesses whose calls, estimates, scheduling, and follow-up cannot always wait until someone is back at a desk.
+            </p>
+            <p className="mt-4 text-sm leading-6 text-slate-400">
+              Founder Mark Stephenson brings firsthand familiarity with the realities surrounding field-service work. Every recommendation starts with your actual process, approved customer language, and a clear human handoff.
+            </p>
+            <a href="#ecosystem" className="mt-7 inline-flex font-bold text-amber-400 hover:text-amber-300">
+              See the workflow approach &rarr;
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Home-Service Conversion Path */}
       <section id="ecosystem" className="max-w-6xl mx-auto px-6 py-16 border-t border-slate-900">
         <div className="text-center mb-12">
