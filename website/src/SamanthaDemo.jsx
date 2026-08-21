@@ -89,8 +89,8 @@ export default function SamanthaDemo() {
   );
 
   useEffect(() => {
-    document.title = 'Interactive Samantha Roofing Call Demo | MidSize AI';
-    const description = 'Explore a clearly labeled sample of how Samantha could intake, qualify, schedule, or escalate common roofing calls.';
+    document.title = 'Interactive Samantha AI-Agent Sales Demo | MidSize AI';
+    const description = 'Explore how Samantha discovers business needs, assesses fit for MidSize AI agents, handles objections, and books a workflow review.';
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement('meta');
