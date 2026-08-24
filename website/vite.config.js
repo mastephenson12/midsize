@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         roofers: resolve(__dirname, 'roofers.html'),
+        homeowners: resolve(__dirname, 'homeowners.html'),
         calculator: resolve(__dirname, 'calculator.html'),
       },
     },
