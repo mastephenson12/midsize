@@ -15,33 +15,23 @@
     },
     {
       "source": "/robots.txt",
-      "has": [
-        {
-          "type": "host",
-          "value": "roofers.midsizeai.com"
-        }
-      ],
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
       "destination": "/roofers-robots.txt"
     },
     {
       "source": "/sitemap.xml",
-      "has": [
-        {
-          "type": "host",
-          "value": "roofers.midsizeai.com"
-        }
-      ],
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
       "destination": "/roofers-sitemap.xml"
     },
     {
       "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "roofers.midsizeai.com"
-        }
-      ],
+      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
       "destination": "/roofers"
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "homeowner.midsizeai.com" }],
+      "destination": "/homeowners"
     },
     {
       "source": "/missed-lead-calculator",
