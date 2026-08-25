@@ -10,6 +10,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         roofers: resolve(__dirname, 'roofers.html'),
         calculator: resolve(__dirname, 'calculator.html'),
+        honestRoofer: resolve(__dirname, 'honest-roofer/index.html'),
       },
     },
   },
