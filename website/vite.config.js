@@ -11,6 +11,7 @@ export default defineConfig({
         roofers: resolve(__dirname, 'roofers.html'),
         calculator: resolve(__dirname, 'calculator.html'),
         honestRoofer: resolve(__dirname, 'honest-roofer/index.html'),
+        estimateDecoder: resolve(__dirname, 'estimate-decoder/index.html'),
       },
     },
   },
