@@ -18,6 +18,36 @@
       "has": [
         {
           "type": "host",
+          "value": "homeowner.midsizeai.com"
+        }
+      ],
+      "destination": "/homeowner-robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [
+        {
+          "type": "host",
+          "value": "homeowner.midsizeai.com"
+        }
+      ],
+      "destination": "/homeowner-sitemap.xml"
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "homeowner.midsizeai.com"
+        }
+      ],
+      "destination": "/honest-roofer/"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
           "value": "roofers.midsizeai.com"
         }
       ],
