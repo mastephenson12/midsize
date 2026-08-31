@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://homeowner.midsizeai.com/sitemap.xml
