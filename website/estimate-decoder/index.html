@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Free Roofing Estimate Decoder | The Honest Roofer</title>
-  <meta name="description" content="Paste a roofing estimate and get a private, plain-English checklist of what is covered, what may be missing, and what questions to ask before you sign.">
+  <meta name="description" content="Upload a roofing estimate PDF or photo—or paste its text—and get a private, plain-English checklist of what is covered, what may be missing, and what to ask before signing.">
   <link rel="canonical" href="https://homeowner.midsizeai.com/estimate-decoder/">
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#07111f">
@@ -12,14 +12,22 @@
   <style>
     :root{--navy:#07111f;--navy2:#10243a;--ink:#16202c;--muted:#5f6b78;--paper:#f6f3ec;--white:#fff;--orange:#f47b20;--orange2:#d95f08;--blue:#2e6d9c;--line:#dce2e7;--green:#26705a;--yellow:#9a6700;--red:#a33a2b;--shadow:0 18px 50px rgba(7,17,31,.12)}
     *{box-sizing:border-box}body{margin:0;color:var(--ink);background:var(--paper);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.wrap{width:min(1040px,calc(100% - 32px));margin:auto}.top{background:var(--navy);color:#fff}.top .wrap{min-height:72px;display:flex;justify-content:space-between;align-items:center;gap:18px}.brand{text-decoration:none;font-weight:950;letter-spacing:-.02em}.brand small{display:block;color:#8fb3cf;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase}.back{color:#d8e5ef;text-decoration:none;font-size:.86rem;font-weight:800}.hero{background:linear-gradient(135deg,#07111f,#10243a);color:#fff;padding:62px 0 72px}.eyebrow{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(244,123,32,.14);color:#ffad70;font-size:.72rem;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.hero h1{max-width:850px;margin:18px 0 18px;font-size:clamp(2.5rem,6vw,5rem);line-height:.98;letter-spacing:-.055em}.hero h1 span{color:#ff9950}.hero p{max-width:760px;color:#d2e0eb;font-size:1.08rem}.privacy{display:flex;gap:10px;align-items:flex-start;margin-top:24px;color:#a9c1d3;font-size:.88rem}.app{margin:-36px auto 60px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:var(--shadow)}label{display:block;font-weight:900;margin-bottom:8px}textarea{width:100%;min-height:250px;resize:vertical;border:1px solid #bdc8d1;border-radius:12px;padding:16px;font:14px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#17202a;background:#fbfcfd}textarea:focus,input:focus,select:focus{outline:3px solid rgba(244,123,32,.2);border-color:var(--orange)}.helper{color:var(--muted);font-size:.84rem;margin:8px 0 0}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{border:0;border-radius:10px;padding:14px 20px;background:var(--orange);color:#16100c;font-weight:950;cursor:pointer;font-size:.96rem;text-decoration:none}.btn:hover{background:#ff913c}.btn.secondary{background:#e9eef2}.results{display:none;margin-top:24px}.scorebox{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;background:var(--navy);color:#fff;border-radius:15px;padding:24px}.score{width:118px;height:118px;border-radius:50%;display:grid;place-items:center;margin:auto;background:#fff;color:var(--navy);font-size:2.1rem;font-weight:1000}.score small{font-size:.75rem;display:block;margin-top:-12px}.scorecopy h2{margin:0 0 6px;font-size:1.55rem}.scorecopy p{margin:0;color:#c4d4df}.columns{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.panel{border:1px solid var(--line);border-radius:14px;padding:20px;background:#fff}.panel h3{margin:0 0 12px;font-size:1.1rem}.item{padding:12px 0;border-bottom:1px solid #edf0f2}.item:last-child{border-bottom:0}.status{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;font-size:.7rem;font-weight:950;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}.good{background:#e3f2ea;color:var(--green)}.check{background:#fff2ce;color:var(--yellow)}.missing{background:#fde8e4;color:var(--red)}.item strong{display:block}.item p{margin:3px 0 0;color:var(--muted);font-size:.9rem}.questions{margin-top:18px}.questions ol{padding-left:22px}.questions li{margin:10px 0}.notice{margin-top:20px;padding:16px;border-radius:12px;background:#eef5f8;color:#425466;font-size:.86rem}.cta{margin-top:22px;padding:22px;border-radius:14px;background:#fff3e8;border:1px solid #ffd1ac}.cta h3{margin:0 0 5px}.cta p{margin:0 0 14px;color:#635448}.cta a{display:inline-flex;background:var(--navy);color:#fff;text-decoration:none;padding:12px 16px;border-radius:9px;font-weight:900}.helpbox{margin-top:22px;border-radius:16px;background:var(--navy);color:#fff;padding:26px}.helpbox h3{margin:0 0 7px;font-size:1.45rem}.helpbox>p{margin:0;color:#c5d4df}.choicegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.choice{border:1px solid rgba(255,255,255,.18);border-radius:12px;background:rgba(255,255,255,.06);color:#fff;padding:16px;text-align:left;cursor:pointer}.choice:hover,.choice.active{border-color:#ff9950;background:rgba(244,123,32,.15)}.choice strong{display:block}.choice span{display:block;color:#b9cad7;font-size:.82rem;margin-top:3px}.leadform{display:none;margin-top:18px;padding:20px;border-radius:14px;background:#fff;color:var(--ink)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{font-size:.82rem;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid #bdc8d1;border-radius:9px;padding:12px;font:inherit;background:#fff}.full{grid-column:1/-1}.consent{display:flex;gap:10px;align-items:flex-start;font-size:.78rem;color:var(--muted)}.consent input{margin-top:4px}.leadmsg{margin-top:12px;font-size:.86rem;font-weight:800}.leadmsg.ok{color:var(--green)}.leadmsg.err{color:var(--red)}.footer{padding:0 0 50px;color:#66727d;font-size:.8rem}.footer a{font-weight:800}@media(max-width:700px){.scorebox,.columns,.formgrid,.choicegrid{grid-template-columns:1fr}.scorebox{text-align:center}.card{padding:20px}.hero{padding-top:48px}.top .wrap{min-height:64px}}
+    .uploadbox{margin-bottom:22px;padding:22px;border:2px dashed #aebdca;border-radius:14px;background:#f7fafc;text-align:center}.uploadbox.drag{border-color:var(--orange);background:#fff5ec}.uploadbox input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0}.uploadbox label{display:inline-flex;margin:0;cursor:pointer}.uploadbox p{margin:10px 0 0;color:var(--muted);font-size:.84rem}.file-status{min-height:24px;margin:10px 0 0;font-size:.86rem;font-weight:800;color:var(--blue)}.file-status.err{color:var(--red)}.divider{display:flex;align-items:center;gap:14px;margin:4px 0 20px;color:#7a8793;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.divider:before,.divider:after{content:'';height:1px;flex:1;background:var(--line)}
   </style>
 </head>
 <body>
   <header class="top"><div class="wrap"><a class="brand" href="/">The Honest Roofer<small>A MidSizeAI homeowner resource</small></a><a class="back" href="/">← Homeowner roofing hub</a></div></header>
-  <section class="hero"><div class="wrap"><span class="eyebrow">Free roofing estimate decoder</span><h1>Before you sign, know what you're <span>actually buying.</span></h1><p>Paste the written portion of a roofing estimate below. We will turn the contractor language into a homeowner checklist, flag topics that may deserve clarification, and give you questions to ask before signing.</p><div class="privacy"><strong>Privacy:</strong><span>The decoder runs in your browser. Your estimate text is not included when you request follow-up help.</span></div></div></section>
+  <section class="hero"><div class="wrap"><span class="eyebrow">Free roofing estimate decoder</span><h1>Before you sign, know what you're <span>actually buying.</span></h1><p>Upload a PDF or clear photo of your roofing estimate—or paste the written scope. We will turn contractor language into a homeowner checklist and questions to ask before signing.</p><div class="privacy"><strong>Privacy:</strong><span>Your file is read on this device and is not sent to MidSizeAI. The extracted estimate text is not included if you later request follow-up help.</span></div></div></section>
 
   <main class="wrap app">
     <section class="card">
+      <div class="uploadbox" id="uploadbox">
+        <input id="estimateFile" type="file" accept="application/pdf,image/jpeg,image/png,image/webp,text/plain">
+        <label class="btn" for="estimateFile">Upload PDF or photo</label>
+        <p>PDF, JPG, PNG, WEBP, or TXT · maximum 15 MB · processed privately in this browser</p>
+        <div class="file-status" id="fileStatus" aria-live="polite"></div>
+      </div>
+      <div class="divider">or paste the estimate</div>
       <label for="estimate">Paste your roofing estimate</label>
       <textarea id="estimate" placeholder="Example: Remove existing shingles down to decking. Install synthetic underlayment, architectural shingles, new pipe flashings..."></textarea>
       <p class="helper">Remove your name, address, phone number, claim number, or other personal information if it appears in the document.</p>
@@ -76,6 +84,58 @@ const checks = [
   {name:'Exclusions / change orders', terms:['exclusion','not included','additional cost','change order','extra charge','allowance'], weight:6, question:'What is specifically excluded, and how will change orders or unexpected conditions be priced?'},
 ];
 let latestScore = null;
+const fileInput = document.getElementById('estimateFile');
+const uploadbox = document.getElementById('uploadbox');
+const fileStatus = document.getElementById('fileStatus');
+const libraryPromises = {};
+function setFileStatus(message,isError=false){ fileStatus.textContent=message; fileStatus.className=`file-status${isError?' err':''}`; }
+function loadScript(src,key){
+  if(libraryPromises[key]) return libraryPromises[key];
+  libraryPromises[key] = new Promise((resolve,reject)=>{ const script=document.createElement('script'); script.src=src; script.onload=resolve; script.onerror=()=>reject(new Error('The document reader could not load. Check your connection and try again.')); document.head.appendChild(script); });
+  return libraryPromises[key];
+}
+async function extractPdf(file){
+  setFileStatus('Reading PDF text on this device…');
+  await loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js','pdfjs');
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+  const pdf=await window.pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise;
+  const pages=[];
+  for(let pageNumber=1;pageNumber<=pdf.numPages;pageNumber++){
+    setFileStatus(`Reading PDF page ${pageNumber} of ${pdf.numPages}…`);
+    const page=await pdf.getPage(pageNumber);
+    const content=await page.getTextContent();
+    pages.push(content.items.map(item=>item.str).join(' '));
+  }
+  const text=pages.join('\n\n').trim();
+  if(text.length<40) throw new Error('This PDF appears to be scanned or contains too little selectable text. Take a clear photo or screenshot of each important page and upload one image at a time.');
+  return text;
+}
+async function extractImage(file){
+  setFileStatus('Starting private photo text recognition…');
+  await loadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js','tesseract');
+  const worker=await window.Tesseract.createWorker('eng',1,{logger:message=>{ if(message.status==='recognizing text') setFileStatus(`Reading photo… ${Math.round((message.progress||0)*100)}%`); }});
+  try {
+    const result=await worker.recognize(file);
+    const text=result.data.text.trim();
+    if(text.length<40) throw new Error('We could not find enough readable text. Try a brighter, straighter photo that fills the frame.');
+    return text;
+  } finally { await worker.terminate(); }
+}
+async function handleFile(file){
+  if(!file) return;
+  if(file.size>15*1024*1024){ setFileStatus('That file is larger than 15 MB. Choose a smaller copy or photo.',true); return; }
+  try {
+    let text='';
+    if(file.type==='application/pdf'||file.name.toLowerCase().endsWith('.pdf')) text=await extractPdf(file);
+    else if(file.type.startsWith('image/')) text=await extractImage(file);
+    else if(file.type==='text/plain'||file.name.toLowerCase().endsWith('.txt')) text=await file.text();
+    else throw new Error('Choose a PDF, JPG, PNG, WEBP, or TXT file.');
+    document.getElementById('estimate').value=text;
+    setFileStatus(`Ready: ${file.name}. Review the extracted text, then decode it.`);
+    document.getElementById('estimate').focus();
+  } catch(error) { setFileStatus(error.message||'We could not read that file. Try pasting the estimate text instead.',true); }
+  finally { fileInput.value=''; }
+}
 function containsAny(text, terms){ return terms.some(t => text.includes(t)); }
 function makeItem(name, state, note){ const cls = state === 'Found' ? 'good' : state === 'Check' ? 'check' : 'missing'; return `<div class="item"><span class="status ${cls}">${state}</span><strong>${name}</strong><p>${note}</p></div>`; }
 function analyze(){
@@ -98,8 +158,12 @@ function analyze(){
 }
 
 document.getElementById('analyze').addEventListener('click', analyze);
+fileInput.addEventListener('change',event=>handleFile(event.target.files[0]));
+['dragenter','dragover'].forEach(name=>uploadbox.addEventListener(name,event=>{event.preventDefault();uploadbox.classList.add('drag');}));
+['dragleave','drop'].forEach(name=>uploadbox.addEventListener(name,event=>{event.preventDefault();uploadbox.classList.remove('drag');}));
+uploadbox.addEventListener('drop',event=>handleFile(event.dataTransfer.files[0]));
 document.getElementById('sample').addEventListener('click',()=>{document.getElementById('estimate').value='Remove one layer of existing asphalt shingles down to roof decking. Replace damaged decking at $95 per sheet with owner approval. Install synthetic underlayment, architectural shingles, starter, ridge cap, new drip edge and pipe flashings. Install ridge ventilation where applicable. Contractor will obtain required permit and haul away roofing debris. Includes 10-year workmanship warranty and manufacturer limited warranty. Total price $18,750. Deposit $1,875, balance due after final inspection. Additional structural repairs are not included and require a written change order.'; analyze();});
-document.getElementById('clear').addEventListener('click',()=>{document.getElementById('estimate').value='';document.getElementById('results').style.display='none';latestScore=null;document.getElementById('estimate').focus();});
+document.getElementById('clear').addEventListener('click',()=>{document.getElementById('estimate').value='';document.getElementById('results').style.display='none';latestScore=null;setFileStatus('');document.getElementById('estimate').focus();});
 
 document.querySelectorAll('.choice').forEach(button => button.addEventListener('click',()=>{
   document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active')); button.classList.add('active');
