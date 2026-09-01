@@ -1,5 +1,39 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/honest-roofer",
+      "has": [{ "type": "host", "value": "homeowner.midsizeai.com" }],
+      "destination": "https://homeowner.midsizeai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/honest-roofer/",
+      "has": [{ "type": "host", "value": "homeowner.midsizeai.com" }],
+      "destination": "https://homeowner.midsizeai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/honest-roofer",
+      "destination": "https://homeowner.midsizeai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/honest-roofer/",
+      "destination": "https://homeowner.midsizeai.com/",
+      "permanent": true
+    },
+    {
+      "source": "/estimate-decoder",
+      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
+      "permanent": true
+    },
+    {
+      "source": "/estimate-decoder/",
+      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/samantha-demo",
