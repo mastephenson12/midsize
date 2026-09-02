@@ -1,4 +1,5 @@
 const allowedSituations = new Set(['second-opinion','another-estimate','find-roofer','roofer-contact']);
+const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace']);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -17,8 +18,11 @@ export default async function handler(req, res) {
     const timeline = String(body.timeline || '').trim().slice(0, 80);
     const consent = body.consent === true;
     const score = Number.isFinite(Number(body.score)) ? Math.max(0, Math.min(100, Number(body.score))) : null;
+    const tool = String(body.tool || 'estimate-decoder').trim();
+    const result = String(body.result || '').trim().slice(0, 80);
+    const urgency = String(body.urgency || '').trim().slice(0, 80);
 
-    if (!name || !email || !zip || !allowedSituations.has(situation) || !consent) {
+    if (!name || !email || !zip || !allowedSituations.has(situation) || !allowedTools.has(tool) || !consent) {
       return res.status(400).json({ ok: false, error: 'Please complete the required fields and consent.' });
     }
 
@@ -27,7 +31,7 @@ export default async function handler(req, res) {
     }
 
     const payload = {
-      source: 'honest-roofer-estimate-decoder',
+      source: `honest-roofer-${tool}`,
       submittedAt: new Date().toISOString(),
       name,
       email,
@@ -37,6 +41,9 @@ export default async function handler(req, res) {
       roofType,
       timeline,
       decoderScore: score,
+      microApp: tool,
+      appResult: result,
+      urgency,
       consent: true
     };
 
