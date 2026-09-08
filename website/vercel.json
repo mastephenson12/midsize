@@ -192,6 +192,14 @@
     {
       "source": "/missed-lead-calculator/",
       "destination": "/calculator"
+    },
+    {
+      "source": "/missed-call-calculator",
+      "destination": "/calculator"
+    },
+    {
+      "source": "/missed-call-calculator/",
+      "destination": "/calculator"
     }
   ]
 }
