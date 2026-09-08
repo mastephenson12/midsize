@@ -6,7 +6,9 @@ import MissedLeadCalculator from './MissedLeadCalculator.jsx'
 import SamanthaDemo from './SamanthaDemo.jsx'
 
 const normalizedPath = window.location.pathname.replace(/\/$/, '')
-const isCalculatorPath = normalizedPath === '/missed-lead-calculator'
+const isCalculatorPath =
+  normalizedPath === '/missed-lead-calculator' ||
+  normalizedPath === '/missed-call-calculator'
 const isSamanthaDemoPath = normalizedPath === '/samantha-demo' || normalizedPath === '/samantha.html'
 
 const isRoofingDomain =
