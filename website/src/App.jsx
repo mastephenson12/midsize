@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReadinessAssessment from './ReadinessAssessment.jsx';
+import HomeownerResources from './HomeownerResources.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
@@ -8,10 +9,10 @@ export default function App() {
       {/* Top Utility Bar */}
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
         Looking for a quick roof replacement estimate?{' '}
-        <a 
-          href="https://estimator.midsizeai.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://estimator.midsizeai.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-bold ml-1"
         >
           Try estimator.midsizeai.com &rarr;
@@ -34,26 +35,32 @@ export default function App() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <a 
-              href="#ecosystem" 
+            <a
+              href="#ecosystem"
               className="hidden md:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
               Solutions
             </a>
             <a
-              href="/guides/ai-receptionist-for-roofing-companies/"
+              href="#homeowner-tools"
               className="hidden lg:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Homeowner Tools
+            </a>
+            <a
+              href="/guides/ai-receptionist-for-roofing-companies/"
+              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
               Roofing AI Guide
             </a>
             <a
               href="/missed-lead-calculator"
-              className="hidden lg:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
               Missed Lead Calculator
             </a>
-            <a 
-              href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=header_cta" 
+            <a
+              href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=header_cta"
               className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
             >
               Request Free Audit
@@ -67,14 +74,14 @@ export default function App() {
         <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 text-xs text-amber-400 font-semibold mb-8">
           AI Call Coverage and Lead Follow-Up for Home-Service Companies
         </div>
-        
+
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
           Capture More Home-Service Leads <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
             Without Adding More Admin Work
           </span>
         </h1>
-        
+
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
           MidSize AI helps roofing, HVAC, plumbing, electrical, remodeling, and other home-service companies answer calls, respond faster, schedule work, and follow up consistently—without replacing the team or systems they already trust.
         </p>
@@ -92,7 +99,6 @@ export default function App() {
           >
             See How the System Fits
           </a>
-          
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
           <span>✓ Home-service call intake</span>
@@ -150,7 +156,7 @@ export default function App() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-white">See a Focused Home-Service Workflow in Action</h2>
           <p className="text-slate-400 text-sm mt-2">Samantha shows the roofing-specific version. The same workflow method begins with your trade, customer questions, service area, capacity, and approved next steps.</p>
-          
+
           <div className="flex justify-center gap-2 mt-8 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 max-w-md mx-auto">
             <button
               onClick={() => setActiveTab('samantha')}
@@ -244,10 +250,10 @@ export default function App() {
                 <p className="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
                   Hosted at <code className="text-amber-400 bg-slate-950 px-2 py-1 rounded">estimator.midsizeai.com</code>, this standalone calculator gives homeowners realistic ballpark pricing based on square footage, pitch, and material choices before speaking to sales reps.
                 </p>
-                <a 
-                  href="https://estimator.midsizeai.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://estimator.midsizeai.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all"
                 >
                   Open Estimator Tool &rarr;
@@ -262,6 +268,8 @@ export default function App() {
           )}
         </div>
       </section>
+
+      <HomeownerResources />
 
       <ReadinessAssessment />
 
