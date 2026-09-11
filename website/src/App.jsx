@@ -8,14 +8,14 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
       {/* Top Utility Bar */}
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
-        Looking for a quick roof replacement estimate?{' '}
+        Homeowner looking for clear roofing help?{' '}
         <a
-          href="https://estimator.midsizeai.com"
+          href="https://homeowner.midsizeai.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-bold ml-1"
         >
-          Try estimator.midsizeai.com &rarr;
+          Visit The Honest Roofer &rarr;
         </a>
       </div>
 
@@ -88,16 +88,16 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/missed-lead-calculator"
+            href="/resources/follow-up-leak-audit/"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Calculate My Missed-Lead Revenue
+            Find My Biggest Follow-Up Leak
           </a>
           <a
-            href="#value-equation"
+            href="/missed-lead-calculator"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            See How the System Fits
+            Calculate Missed-Lead Revenue
           </a>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">

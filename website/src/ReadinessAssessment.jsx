@@ -197,11 +197,7 @@ export default function ReadinessAssessment() {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  {answers.serviceType === 'roofing' ? (
-                    <a href="https://apply.midsizeai.com/application" className="rounded-xl bg-amber-400 px-6 py-3 text-center text-sm font-bold text-slate-950 hover:bg-amber-300">Request a Roofing Workflow Review</a>
-                  ) : (
-                    <a href="#ecosystem" className="rounded-xl bg-amber-400 px-6 py-3 text-center text-sm font-bold text-slate-950 hover:bg-amber-300">See How the Platform Works</a>
-                  )}
+                  <a href={`https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=assessment&utm_campaign=workflow_audit&utm_content=${answers.serviceType || 'home_service'}_result`} className="rounded-xl bg-amber-400 px-6 py-3 text-center text-sm font-bold text-slate-950 hover:bg-amber-300">Request My Free Workflow Review</a>
                   <button type="button" onClick={() => { setAnswers(initialAnswers); setShowResult(false); }} className="rounded-xl border border-slate-700 px-6 py-3 text-sm font-bold text-white hover:bg-slate-800">Start Over</button>
                 </div>
               </div>
