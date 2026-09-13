@@ -270,6 +270,7 @@ export default function App() {
       </section>
 
       <section className="max-w-5xl mx-auto px-6 py-10"><h2 className="text-2xl font-bold">Have an estimate waiting on a reply?</h2><p className="mt-3 text-slate-400">Draft a useful follow-up, personalize it, and copy it into your usual messaging tool.</p><a className="inline-block mt-4 text-amber-400 font-bold" href="/resources/estimate-follow-up/">Use the free Estimate Follow-Up Builder →</a></section>
+      <section className="max-w-5xl mx-auto px-6 py-12"><p className="text-amber-400 font-bold">14-day contractor pilot · $500 fixed fee</p><h2 className="text-3xl font-bold mt-3">Give every open estimate a clear next step.</h2><p className="mt-4 text-slate-400">Get a follow-up tracker, personalized messages, and hands-on help putting a consistent process into practice with your team.</p><a className="inline-block mt-5 rounded-xl bg-amber-400 text-slate-950 font-bold px-6 py-3" href="/estimate-follow-up-pilot/">Explore the Estimate Follow-Up Pilot →</a></section>
       <HomeownerResources />
 
       <ReadinessAssessment />
