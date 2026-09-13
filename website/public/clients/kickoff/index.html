@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Client Kickoff Planner | MidSize AI</title>
+  <meta name="description" content="Prepare your estimate follow-up pilot with an owner, baseline, agreed start date, and downloadable 14-day plan.">
+  <link rel="canonical" href="https://www.midsizeai.com/clients/kickoff/">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/resources/estimate-follow-up/tool.css">
+  <link rel="stylesheet" href="/clients/kickoff/kickoff.css">
+</head>
+<body>
+  <header><a href="/">MidSize AI</a><a href="/estimate-follow-up-pilot/">About the pilot</a></header>
+  <main>
+    <p class="eyebrow">Client preparation · Estimate Follow-Up Pilot</p>
+    <h1>Start with a clear plan for your team.</h1>
+    <p class="intro">Prepare for your kickoff with Mark. Choose one owner, describe your current process, and set a baseline so your closing review has something concrete to compare.</p>
+    <p class="muted">Use the start date agreed with Mark. This public planning tool does not book, purchase, or activate a pilot. Details stay on this page and are not sent to MidSize AI. Download your plan before leaving; entries are not saved.</p>
+    <form id="kickoff-form" class="panel">
+      <h2>Your pilot details</h2>
+      <div class="grid">
+        <label>Company or team<input id="company" maxlength="120" required autocomplete="organization"></label>
+        <label>Follow-up owner<input id="owner" maxlength="100" required placeholder="Name or team role"></label>
+        <label>Agreed start date<input id="start" type="date" required min="2020-01-01" max="2100-12-01"></label>
+        <label>Where your team tracks estimates<input id="system" maxlength="120" required placeholder="Your CRM or shared spreadsheet"></label>
+      </div>
+      <label>What should work better by day 14?<textarea id="goal" maxlength="1000" required placeholder="Example: Every estimate in the pilot has an owner and a dated next action."></textarea></label>
+      <h2>Your starting point</h2>
+      <p class="muted">Count only estimates in the agreed pilot group. Leave optional counts blank if unknown; zero means you checked and found none. Keep homeowner names, addresses, phone numbers, and estimate documents in your own system.</p>
+      <div class="grid">
+        <label>Estimates in the pilot<input id="total" type="number" min="1" max="100000" step="1" required></label>
+        <label>Of those, estimates with an assigned owner<input id="assigned" type="number" min="0" max="100000" step="1"></label>
+        <label>Of those, estimates with a dated next action<input id="scheduled" type="number" min="0" max="100000" step="1"></label>
+      </div>
+      <p id="error" role="alert"></p>
+      <button type="submit">Build my kickoff plan</button>
+    </form>
+    <section id="plan" class="panel" hidden aria-labelledby="plan-heading">
+      <h2 id="plan-heading" tabindex="-1">Your 14-day kickoff plan</h2>
+      <p id="stale" role="status" hidden>Your answers have changed. Rebuild the plan before downloading or printing.</p>
+      <pre id="summary"></pre>
+      <div class="no-print"><button id="download" type="button">Download plan (.txt)</button><button id="print" type="button">Print or save PDF</button></div>
+      <p class="muted no-print">This saves a copy to your device. It does not send anything to Mark. Share the plan through your agreed channel.</p>
+    </section>
+    <section class="panel no-print"><h2>Bring these to your kickoff</h2><ul><li>A list of estimate IDs in the pilot, kept in your company’s system.</li><li>Your current follow-up process and message examples.</li><li>A team owner who can review messages and record responses.</li><li>Any customer contact preferences or stop requests your team must respect.</li></ul><a href="/resources/estimate-follow-up/">Prepare a follow-up message →</a><p>Need to agree on a start date? <a href="mailto:mark@midsizeai.com?subject=Pilot%20kickoff%20question">Email Mark</a>.</p></section>
+  </main>
+  <footer>MidSize AI · Your team approves and sends customer messages.</footer>
+  <script type="module" src="/clients/kickoff/kickoff.js"></script>
+</body>
+</html>
