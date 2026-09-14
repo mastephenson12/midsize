@@ -45,6 +45,8 @@ function Field({ id, label, help, prefix, suffix, value, min, max, step, onChang
 
 export default function MissedLeadCalculator() {
   const [values, setValues] = useState(defaults);
+  const [lead, setLead] = useState({ name: '', email: '', company: '', consent: false });
+  const [delivery, setDelivery] = useState({ status: 'idle', message: '' });
 
   useEffect(() => {
     const originalTitle = document.title;
@@ -79,6 +81,36 @@ export default function MissedLeadCalculator() {
     setValues((current) => ({ ...current, [key]: value }));
   }
 
+  function track(eventName, parameters = {}) {
+    if (typeof window.gtag === 'function') window.gtag('event', eventName, parameters);
+  }
+
+  async function sendPlan(event) {
+    event.preventDefault();
+    setDelivery({ status: 'sending', message: 'Sending your recovery plan…' });
+    try {
+      const response = await fetch('/api/contractor-lead', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          ...lead,
+          source: 'missed-lead-calculator',
+          monthlyLeads: clamp(values.monthlyLeads, 0, 100000),
+          averageJobValue: clamp(values.averageJobValue, 0, 10000000),
+          missedLeadRate: clamp(values.missedLeadRate, 0, 100),
+          closeRate: clamp(values.closeRate, 0, 100),
+          monthlyOpportunity: result.monthlyRevenue,
+        }),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'We could not email the plan.');
+      setDelivery({ status: 'sent', message: 'Your request was received. Check your inbox for the recovery plan.' });
+      track('missed_lead_plan_requested', { monthly_opportunity: Math.round(result.monthlyRevenue) });
+    } catch (error) {
+      setDelivery({ status: 'error', message: error.message });
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <nav className="border-b border-slate-800 bg-slate-950/95 px-5 py-3">
@@ -92,7 +124,7 @@ export default function MissedLeadCalculator() {
 
       <main>
         <header className="border-b border-slate-900 px-6 py-16 text-center sm:py-20">
-          <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-400">Free calculator · No email required</p>
+          <p className="text-xs font-bold uppercase tracking-[0.22em] text-amber-400">Free calculator · See results without an email</p>
           <h1 className="mx-auto mt-4 max-w-4xl text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
             How much could missed leads be costing your business?
           </h1>
@@ -139,11 +171,46 @@ export default function MissedLeadCalculator() {
                 </p>
               </div>
 
+              <div className="mt-7 rounded-2xl border border-blue-400/25 bg-blue-400/5 p-5">
+                <h2 className="text-xl font-extrabold text-white">Your 3-step missed-lead recovery plan</h2>
+                <ol className="mt-4 space-y-3 text-sm leading-relaxed text-slate-300">
+                  <li><strong className="text-blue-300">1. Capture:</strong> Review one full month of unanswered calls, after-hours calls, forms, chats, and texts. Separate true new leads from spam and duplicates.</li>
+                  <li><strong className="text-blue-300">2. Confirm and route:</strong> Set a five-minute acknowledgement standard, assign one owner for each lead, and define the human handoff for urgent or qualified opportunities.</li>
+                  <li><strong className="text-blue-300">3. Nurture:</strong> Add consistent follow-up after missed calls and estimates, then compare contact, appointment, and sold-job rates for 30 days.</li>
+                </ol>
+                <a className="mt-4 inline-block font-bold text-amber-300 underline decoration-amber-300/40 underline-offset-4 hover:text-amber-200" href="/resources/follow-up-leak-audit/" onClick={() => track('follow_up_leak_audit_click', { source: 'calculator_plan' })}>Take the 2-minute Follow-Up Leak Audit →</a>
+              </div>
+
+              <form className="mt-7 rounded-2xl border border-slate-700 bg-slate-950/70 p-5" onSubmit={sendPlan}>
+                <h2 className="text-xl font-extrabold text-white">Send me this plan and my numbers</h2>
+                <p className="mt-2 text-sm text-slate-400">We’ll send your calculator summary and recovery plan. Your information may also be used to follow up about the free workflow review.</p>
+                <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                  <label className="text-sm font-bold text-white">Name
+                    <input required autoComplete="name" value={lead.name} onChange={(event) => setLead((current) => ({ ...current, name: event.target.value }))} className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 font-normal text-white outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20" />
+                  </label>
+                  <label className="text-sm font-bold text-white">Company
+                    <input required autoComplete="organization" value={lead.company} onChange={(event) => setLead((current) => ({ ...current, company: event.target.value }))} className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 font-normal text-white outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20" />
+                  </label>
+                  <label className="text-sm font-bold text-white sm:col-span-2">Business email
+                    <input required type="email" autoComplete="email" value={lead.email} onChange={(event) => setLead((current) => ({ ...current, email: event.target.value }))} className="mt-2 w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 font-normal text-white outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20" />
+                  </label>
+                </div>
+                <label className="mt-4 flex items-start gap-3 text-xs leading-relaxed text-slate-400">
+                  <input required type="checkbox" checked={lead.consent} onChange={(event) => setLead((current) => ({ ...current, consent: event.target.checked }))} className="mt-1 h-4 w-4 accent-amber-400" />
+                  <span>I agree to receive this plan and related follow-up from MidSize AI. I can unsubscribe at any time.</span>
+                </label>
+                <button disabled={delivery.status === 'sending' || delivery.status === 'sent'} className="mt-5 w-full rounded-xl bg-blue-500 px-6 py-4 font-extrabold text-white transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-60" type="submit">
+                  {delivery.status === 'sending' ? 'Sending…' : delivery.status === 'sent' ? 'Plan Requested' : 'Email My Recovery Plan'}
+                </button>
+                {delivery.message && <p role="status" className={`mt-3 text-sm ${delivery.status === 'sent' ? 'text-emerald-300' : delivery.status === 'error' ? 'text-rose-300' : 'text-slate-400'}`}>{delivery.message}</p>}
+              </form>
+
               <a
                 href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=calculator&utm_campaign=missed_lead_audit&utm_content=result_cta"
+                onClick={() => track('workflow_audit_click', { source: 'missed_lead_calculator', monthly_opportunity: Math.round(result.monthlyRevenue) })}
                 className="mt-7 block w-full rounded-xl bg-amber-400 px-6 py-4 text-center font-extrabold text-slate-950 transition hover:bg-amber-300"
               >
-                Request My Free Workflow Audit
+                Book My Free 15-Minute Workflow Audit
               </a>
               <p className="mt-3 text-center text-xs text-slate-500">Contact information is requested only after you choose to continue.</p>
             </section>
