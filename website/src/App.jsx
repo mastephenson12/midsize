@@ -54,6 +54,12 @@ export default function App() {
               Roofing AI Guide
             </a>
             <a
+              href="/resources/sops/missed-call-recovery/"
+              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
+            >
+              Contractor SOPs
+            </a>
+            <a
               href="/missed-lead-calculator"
               className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
