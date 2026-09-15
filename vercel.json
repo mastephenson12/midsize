@@ -23,6 +23,14 @@
     {
       "source": "/missed-lead-calculator/",
       "destination": "/calculator"
+    },
+    {
+      "source": "/missed-lead-audit",
+      "destination": "/"
+    },
+    {
+      "source": "/missed-lead-audit/",
+      "destination": "/"
     }
   ]
 }
