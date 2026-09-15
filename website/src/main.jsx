@@ -3,10 +3,12 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import RoofingApp from './RoofingApp.jsx'
 import MissedLeadCalculator from './MissedLeadCalculator.jsx'
+import MissedLeadAudit from './MissedLeadAudit.jsx'
 import SamanthaDemo from './SamanthaDemo.jsx'
 
 const normalizedPath = window.location.pathname.replace(/\/$/, '')
 const isCalculatorPath = normalizedPath === '/missed-lead-calculator'
+const isAuditPath = normalizedPath === '/missed-lead-audit'
 const isSamanthaDemoPath = normalizedPath === '/samantha-demo' || normalizedPath === '/samantha.html'
 
 const isRoofingDomain =
@@ -16,6 +18,6 @@ const isRoofingDomain =
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isSamanthaDemoPath ? <SamanthaDemo /> : isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain ? <RoofingApp /> : <App />}
+    {isSamanthaDemoPath ? <SamanthaDemo /> : isAuditPath ? <MissedLeadAudit /> : isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain ? <RoofingApp /> : <App />}
   </StrictMode>,
 )
