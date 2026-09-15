@@ -94,10 +94,10 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/resources/follow-up-leak-audit/"
+            href="/estimate-follow-up-kit/"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Find My Biggest Follow-Up Leak
+            Get the Free Follow-Up Kit
           </a>
           <a
             href="/missed-lead-calculator"
