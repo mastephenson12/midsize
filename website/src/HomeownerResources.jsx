@@ -23,6 +23,13 @@ const resources = [
     cta: 'Check My Roof Situation',
   },
   {
+    label: 'New HVAC Tool',
+    title: "Why Isn't My AC Cooling?",
+    description: 'Answer seven safety-first questions to separate a thermostat or airflow check from symptoms that deserve an HVAC professional.',
+    href: 'https://homeowner.midsizeai.com/hvac/not-cooling/',
+    cta: 'Check My AC Symptoms',
+  },
+  {
     label: 'Free Cost Tool',
     title: 'Roof Replacement Estimator',
     description: 'Build a low-to-high educational roof replacement range based on square footage, pitch, and material choices before speaking with a salesperson.',
@@ -51,9 +58,9 @@ export default function HomeownerResources() {
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Free tools for homeowners</p>
-          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Understand the roof before you buy the roof.</h2>
+          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Understand the problem before you approve the work.</h2>
           <p className="mt-5 text-base leading-7 text-slate-400 sm:text-lg">
-            MidSize AI builds systems for home-service businesses, but better home services also require better-informed homeowners. These free resources help people understand roofing decisions before they sign, schedule, or spend.
+            MidSize AI builds systems for home-service businesses, but better home services also require better-informed homeowners. These free resources help people understand roofing and HVAC decisions before they sign, schedule, or spend.
           </p>
         </div>
 
