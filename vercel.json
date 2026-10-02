@@ -3,17 +3,32 @@
   "rewrites": [
     {
       "source": "/robots.txt",
-      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "roofers.midsizeai.com"
+        }
+      ],
       "destination": "/roofers-robots.txt"
     },
     {
       "source": "/sitemap.xml",
-      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "roofers.midsizeai.com"
+        }
+      ],
       "destination": "/roofers-sitemap.xml"
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "roofers.midsizeai.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "roofers.midsizeai.com"
+        }
+      ],
       "destination": "/roofers"
     },
     {
@@ -31,6 +46,14 @@
     {
       "source": "/missed-lead-audit/",
       "destination": "/"
+    },
+    {
+      "source": "/missed-call-calculator",
+      "destination": "/calculator"
+    },
+    {
+      "source": "/missed-call-calculator/",
+      "destination": "/calculator"
     }
   ]
 }

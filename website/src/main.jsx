@@ -7,7 +7,7 @@ import MissedLeadAudit from './MissedLeadAudit.jsx'
 import SamanthaDemo from './SamanthaDemo.jsx'
 
 const normalizedPath = window.location.pathname.replace(/\/$/, '')
-const isCalculatorPath = normalizedPath === '/missed-lead-calculator'
+const isCalculatorPath = ['/missed-lead-calculator', '/missed-call-calculator'].includes(normalizedPath)
 const isAuditPath = normalizedPath === '/missed-lead-audit'
 const isSamanthaDemoPath = normalizedPath === '/samantha-demo' || normalizedPath === '/samantha.html'
 
