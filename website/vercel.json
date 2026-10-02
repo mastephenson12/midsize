@@ -114,6 +114,14 @@
   ],
   "rewrites": [
     {
+      "source": "/missed-call-calculator/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/missed-call-calculator",
+      "destination": "/index.html"
+    },
+    {
       "source": "/samantha-demo",
       "destination": "/"
     },
