@@ -39,5 +39,5 @@ export function evaluateEstimate(raw, project = 'replacement') {
 }
 
 export function reportText(result) {
-  return ['MIDSize AI | Roofing estimate reading checklist', 'Automated wording check. Not a price rating, inspection or verification of included work.', '', ...result.rows.map(row => `${row.name}: ${row.status}\n${row.evidence.map(line => `  Text: ${line}`).join('\n')}\nAsk: ${row.question}`), '', 'QUESTIONS TO ASK', ...result.questions.map((q,i) => `${i+1}. ${q}`), '', 'Keep this report private: quoted estimate text may contain personal information.', 'More homeowner tools: https://homeowner.midsizeai.com/'].join('\n');
+  return ['MIDSize AI | Roofing estimate reading checklist', 'Automated wording check. Not a price rating, inspection or verification of included work.', '', ...result.rows.map(row => `${row.name}: ${row.status}\n${row.evidence.map(line => `  Text: ${line}`).join('\n')}\nAsk: ${row.question}`), '', 'QUESTIONS TO ASK', ...result.questions.map((q,i) => `${i+1}. ${q}`), '', 'Keep this report private: quoted estimate text may contain personal information.', 'More homeowner tools: https://www.midsizeai.com/#homeowner-tools'].join('\n');
 }
