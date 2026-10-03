@@ -24,28 +24,6 @@
       "permanent": true
     },
     {
-      "source": "/estimate-decoder",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.midsizeai.com"
-        }
-      ],
-      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
-      "permanent": true
-    },
-    {
-      "source": "/estimate-decoder/",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.midsizeai.com"
-        }
-      ],
-      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
-      "permanent": true
-    },
-    {
       "source": "/honest-roofer",
       "has": [
         {
@@ -65,28 +43,6 @@
         }
       ],
       "destination": "https://homeowner.midsizeai.com/",
-      "permanent": true
-    },
-    {
-      "source": "/estimate-decoder",
-      "has": [
-        {
-          "type": "host",
-          "value": "midsizeai.com"
-        }
-      ],
-      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
-      "permanent": true
-    },
-    {
-      "source": "/estimate-decoder/",
-      "has": [
-        {
-          "type": "host",
-          "value": "midsizeai.com"
-        }
-      ],
-      "destination": "https://homeowner.midsizeai.com/estimate-decoder/",
       "permanent": true
     },
     {
