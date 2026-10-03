@@ -7,3 +7,5 @@ Homeowner flow: MidSize homepage banner/resources → private estimate evaluatio
 /api/homeowner-lead GET exposes only configuration readiness. A configured webhook is not proof of delivery, and real delivery must be tested with a designated test contact before publishing. The existing explicit-consent POST sends contact/request fields only, never estimate text/file, and now records the consent version and text. The retired numeric score remains null. Failed delivery cannot show success.
 
 Validation: 15 Node tests and Vite build pass. Preview browser QA follows in the PR. No production release or real lead submission is part of this change.
+
+Hosted preview QA: sample evaluation, exclusion wording, 390px mobile layout, and synthetic one-page PDF extraction passed. Preview follow-up readiness returns unavailable; no lead was submitted. Report generation is covered by unit tests; native download/print dialogs and image OCR still need a standard-browser release check.

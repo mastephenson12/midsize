@@ -26,3 +26,7 @@ test('keywords inside unrelated words do not satisfy topics',()=>{
 test('mixed inclusion and exclusion stays in clarification',()=>{
   assert.equal(row('Roof replacement. Manufacturer warranty included. Workmanship warranty excluded.','Warranty').status,'Clarify wording');
 });
+
+test('removing a layer of shingles is recognized as removal',()=>{
+  assert.equal(row('Remove one layer of existing asphalt shingles down to roof decking.','Removal').status,'Mentioned');
+});

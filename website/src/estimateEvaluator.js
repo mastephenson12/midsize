@@ -2,7 +2,7 @@
 export const topics = [
   ['Scope and quantities', /\b(scope|remove|replace|install|repair|sq\.?\s*ft|square feet|squares)\b/i, 'What exact areas, quantities and work are included in the written price?'],
   ['Materials', /\b(shingles?|tiles?|metal|membrane|tpo|foam|coating|underlayment)\b/i, 'Which product brand, line, grade and quantity will you use?'],
-  ['Removal', /\b(tear[- ]?off|remove existing|removal|demolition)\b/i, 'Is existing roofing being removed or retained, and how many layers are included?', 'replacement'],
+  ['Removal', /\b(tear[- ]?off|remove(?: existing|[^.;\n]{0,60}(?:shingles?|roofing|layers?))|removal|demolition)\b/i, 'Is existing roofing being removed or retained, and how many layers are included?', 'replacement'],
   ['Water protection', /\b(underlayment|ice (?:and|&) water|water barrier|felt)\b/i, 'What water-protection materials and locations are included?', 'replacement'],
   ['Flashing', /\b(flashing|flashings|drip edge|valley metal|pipe jack)\b/i, 'Which flashings will be replaced, repaired or reused?'],
   ['Hidden damage and wood repair', /\b(decking|plywood|osb|rotten wood|wood replacement|sheet price)\b/i, 'What happens if hidden damage is found, and how will extra work be priced and approved?'],
@@ -25,7 +25,7 @@ export function evaluateEstimate(raw, project = 'replacement') {
     const found = clauses.filter(line => pattern.test(line));
     const relevant = project !== 'repair' || !only || found.length > 0;
     const status = !relevant ? 'Scope dependent' : !found.length ? 'Not found' : found.some(line => caution.test(line)) ? 'Clarify wording' : 'Mentioned';
-    return { name, status, question, evidence: found.slice(0, 2).map(line => line.length > 320 ? line.slice(0, 320) + '…' : line) };
+    return { name, status, question, evidence: [...found].sort((a,b) => Number(caution.test(b))-Number(caution.test(a))).slice(0, 2).map(line => line.length > 320 ? line.slice(0, 320) + '…' : line) };
   });
   const pressure = /\b(today only|sign today|must sign|guaranteed approval|waive your deductible|insurance will pay)\b/i.test(text);
   const hasPrice = /\$\s?\d|\b\d[\d,]*(?:\.\d{2})?\s*(?:USD|dollars)\b/i.test(text);
