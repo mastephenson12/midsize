@@ -10,10 +10,10 @@ const resources = [
   },
   {
     label: 'Free Private Tool',
-    title: 'Roofing Estimate Decoder',
-    description: 'Paste a written roofing scope and turn it into plain-English questions about what appears covered, what may be missing, and what deserves clarification.',
-    href: 'https://homeowner.midsizeai.com/estimate-decoder/',
-    cta: 'Decode My Estimate',
+    title: 'Roofing Estimate Evaluator',
+    description: 'Read quoted scope details, spot wording to clarify, and save questions for your roofer. Free results without an email gate.',
+    href: '/estimate-decoder/',
+    cta: 'Evaluate My Estimate',
   },
   {
     label: 'Free Decision Tool',

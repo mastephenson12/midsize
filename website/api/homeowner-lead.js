@@ -2,8 +2,10 @@ const allowedSituations = new Set(['second-opinion','another-estimate','find-roo
 const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace']);
 
 export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store');
+  if (req.method === 'GET') return res.status(200).json({ ready: Boolean(process.env.HOMEOWNER_LEAD_WEBHOOK_URL) });
   if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
+    res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
@@ -17,7 +19,7 @@ export default async function handler(req, res) {
     const roofType = String(body.roofType || '').trim().slice(0, 80);
     const timeline = String(body.timeline || '').trim().slice(0, 80);
     const consent = body.consent === true;
-    const score = Number.isFinite(Number(body.score)) ? Math.max(0, Math.min(100, Number(body.score))) : null;
+    const score = body.score !== null && body.score !== undefined && body.score !== '' && Number.isFinite(Number(body.score)) ? Math.max(0, Math.min(100, Number(body.score))) : null;
     const tool = String(body.tool || 'estimate-decoder').trim();
     const result = String(body.result || '').trim().slice(0, 80);
     const urgency = String(body.urgency || '').trim().slice(0, 80);
@@ -44,6 +46,8 @@ export default async function handler(req, res) {
       microApp: tool,
       appResult: result,
       urgency,
+      consentText: "I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share my request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.",
+      consentVersion: "2026-10-03",
       consent: true
     };
 
@@ -61,6 +65,7 @@ export default async function handler(req, res) {
         'content-type': 'application/json',
         ...(apiKey ? { 'x-api-key': apiKey } : {})
       },
+      signal: AbortSignal.timeout(10000),
       body: JSON.stringify(payload)
     });
 
