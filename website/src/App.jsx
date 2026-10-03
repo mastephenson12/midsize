@@ -8,14 +8,14 @@ export default function App() {
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
       {/* Top Utility Bar */}
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
-        Homeowner looking for clear roofing help?{' '}
+        Have a roofing estimate you want to understand?{' '}
         <a
-          href="https://homeowner.midsizeai.com/"
+          href="/estimate-decoder/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-bold ml-1"
         >
-          Visit The Honest Roofer &rarr;
+          Evaluate it free &rarr;
         </a>
       </div>
 
