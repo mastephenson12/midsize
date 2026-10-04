@@ -10,7 +10,7 @@ export default function App() {
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
         Have a roofing estimate you want to understand?{' '}
         <a
-          href="/estimate-decoder/"
+          href="https://estimator.midsizeai.com/estimate-decoder/"
           target="_blank"
           rel="noopener noreferrer"
           className="underline hover:text-amber-200 font-bold ml-1"
@@ -94,10 +94,12 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/estimate-follow-up-kit/"
+            href="https://estimator.midsizeai.com/estimate-decoder/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Get the Free Follow-Up Kit
+            Check My Roofing Estimate
           </a>
           <a
             href="/missed-lead-calculator"
@@ -257,12 +259,12 @@ export default function App() {
                   Hosted at <code className="text-amber-400 bg-slate-950 px-2 py-1 rounded">estimator.midsizeai.com</code>, this standalone calculator gives homeowners realistic ballpark pricing based on square footage, pitch, and material choices before speaking to sales reps.
                 </p>
                 <a
-                  href="https://estimator.midsizeai.com"
+                  href="https://estimator.midsizeai.com/estimate-decoder/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all"
                 >
-                  Open Estimator Tool &rarr;
+                  Check an Estimate &rarr;
                 </a>
               </div>
               <div className="bg-slate-950 border border-slate-800 p-8 rounded-2xl text-center">
@@ -286,9 +288,9 @@ export default function App() {
         <div className="grid md:grid-cols-2 gap-5">
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Homeowners</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Plan a roof replacement without a sales call</h2>
-            <p className="text-slate-400 text-sm sm:text-base mb-7">Use the free MidSize AI estimator to build an educational low-to-high roof replacement range. No email is required to see the result.</p>
-            <a href="https://estimator.midsizeai.com" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Estimate My Roof Cost</a>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Understand your roofing estimate before you sign</h2>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Use the free MidSize AI estimate decoder to check what is included, what may be missing, and which questions to ask before accepting a proposal.</p>
+            <a href="https://estimator.midsizeai.com/estimate-decoder/" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Check My Estimate</a>
           </article>
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Roofing Contractors</span>
