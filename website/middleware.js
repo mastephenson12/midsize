@@ -7,8 +7,6 @@ export const config = {
     '/sitemap.xml',
     '/honest-roofer',
     '/honest-roofer/',
-    '/estimate-decoder',
-    '/estimate-decoder/',
     '/missed-lead-calculator',
     '/missed-lead-calculator/',
   ],
@@ -26,10 +24,6 @@ export default function middleware(request) {
 
   if (isBusinessDomain && url.pathname.replace(/\/$/, '') === '/honest-roofer') {
     return Response.redirect('https://homeowner.midsizeai.com/', 308);
-  }
-
-  if (isBusinessDomain && url.pathname.replace(/\/$/, '') === '/estimate-decoder') {
-    return Response.redirect('https://homeowner.midsizeai.com/estimate-decoder/', 308);
   }
 
   if (isHomeownerDomain && url.pathname === '/') {
