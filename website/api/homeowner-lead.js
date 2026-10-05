@@ -1,9 +1,11 @@
+import { ghlConfigured, deliverToGhl } from '../lib/ghl-homeowner.js';
 const allowedSituations = new Set(['second-opinion','another-estimate','find-roofer','roofer-contact']);
 const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace']);
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-  if (req.method === 'GET') return res.status(200).json({ ready: Boolean(process.env.HOMEOWNER_LEAD_WEBHOOK_URL) });
+  const directGhl = process.env.GHL_HOMEOWNER_ENABLED === 'true';
+  if (req.method === 'GET') return res.status(200).json({ ready: directGhl ? ghlConfigured() : Boolean(process.env.HOMEOWNER_LEAD_WEBHOOK_URL) });
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
@@ -32,6 +34,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
     }
 
+    const requestId = /^[a-zA-Z0-9-]{16,64}$/.test(String(body.requestId||'')) ? body.requestId : undefined;
     const payload = {
       source: `honest-roofer-${tool}`,
       submittedAt: new Date().toISOString(),
@@ -51,6 +54,16 @@ export default async function handler(req, res) {
       consent: true
     };
 
+    if(directGhl){
+      if(!ghlConfigured())return res.status(503).json({ok:false,error:'Follow-up is temporarily unavailable. Please email mark@midsizeai.com.'});
+      try {
+        await deliverToGhl({...payload,requestId});
+        return res.status(200).json({ok:true});
+      } catch {
+        console.error('GHL homeowner intake did not complete');
+        return res.status(502).json({ok:false,error:'We could not confirm your follow-up task. Please try again or email mark@midsizeai.com.'});
+      }
+    }
     const webhookUrl = process.env.HOMEOWNER_LEAD_WEBHOOK_URL;
     const apiKey = process.env.MAKE_WEBHOOK_API_KEY;
 
@@ -76,7 +89,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ ok: true });
   } catch (error) {
-    console.error('homeowner-lead error', error);
+    console.error('homeowner-lead request failed');
     return res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });
   }
 }

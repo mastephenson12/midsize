@@ -72,6 +72,7 @@
 import { evaluateEstimate, reportText } from '/src/estimateEvaluator.js';
 import { createUploadReader } from '/src/estimateUpload.js';
 let latestScore = null;
+let leadRequestId = crypto.randomUUID();
 let latestEvaluation = null;
 let fileJob = 0;
 let reading=false;
@@ -162,11 +163,11 @@ document.querySelectorAll('.choice').forEach(button => button.addEventListener('
 document.getElementById('leadform').addEventListener('submit', async (event)=>{
   event.preventDefault(); const msg = document.getElementById('leadmsg'); const submit = document.getElementById('submitLead');
   msg.className='leadmsg'; msg.textContent='Sending your request…'; submit.disabled=true;
-  const payload = {name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,zip:document.getElementById('zip').value,situation:document.getElementById('situation').value,roofType:document.getElementById('roofType').value,timeline:document.getElementById('timeline').value,consent:document.getElementById('consent').checked,tool:'estimate-decoder',result:'reading-checklist',score:null};
+  const payload = {requestId:leadRequestId,name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,zip:document.getElementById('zip').value,situation:document.getElementById('situation').value,roofType:document.getElementById('roofType').value,timeline:document.getElementById('timeline').value,consent:document.getElementById('consent').checked,tool:'estimate-decoder',result:'reading-checklist',score:null};
   try {
     const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}); const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'We could not send your request.');
-    msg.className='leadmsg ok'; msg.textContent='Request received. We will use these details only to help with the roofing request you selected.'; document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));
+    leadRequestId=crypto.randomUUID();msg.className='leadmsg ok'; msg.textContent='Request received. We will use these details only to help with the roofing request you selected.'; document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>b.classList.remove('active'));
   } catch(error) { msg.className='leadmsg err'; msg.textContent=error.message || 'We could not send your request. Please try again.'; }
   finally { submit.disabled=false; }
 });
