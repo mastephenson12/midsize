@@ -18,7 +18,25 @@ test('empty, non-roofing and excessive inputs require correction',()=>{
 });
 test('pressure wording and absent price produce useful questions without scores',()=>{
   const r=evaluateEstimate('Roof replacement with new shingles. Sign today for guaranteed approval.');
-  assert.equal(r.pressure,true);assert.equal(r.hasPrice,false);assert.equal(r.score,undefined);assert.match(reportText(r),/total price/);
+  assert.equal(r.pressure,true);assert.equal(r.hasPrice,false);assert.equal(r.score,undefined);assert.match(reportText(r),/total project price/);
+});
+
+test('unit costs and monthly amounts do not replace a full project total',()=>{
+  for(const price of ['$95 per sheet','Monthly payment $250','Total price $95 per square']) {
+    const r=evaluateEstimate('Roof replacement with asphalt shingles. '+price);
+    assert.ok(r.attention.some(a=>a.title==='Confirm the full project price'));
+  }
+  const r=evaluateEstimate('Roof replacement with shingles. Total price $18,750. Decking $95 per sheet.');
+  assert.ok(!r.attention.some(a=>a.title==='Confirm the full project price'));
+});
+test('conflicting totals, conditional charges and upfront payment surface with evidence',()=>{
+  const r=evaluateEstimate('Roof replacement. Total price $12000. Total price $15000. Full payment due before work begins. Decking costs extra.');
+  for(const title of ['Clarify which total applies','Review payment before work begins','Ask how the price can change']) assert.ok(r.attention.some(a=>a.title===title&&a.evidence.length));
+  assert.match(reportText(r),/CHECK THESE FIRST/);
+});
+test('ordinary final payment does not trigger advance payment warning',()=>{
+  const r=evaluateEstimate('Roof shingles replacement. Total price $18000. Full payment after final inspection.');
+  assert.ok(!r.attention.some(a=>a.title==='Review payment before work begins'));
 });
 test('keywords inside unrelated words do not satisfy topics',()=>{
   assert.equal(row('Roof repair with a decorative metal finish and a payment plan.','Water protection').status,'Not found');
