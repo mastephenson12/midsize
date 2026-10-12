@@ -10,6 +10,13 @@ const contractorSolutions = [
   ['Build a clearer next step', 'Route qualified opportunities toward the calendar, CRM, or follow-up workflow selected during implementation.'],
 ];
 
+const rooferServiceEntryPoints = [
+  ['AI Receptionist', 'Answer missed and after-hours roofing calls with approved intake questions and human handoff rules.', '/services/ai-receptionist-for-roofers'],
+  ['Missed-Call Recovery', 'Respond quickly when a homeowner call slips through and route the best opportunities back to your team.', '/services/missed-call-recovery-for-roofers'],
+  ['Estimate Follow-Up', 'Follow up on open proposals and unsold inspections without sounding desperate or disappearing.', '/services/estimate-follow-up-for-roofers'],
+  ['Review Automation', 'Ask happy roofing customers for reviews at the right milestone and protect the brand with internal feedback paths.', '/services/roofing-review-automation'],
+];
+
 function RoofingMissedLeadEstimate() {
   const [monthlyCalls, setMonthlyCalls] = useState(100);
   const [missedRate, setMissedRate] = useState(20);
@@ -93,6 +100,7 @@ function RoofingApp() {
           <div className="flex items-center gap-3 text-sm">
             <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/roofing-after-hours-call-script/">Free Call Script</a>
             <a className="hidden text-slate-400 transition hover:text-white xl:block" href="https://midsizeai.com/guides/ai-receptionist-for-roofing-companies/">AI Guide</a>
+            <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#services">Services</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
             <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
           </div>
@@ -129,6 +137,18 @@ function RoofingApp() {
           <div className="mx-auto max-w-6xl">
             <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Capture more roofing opportunities without rebuilding your company.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI maps what happens from the first ring through qualification, scheduling, and follow-up. Then we design one controlled workflow around your company’s rules, capacity, service area, and customer experience.</p></div>
             <div id="how-it-works" className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
+            <div id="services" className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
+              <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Service entry points</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Choose the workflow that matches the leak in your roofing business.</h2><p className="mt-4 leading-relaxed text-slate-400">Each page is a focused front door for a specific roofing service, so ads, posts, and referrals can land on the exact problem instead of a generic agency page.</p></div>
+              <div className="mt-8 grid gap-4 md:grid-cols-2">
+                {rooferServiceEntryPoints.map(([title, description, href]) => (
+                  <a key={href} href={href} className="block rounded-2xl border border-slate-800 bg-slate-950 p-6 transition hover:border-amber-400/60 hover:bg-slate-900">
+                    <h3 className="text-xl font-bold text-white">{title}</h3>
+                    <p className="mt-3 text-sm leading-relaxed text-slate-400">{description}</p>
+                    <span className="mt-5 inline-flex text-sm font-bold text-amber-300">Open funnel page →</span>
+                  </a>
+                ))}
+              </div>
+            </div>
             <RoofingMissedLeadEstimate />
             <div className="mt-10 rounded-3xl border border-amber-400/25 bg-amber-400/10 p-8 sm:flex sm:items-center sm:justify-between sm:gap-8"><div><h3 className="text-2xl font-bold text-white">See the exact workflow before you commit.</h3><p className="mt-2 max-w-2xl text-slate-300">The free review identifies where leads wait or disappear, shows the first workflow we would test, and clarifies what your team would need to approve. No rip-and-replace commitment.</p></div><a href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=cta&utm_campaign=workflow_review&utm_content=closing" className="mt-6 inline-flex shrink-0 rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:mt-0">Request My Free Workflow Review →</a></div>
           </div>
