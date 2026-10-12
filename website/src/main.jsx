@@ -5,11 +5,13 @@ import RoofingApp from './RoofingApp.jsx'
 import MissedLeadCalculator from './MissedLeadCalculator.jsx'
 import MissedLeadAudit from './MissedLeadAudit.jsx'
 import SamanthaDemo from './SamanthaDemo.jsx'
+import RooferServiceFunnel from './RooferServiceFunnel.jsx'
 
 const normalizedPath = window.location.pathname.replace(/\/$/, '')
 const isCalculatorPath = ['/missed-lead-calculator', '/missed-call-calculator'].includes(normalizedPath)
 const isAuditPath = normalizedPath === '/missed-lead-audit'
 const isSamanthaDemoPath = normalizedPath === '/samantha-demo' || normalizedPath === '/samantha.html'
+const isRooferServicePath = normalizedPath.startsWith('/services/')
 
 const isRoofingDomain =
   window.location.hostname === 'roofer.midsizeai.com' ||
@@ -18,6 +20,6 @@ const isRoofingDomain =
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    {isSamanthaDemoPath ? <SamanthaDemo /> : isAuditPath ? <MissedLeadAudit /> : isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain ? <RoofingApp /> : <App />}
+    {isSamanthaDemoPath ? <SamanthaDemo /> : isAuditPath ? <MissedLeadAudit /> : isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain && isRooferServicePath ? <RooferServiceFunnel /> : isRoofingDomain ? <RoofingApp /> : <App />}
   </StrictMode>,
 )
