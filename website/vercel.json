@@ -142,6 +142,16 @@
       "destination": "/roofers"
     },
     {
+      "source": "/services/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "roofers.midsizeai.com"
+        }
+      ],
+      "destination": "/roofers"
+    },
+    {
       "source": "/missed-lead-calculator",
       "destination": "/calculator"
     },
