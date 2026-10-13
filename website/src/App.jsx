@@ -34,10 +34,10 @@ export default function App() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="#ecosystem"
+              href="#audiences"
               className="hidden md:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
-              Solutions
+              Who We Help
             </a>
             <a
               href="#homeowner-tools"
@@ -76,18 +76,18 @@ export default function App() {
       {/* Hero Section */}
       <header className="max-w-5xl mx-auto text-center px-6 pt-20 pb-16">
         <div className="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-full px-4 py-1.5 text-xs text-amber-400 font-semibold mb-8">
-          AI Call Coverage and Lead Follow-Up for Home-Service Companies
+          Homeowner trust tools and roofer growth systems
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          Capture More Home-Service Leads <br />
+          One Trust Hub for Homeowners and Roofers <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
-            Without Adding More Admin Work
+            Starting With the Roofing Estimate
           </span>
         </h1>
 
         <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          MidSize AI helps roofing, HVAC, plumbing, electrical, remodeling, and other home-service companies answer calls, respond faster, schedule work, and follow up consistently—without replacing the team or systems they already trust.
+          MidSize AI helps homeowners understand roofing estimates before they sign, and helps roofers capture calls, follow up faster, and build cleaner lead workflows without replacing the systems they already trust.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -98,18 +98,64 @@ export default function App() {
             Check My Roofing Estimate
           </a>
           <a
-            href="/missed-lead-calculator"
+            href="/roofers?utm_source=midsizeai.com&utm_medium=hero&utm_campaign=audience_split"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Calculate Missed-Lead Revenue
+            I Run a Roofing Company
           </a>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
-          <span>✓ Home-service call intake</span>
-          <span>✓ Works after hours</span>
-          <span>✓ Built around your current workflow</span>
+          <span>✓ Homeowner estimate clarity</span>
+          <span>✓ Roofer call intake and follow-up</span>
+          <span>✓ Clear paths for both sides</span>
         </div>
       </header>
+
+      <section id="audiences" className="border-t border-slate-900 px-6 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-10 text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Choose your side of the roof</p>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Two audiences. Two clear next steps.</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-slate-400">
+              Homeowners need clarity before they sign. Roofers need systems that keep good leads from slipping away. MidSize AI keeps those paths connected without confusing the visitor.
+            </p>
+          </div>
+          <div className="grid gap-5 lg:grid-cols-2">
+            <article className="rounded-3xl border border-amber-400/25 bg-slate-900 p-8 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Homeowners</p>
+              <h3 className="mt-3 text-3xl font-extrabold text-white">Understand the estimate before you sign.</h3>
+              <p className="mt-4 leading-relaxed text-slate-400">
+                Start with the free roofing estimate review. Check what is included, what looks vague, which warranty and payment terms need clarification, and what to ask your roofer in writing.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-slate-300">
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Estimate decoder and homeowner checklist</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Questions to ask before accepting a proposal</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Education first, no contractor-pressure pitch</span></li>
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="/roofing-estimate-review/" className="inline-flex justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Review My Estimate</a>
+                <a href="#homeowner-tools" className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-6 py-3 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800">See Homeowner Tools</a>
+              </div>
+            </article>
+            <article className="rounded-3xl border border-slate-800 bg-slate-900 p-8 sm:p-10">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofers</p>
+              <h3 className="mt-3 text-3xl font-extrabold text-white">Capture more opportunities without more admin chaos.</h3>
+              <p className="mt-4 leading-relaxed text-slate-400">
+                Use MidSize AI to map missed calls, after-hours intake, estimate follow-up, review requests, and CRM handoffs around your actual roofing workflow.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-slate-300">
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>AI receptionist and missed-call recovery</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Estimate follow-up and review automation</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Workflow audit before software recommendations</span></li>
+              </ul>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="/roofers?utm_source=midsizeai.com&utm_medium=audience_gateway&utm_campaign=roofer_path" className="inline-flex justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Go to Roofer Services</a>
+                <a href="/missed-lead-calculator" className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-6 py-3 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800">Calculate Missed Leads</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
       <section id="roofing-estimate-review" className="border-t border-slate-900 px-6 py-16">
         <div className="mx-auto grid max-w-6xl gap-8 rounded-3xl border border-amber-400/25 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-400/10 p-7 sm:p-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
