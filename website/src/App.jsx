@@ -10,9 +10,7 @@ export default function App() {
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
         Have a roofing estimate you want to understand?{' '}
         <a
-          href="https://estimator.midsizeai.com/estimate-decoder/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/roofing-estimate-review/"
           className="underline hover:text-amber-200 font-bold ml-1"
         >
           Evaluate it free &rarr;
@@ -94,9 +92,7 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="https://estimator.midsizeai.com/estimate-decoder/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/roofing-estimate-review/"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
             Check My Roofing Estimate
@@ -114,6 +110,47 @@ export default function App() {
           <span>✓ Built around your current workflow</span>
         </div>
       </header>
+
+      <section id="roofing-estimate-review" className="border-t border-slate-900 px-6 py-16">
+        <div className="mx-auto grid max-w-6xl gap-8 rounded-3xl border border-amber-400/25 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-400/10 p-7 sm:p-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Homeowner trust entry point</p>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-5xl">
+              Have a roofing estimate you want to understand before you sign?
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-slate-300">
+              Send yourself through the free estimate review first. MidSize AI helps homeowners spot unclear pricing, missing scope details, warranty questions, payment terms, and the next questions to ask a roofer before accepting a proposal.
+            </p>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="/roofing-estimate-review/"
+                className="inline-flex justify-center rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300"
+              >
+                Review My Roofing Estimate
+              </a>
+              <a
+                href="https://estimator.midsizeai.com/estimate-decoder/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-7 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800"
+              >
+                Open the Free Decoder
+              </a>
+            </div>
+            <p className="mt-4 text-xs leading-relaxed text-slate-500">
+              Educational checklist only. MidSize AI is not a roofing contractor, insurance adjuster, engineer, or law firm.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-6">
+            <h3 className="text-xl font-bold text-white">What the review helps you check</h3>
+            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-300">
+              <li className="flex gap-3"><span className="font-bold text-amber-400">01</span><span>What work is clearly included, and what looks vague.</span></li>
+              <li className="flex gap-3"><span className="font-bold text-amber-400">02</span><span>Which materials, roof accessories, permits, cleanup, and warranties need written clarification.</span></li>
+              <li className="flex gap-3"><span className="font-bold text-amber-400">03</span><span>Questions to copy, save, or send to your roofer before you sign.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section id="value-equation" className="border-t border-slate-900 px-6 py-16">
         <div className="mx-auto max-w-6xl">
