@@ -12,8 +12,10 @@ const isCalculatorPath = ['/missed-lead-calculator', '/missed-call-calculator'].
 const isAuditPath = normalizedPath === '/missed-lead-audit'
 const isSamanthaDemoPath = normalizedPath === '/samantha-demo' || normalizedPath === '/samantha.html'
 const isRooferServicePath = normalizedPath.startsWith('/services/')
+const isRoofersPath = normalizedPath === '/roofers' || normalizedPath === '/roofers.html'
 
 const isRoofingDomain =
+  isRoofersPath ||
   window.location.hostname === 'roofer.midsizeai.com' ||
   window.location.hostname === 'roofers.midsizeai.com' ||
   new URLSearchParams(window.location.search).get('site') === 'roofers'
