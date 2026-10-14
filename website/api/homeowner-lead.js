@@ -1,6 +1,6 @@
 import { ghlConfigured, deliverToGhl } from '../lib/ghl-homeowner.js';
 const allowedSituations = new Set(['second-opinion','another-estimate','find-roofer','roofer-contact']);
-const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace']);
+const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace', 'roof-leak-triage']);
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');

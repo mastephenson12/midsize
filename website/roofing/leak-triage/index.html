@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Roof Leak Triage Tool | What to Do Before Calling a Roofer</title>
+  <meta name="description" content="Answer quick safety-first questions about a roof leak. Get calm next steps, what to document, and what to tell a roofing company before scheduling help.">
+  <link rel="canonical" href="https://homeowner.midsizeai.com/roofing/leak-triage/">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#07111f">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="/micro-apps.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Roof Leak Triage Tool">
+  <meta property="og:description" content="A calm, safety-first starting point when water is showing up inside your home.">
+  <meta property="og:url" content="https://homeowner.midsizeai.com/roofing/leak-triage/">
+  <meta property="og:image" content="https://homeowner.midsizeai.com/honest-roofer-podcast-logo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GMPF16SQ8L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-GMPF16SQ8L');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Roof Leak Triage Tool","url":"https://homeowner.midsizeai.com/roofing/leak-triage/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"description":"A safety-first educational roof leak triage tool for homeowners."}</script>
+</head>
+<body>
+  <header class="top"><div class="wrap"><a class="brand" href="/"><img src="/honest-roofer-podcast-logo.jpg" alt="The Honest Roofer logo"><span>The Honest Roofer<small>A MidSizeAI homeowner tool</small></span></a><a class="back" href="/">Homeowner roofing hub</a></div></header>
+
+  <section class="app-intro"><div class="wrap">
+    <p class="eyebrow">Free leak triage tool - no account required</p>
+    <h1>Roof leaking? Sort urgency before you call.</h1>
+    <p>Answer six quick questions. You will get safer next steps, what to document, and the details a roofing company needs to respond intelligently.</p>
+    <div class="trust"><span>Results before contact information</span><span>No roof climbing</span><span>Takes about one minute</span></div>
+  </div></section>
+
+  <main class="wrap app">
+    <div class="shell">
+      <section class="card" id="questionCard">
+        <div class="progress-row"><span id="progressText">Question 1 of 6</span><span>About one minute</span></div>
+        <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+        <form id="decisionForm">
+          <fieldset class="question active"><legend class="question-tag">Safety first</legend><h2>Is there water near electrical fixtures, outlets, smoke detectors, or the breaker panel?</h2><p>Do not touch wet electrical equipment or stand in water near electricity.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="electrical" value="no"><strong>No</strong></label>
+            <label class="option"><input hidden type="radio" name="electrical" value="yes"><strong>Yes - or I am not sure</strong><span>Move people away from the area and seek qualified help.</span></label>
+          </div></fieldset>
+
+          <fieldset class="question"><legend class="question-tag">Question 2</legend><h2>What is the ceiling or wall doing?</h2><p>Stay out from under sagging drywall, bubbling paint, or falling material.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="ceiling" value="stain"><strong>Small stain or damp spot</strong></label>
+            <label class="option"><input hidden type="radio" name="ceiling" value="drip"><strong>Active drip</strong></label>
+            <label class="option"><input hidden type="radio" name="ceiling" value="sag"><strong>Sagging, bulging, or soft ceiling</strong><span>Keep people and belongings away from that area.</span></label>
+            <label class="option"><input hidden type="radio" name="ceiling" value="falling"><strong>Material is falling or the area looks unstable</strong></label>
+          </div></fieldset>
+
+          <fieldset class="question"><legend class="question-tag">Question 3</legend><h2>When does the leak show up?</h2><p>This helps separate active weather response from tracking an older stain.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="timing" value="now"><strong>It is leaking right now</strong></label>
+            <label class="option"><input hidden type="radio" name="timing" value="rain"><strong>Only during rain or wind</strong></label>
+            <label class="option"><input hidden type="radio" name="timing" value="after"><strong>After storms, then it stops</strong></label>
+            <label class="option"><input hidden type="radio" name="timing" value="unknown"><strong>I found an old stain and do not know</strong></label>
+          </div></fieldset>
+
+          <fieldset class="question"><legend class="question-tag">Question 4</legend><h2>Where is the water showing up?</h2><p>Note the room and nearby roof features from the ground if you can see them safely.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="location" value="middle"><strong>Middle of a room or hallway</strong></label>
+            <label class="option"><input hidden type="radio" name="location" value="edge"><strong>Near an exterior wall, window, or patio edge</strong></label>
+            <label class="option"><input hidden type="radio" name="location" value="penetration"><strong>Near a vent, skylight, chimney, or bathroom fan</strong></label>
+            <label class="option"><input hidden type="radio" name="location" value="multiple"><strong>Multiple rooms or multiple spots</strong></label>
+          </div></fieldset>
+
+          <fieldset class="question"><legend class="question-tag">Question 5</legend><h2>What is happening outside?</h2><p>Only answer from a safe place. Do not climb a ladder or walk the roof.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="weather" value="clear"><strong>No active storm now</strong></label>
+            <label class="option"><input hidden type="radio" name="weather" value="storm"><strong>Active rain, wind, hail, or lightning</strong></label>
+            <label class="option"><input hidden type="radio" name="weather" value="monsoon"><strong>Heavy monsoon-style rain or fast water flow</strong></label>
+            <label class="option"><input hidden type="radio" name="weather" value="unknown"><strong>I cannot check safely</strong></label>
+          </div></fieldset>
+
+          <fieldset class="question"><legend class="question-tag">Question 6</legend><h2>Has this same leak happened before?</h2><p>Recurring leaks deserve a clearer explanation than another quick patch.</p><div class="options">
+            <label class="option"><input hidden type="radio" name="history" value="first"><strong>First time I have noticed it</strong></label>
+            <label class="option"><input hidden type="radio" name="history" value="repeat"><strong>It has happened before</strong></label>
+            <label class="option"><input hidden type="radio" name="history" value="repaired"><strong>It was repaired before and came back</strong></label>
+            <label class="option"><input hidden type="radio" name="history" value="unknown"><strong>I do not know</strong></label>
+          </div></fieldset>
+
+          <div class="nav-actions"><button class="btn secondary" type="button" id="backButton">Back</button><button class="btn" type="submit" id="nextButton">Next question</button></div>
+        </form>
+
+        <section class="result" id="result" aria-live="polite">
+          <div class="result-head"><span class="result-label">Your leak triage starting point</span><h2 id="resultTitle"></h2><p id="resultSummary"></p></div>
+          <div class="result-grid"><article class="result-panel"><h3>What to do now</h3><ul id="resultActions"></ul></article><article class="result-panel"><h3>What to tell the roofer</h3><ul id="resultDetails"></ul></article></div>
+          <div class="warning" id="safetyMessage"></div>
+          <div class="next-app"><h3>After you receive a written estimate</h3><p>Use the free Estimate Decoder to turn the roofing scope into plain-English questions before approving work.</p><a class="btn secondary" href="/estimate-decoder/">Decode my estimate</a></div>
+
+          <section class="help" id="helpSection"><h3>Want help finding the next step?</h3><p>Your result is already complete. Sharing your information is optional.</p><div class="help-choices">
+            <button class="help-choice" type="button" data-situation="roofer-contact"><strong>Ask for roofer contact</strong><span>Share the leak details with a participating professional.</span></button>
+            <button class="help-choice" type="button" data-situation="second-opinion"><strong>Get a second opinion</strong><span>Useful when the cause or estimate feels unclear.</span></button>
+            <button class="help-choice" type="button" data-situation="another-estimate"><strong>Get another estimate</strong><span>Compare written scopes for the same leak area.</span></button>
+          </div>
+          <form class="lead-form" id="leadForm">
+            <input type="hidden" name="situation">
+            <div class="form-grid">
+              <div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+              <div class="field"><label for="zip">ZIP code *</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
+              <div class="field"><label for="leadRoofType">Roof type</label><select id="leadRoofType" name="roofType"><option value="">Not sure</option><option>Asphalt shingles</option><option>Concrete or clay tile</option><option>Metal</option><option>Flat / low-slope</option></select></div>
+              <div class="field"><label for="timeline">When do you need help?</label><select id="timeline" name="timeline"><option value="">Choose one</option><option>Emergency / active leak</option><option>Within 7 days</option><option>Within 30 days</option><option>Just documenting for now</option></select></div>
+              <label class="consent full"><input name="consent" value="yes" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share these request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.</span></label>
+              <div class="full"><button class="btn" type="submit">Request help</button><div class="message" aria-live="polite"></div></div>
+            </div>
+          </form></section>
+        </section>
+      </section>
+
+      <aside class="card side"><img src="/honest-roofer-podcast-logo.jpg" alt="The Honest Roofer" width="88" height="88" style="border-radius:50%;margin-bottom:16px"><h2>This tool does not diagnose the leak.</h2><p>It helps you avoid risky moves, document the problem, and give a roofer better information.</p><ul><li>Do not climb onto the roof.</li><li>Do not touch wet electrical fixtures.</li><li>Do not stand under sagging drywall or falling material.</li></ul></aside>
+    </div>
+  </main>
+
+  <footer class="wrap footer">Built by <a href="/">The Honest Roofer</a>, a homeowner-first MidSizeAI resource. Educational information only - not an inspection, emergency service, engineering opinion, insurance determination, or contractor recommendation.</footer>
+
+  <script type="module">
+    import { createQuestionFlow, trackMicroApp, wireHelpRequest } from '/src/micro-app-shell.js';
+
+    const form = document.getElementById('decisionForm');
+    const questionCard = document.getElementById('questionCard');
+    const resultSection = document.getElementById('result');
+    let latestResult = { result: '', urgency: '' };
+
+    function complete(data) {
+      const electrical = data.get('electrical') === 'yes';
+      const ceiling = data.get('ceiling');
+      const timing = data.get('timing');
+      const location = data.get('location');
+      const weather = data.get('weather');
+      const history = data.get('history');
+
+      const active = timing === 'now';
+      const unstable = ceiling === 'sag' || ceiling === 'falling';
+      const severeWeather = weather === 'storm' || weather === 'monsoon';
+      const recurring = history === 'repeat' || history === 'repaired';
+
+      let result = 'document';
+      let urgency = 'routine';
+      let title = 'Document the leak area and schedule a normal roof check';
+      let summary = 'Your answers sound more like a contained or older leak sign than an immediate hazard. The next best step is clear documentation and a written explanation from a qualified roofer.';
+      let actions = [
+        'Take photos of the stain or leak area from a safe position.',
+        'Write down the room, date, weather, and whether the spot is growing.',
+        'Check only safe interior areas; do not climb onto the roof.',
+        'Ask a roofer to document the likely entry point and repair scope in writing.',
+      ];
+
+      if (electrical || unstable) {
+        result = 'safety';
+        urgency = 'immediate';
+        title = 'Treat this as a safety concern before a roofing decision';
+        summary = 'Water near electricity, sagging drywall, or falling material can create immediate danger. Keep people away and seek the right qualified help before trying to solve the roof scope.';
+        actions = [
+          'Keep people and pets away from the affected area.',
+          'Do not touch wet electrical fixtures, outlets, switches, smoke detectors, or breaker panels.',
+          'If the ceiling is sagging, do not stand underneath it or place a bucket directly under unstable material.',
+          'Contact appropriate emergency or qualified professional help for electrical, structural, or active water hazards.',
+        ];
+      } else if (active || severeWeather) {
+        result = 'active-leak';
+        urgency = 'today';
+        title = 'Protect the home and arrange timely roof help';
+        summary = 'An active leak or severe weather situation deserves a faster response, but the safe move is still interior damage control and documentation rather than climbing onto the roof.';
+        actions = [
+          'Move belongings away from the leak area if it is safe to do so.',
+          'Place a container only where the ceiling looks stable and the floor is not slippery.',
+          'Take photos or short video of the leak, room, and weather conditions.',
+          'Call a roofing company and explain that water is entering now or during the current storm.',
+        ];
+      } else if (recurring || location === 'multiple') {
+        result = 'recurring';
+        urgency = 'soon';
+        title = 'Ask for a cause-focused inspection, not just another patch';
+        summary = 'Recurring leaks, repaired leaks that return, or multiple leak locations deserve a clearer explanation of the underlying roof system problem.';
+        actions = [
+          'Gather dates, photos, and any prior repair invoices.',
+          'Ask the roofer to identify the likely source and why prior repairs did or did not solve it.',
+          'Request photos of the roof condition that support the recommendation.',
+          'If replacement is suggested, ask for repair and replacement options as separate written scopes when reasonable.',
+        ];
+      }
+
+      const details = [
+        `Timing: ${timing === 'now' ? 'leaking right now' : timing === 'rain' ? 'during rain or wind' : timing === 'after' ? 'after storms, then stops' : 'old stain or unknown timing'}.`,
+        `Interior sign: ${ceiling === 'stain' ? 'small stain or damp spot' : ceiling === 'drip' ? 'active drip' : ceiling === 'sag' ? 'sagging, bulging, or soft ceiling' : 'falling or unstable material'}.`,
+        `Location: ${location === 'middle' ? 'middle of room or hallway' : location === 'edge' ? 'near exterior wall, window, or patio edge' : location === 'penetration' ? 'near vent, skylight, chimney, or bathroom fan' : 'multiple spots or rooms'}.`,
+        `Weather: ${weather === 'clear' ? 'no active storm now' : weather === 'storm' ? 'active rain, wind, hail, or lightning' : weather === 'monsoon' ? 'heavy monsoon-style rain or fast water flow' : 'not safe or possible to check'}.`,
+        `History: ${history === 'first' ? 'first noticed leak' : history === 'repeat' ? 'happened before' : history === 'repaired' ? 'previously repaired and returned' : 'unknown history'}.`,
+      ];
+
+      latestResult = { result, urgency };
+      document.getElementById('resultTitle').textContent = title;
+      document.getElementById('resultSummary').textContent = summary;
+      document.getElementById('resultActions').innerHTML = actions.map((item) => `<li>${item}</li>`).join('');
+      document.getElementById('resultDetails').innerHTML = details.map((item) => `<li>${item}</li>`).join('');
+      const safety = document.getElementById('safetyMessage');
+      safety.classList.toggle('urgent', result === 'safety');
+      safety.innerHTML = result === 'safety'
+        ? '<strong>Safety first:</strong> A roof leak can become an electrical, ceiling, or slip hazard. This page cannot judge structural or electrical safety. Keep distance and use qualified help.'
+        : '<strong>Before approving work:</strong> Ask for photos, the likely source, the exact repair area, what is excluded, how hidden damage is handled, and what warranty applies.';
+      form.style.display = 'none';
+      questionCard.querySelector('.progress-row').style.display = 'none';
+      questionCard.querySelector('.progress').style.display = 'none';
+      resultSection.classList.add('visible');
+      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      trackMicroApp('micro_app_completed', { tool: 'roof-leak-triage', result, urgency });
+    }
+
+    createQuestionFlow({
+      form,
+      questions: [...form.querySelectorAll('.question')],
+      progressBar: document.getElementById('progressBar'),
+      progressText: document.getElementById('progressText'),
+      backButton: document.getElementById('backButton'),
+      nextButton: document.getElementById('nextButton'),
+      onComplete: complete,
+    });
+
+    wireHelpRequest({
+      container: document.getElementById('helpSection'),
+      form: document.getElementById('leadForm'),
+      tool: 'roof-leak-triage',
+      getResult: () => latestResult,
+    });
+
+    trackMicroApp('micro_app_started', { tool: 'roof-leak-triage' });
+  </script>
+</body>
+</html>

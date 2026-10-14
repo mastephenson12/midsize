@@ -23,6 +23,13 @@ const resources = [
     cta: 'Check My Roof Situation',
   },
   {
+    label: 'Free Triage Tool',
+    title: 'Roof Leak Triage',
+    description: 'Sort active leaks, ceiling concerns, recurring water issues, and storm timing into safer next steps and better details to share with a roofer.',
+    href: 'https://homeowner.midsizeai.com/roofing/leak-triage/',
+    cta: 'Triage My Roof Leak',
+  },
+  {
     label: 'New HVAC Tool',
     title: "Why Isn't My AC Cooling?",
     description: 'Answer seven safety-first questions to separate a thermostat or airflow check from symptoms that deserve an HVAC professional.',
