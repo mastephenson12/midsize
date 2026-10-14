@@ -30,6 +30,13 @@ const resources = [
     cta: 'Triage My Roof Leak',
   },
   {
+    label: 'Free Photo Checklist',
+    title: 'Storm Damage Photo Checklist',
+    description: 'Document hail, wind, rain, interior water, and exterior clues safely from the ground before calling a roofer or opening a claim.',
+    href: 'https://homeowner.midsizeai.com/roofing/storm-damage-photo-checklist/',
+    cta: 'Build My Photo Checklist',
+  },
+  {
     label: 'New HVAC Tool',
     title: "Why Isn't My AC Cooling?",
     description: 'Answer seven safety-first questions to separate a thermostat or airflow check from symptoms that deserve an HVAC professional.',

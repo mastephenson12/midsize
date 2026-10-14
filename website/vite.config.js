@@ -14,6 +14,7 @@ export default defineConfig({
         estimateDecoder: resolve(__dirname, 'estimate-decoder/index.html'),
         roofRepairOrReplace: resolve(__dirname, 'roofing/repair-or-replace/index.html'),
         roofLeakTriage: resolve(__dirname, 'roofing/leak-triage/index.html'),
+        stormDamagePhotoChecklist: resolve(__dirname, 'roofing/storm-damage-photo-checklist/index.html'),
         acNotCooling: resolve(__dirname, 'hvac/not-cooling/index.html'),
       },
     },
