@@ -99,7 +99,7 @@ function RoofingApp() {
           </a>
           <div className="flex items-center gap-3 text-sm">
             <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/roofing-after-hours-call-script/">Free Call Script</a>
-            <a className="hidden text-slate-400 transition hover:text-white xl:block" href="https://midsizeai.com/guides/ai-receptionist-for-roofing-companies/">AI Guide</a>
+            <a className="hidden text-slate-400 transition hover:text-white xl:block" href="/lead-recovery/">Lead Recovery</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#services">Services</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
             <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
