@@ -10,10 +10,10 @@ const resources = [
   },
   {
     label: 'Free Private Tool',
-    title: 'Roofing Estimate Evaluator',
+    title: 'Roofing Quote Checker / Estimate Decoder',
     description: 'Read quoted scope details, spot wording to clarify, and save questions for your roofer. Free results without an email gate.',
     href: '/estimate-decoder/',
-    cta: 'Evaluate My Estimate',
+    cta: 'Check My Roofing Estimate',
   },
   {
     label: 'Free Decision Tool',
