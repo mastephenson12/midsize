@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import handler from '../api/homeowner-lead.js';
-async function call(method,body){const res={setHeader(){},status(code){this.code=code;return this;},json(data){this.data=data;return this;}};await handler({method,body},res);return res;}
+async function call(method,body,headers={origin:'https://www.midsizeai.com','content-type':'application/json'}){const res={setHeader(){},status(code){this.code=code;return this;},json(data){this.data=data;return this;}};await handler({method,body,headers},res);return res;}
 test('estimate gateway reports readiness and never forwards raw estimates',async()=>{
   const prior=process.env.HOMEOWNER_LEAD_WEBHOOK_URL, oldFetch=global.fetch;
   try{
@@ -18,4 +18,21 @@ test('estimate gateway reports readiness and never forwards raw estimates',async
     assert.equal(sent.decoderScore,null);assert.equal(sent.estimate,undefined);assert.equal(sent.file,undefined);assert.ok(sent.consentText);assert.ok(sent.consentVersion);
     global.fetch=async()=>({ok:false});assert.equal((await call('POST',lead)).code,502);
   }finally{global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
+});
+
+test('homeowner intake rejects cross-site, non-JSON, malformed and oversized requests before delivery',async()=>{
+ const previous=global.fetch;
+ let requests=0;
+ global.fetch=async()=>{requests++;throw Error('must not deliver invalid input');};
+ try {
+  assert.equal((await call('POST',{}, {origin:'https://attacker.example','content-type':'application/json'})).code,403);
+  assert.equal((await call('POST',{}, {'content-type':'application/json'})).code,403);
+  assert.equal((await call('POST',{}, {origin:'https://www.midsizeai.com','content-type':'text/plain'})).code,415);
+  assert.equal((await call('POST','{')).code,400);
+  assert.equal((await call('POST',[])).code,400);
+  assert.equal((await call('POST',null)).code,400);
+  assert.equal((await call('POST',{payload:'x'.repeat(9000)})).code,413);
+  assert.equal((await call('POST',JSON.stringify({payload:'x'.repeat(9000)}))).code,413);
+  assert.equal(requests,0);
+ } finally {global.fetch=previous;}
 });
