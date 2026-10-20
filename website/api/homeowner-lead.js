@@ -1,4 +1,6 @@
 import { ghlConfigured, deliverToGhl } from '../lib/ghl-homeowner.js';
+const productionOrigins = ['https://midsizeai.com', 'https://www.midsizeai.com', 'https://homeowner.midsizeai.com', 'https://roofers.midsizeai.com'];
+
 const allowedSituations = new Set(['second-opinion','another-estimate','find-roofer','roofer-contact']);
 const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace', 'roof-leak-triage', 'storm-photo-checklist']);
 
@@ -11,8 +13,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
+  // Origin checks limit browser cross-site submissions; they are not bot authentication.
+  const origins = new Set([...productionOrigins, ...String(process.env.HOMEOWNER_LEAD_ALLOWED_ORIGINS || '').split(',').map(value => value.trim()).filter(Boolean)]);
+  if (!origins.has(req.headers?.origin)) return res.status(403).json({ ok: false, error: 'Request origin not allowed.' });
+  const mediaType = String(req.headers?.['content-type'] || '').split(';')[0].trim().toLowerCase();
+  if (mediaType !== 'application/json') return res.status(415).json({ ok: false, error: 'Unsupported request format.' });
+
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+    // Vercel may have parsed JSON already, so bound both object and string bodies.
+    const serialized = typeof req.body === 'string' ? req.body : JSON.stringify(req.body ?? null);
+    if (Buffer.byteLength(serialized, 'utf8') > 8192) return res.status(413).json({ ok: false, error: 'Request too large.' });
+    let body;
+    try { body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body; }
+    catch { return res.status(400).json({ ok: false, error: 'Invalid request.' }); }
+    if (!body || typeof body !== 'object' || Array.isArray(body)) return res.status(400).json({ ok: false, error: 'Invalid request.' });
     const name = String(body.name || '').trim().slice(0, 120);
     const email = String(body.email || '').trim().toLowerCase().slice(0, 254);
     const phone = String(body.phone || '').trim().slice(0, 40);
