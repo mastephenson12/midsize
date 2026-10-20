@@ -10,7 +10,7 @@ export default function App() {
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
         Have a roofing estimate you want to understand?{' '}
         <a
-          href="/roofing-estimate-review/"
+          href="/estimate-decoder/"
           className="underline hover:text-amber-200 font-bold ml-1"
         >
           Evaluate it free &rarr;
@@ -92,7 +92,7 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/roofing-estimate-review/"
+            href="/estimate-decoder/"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
             Check My Roofing Estimate
@@ -133,7 +133,7 @@ export default function App() {
                 <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Education first, no contractor-pressure pitch</span></li>
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="/roofing-estimate-review/" className="inline-flex justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Review My Estimate</a>
+                <a href="/estimate-decoder/" className="inline-flex justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Review My Estimate</a>
                 <a href="#homeowner-tools" className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-6 py-3 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800">See Homeowner Tools</a>
               </div>
             </article>
@@ -169,13 +169,13 @@ export default function App() {
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a
-                href="/roofing-estimate-review/"
+                href="/estimate-decoder/"
                 className="inline-flex justify-center rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300"
               >
                 Review My Roofing Estimate
               </a>
               <a
-                href="https://estimator.midsizeai.com/estimate-decoder/"
+                href="/estimate-decoder/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-7 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800"
@@ -342,7 +342,7 @@ export default function App() {
                   Hosted at <code className="text-amber-400 bg-slate-950 px-2 py-1 rounded">estimator.midsizeai.com</code>, this standalone calculator gives homeowners realistic ballpark pricing based on square footage, pitch, and material choices before speaking to sales reps.
                 </p>
                 <a
-                  href="https://estimator.midsizeai.com/estimate-decoder/"
+                  href="/estimate-decoder/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all"
@@ -373,7 +373,7 @@ export default function App() {
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Homeowners</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Understand your roofing estimate before you sign</h2>
             <p className="text-slate-400 text-sm sm:text-base mb-7">Use the free MidSize AI estimate decoder to check what is included, what may be missing, and which questions to ask before accepting a proposal.</p>
-            <a href="https://estimator.midsizeai.com/estimate-decoder/" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Check My Estimate</a>
+            <a href="/estimate-decoder/" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Check My Estimate</a>
           </article>
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Roofing Contractors</span>

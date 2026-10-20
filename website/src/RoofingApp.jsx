@@ -120,6 +120,7 @@ function RoofingApp() {
               <a href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=hero&utm_campaign=workflow_review" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Request My Free Workflow Review</a>
             </div>
             <p className="mt-4 text-xs text-slate-500">Use the calculator without an email. Share contact details only if you choose to request a workflow review.</p>
+            <p className="mt-5 text-sm text-slate-300">Already know missed calls are not the main issue? <a href="https://www.midsizeai.com/resources/follow-up-leak-audit/" className="font-bold text-amber-300 underline">Take the free Follow-Up Leak Audit</a> to find which part of your follow-up needs attention first.</p>
           </div>
         </header>
         <section className="border-t border-slate-900 px-6 py-16">
@@ -144,7 +145,7 @@ function RoofingApp() {
                   <a key={href} href={href} className="block rounded-2xl border border-slate-800 bg-slate-950 p-6 transition hover:border-amber-400/60 hover:bg-slate-900">
                     <h3 className="text-xl font-bold text-white">{title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-400">{description}</p>
-                    <span className="mt-5 inline-flex text-sm font-bold text-amber-300">Open funnel page →</span>
+                    <span className="mt-5 inline-flex text-sm font-bold text-amber-300">Explore this service →</span>
                   </a>
                 ))}
               </div>
