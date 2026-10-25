@@ -1,0 +1,11 @@
+# $99 enquiry-flow check — October 24, 2026
+
+The existing /missed-lead-audit route now offers one narrowly scoped website form → inbox/CRM → internal handoff review. It replaces a broad calls/Google-profile/booking audit with a concise evidence report and up to three fixes. Repairs, integrations, AI agents, software and customer messaging remain separate work. The existing mark@midsizeai.com address receives fit requests via a prefilled email; written scope, delivery availability, payment instructions and test permission precede delivery. No new payment processor or credentials were created.
+
+Added /enquiry-flow-sample/ and /enquiry-flow-demo/. The report is explicitly fictional. The interactive demo runs only in the browser with fixed example data; it is not a live CRM connection and cannot establish production reliability. Success, repeated-event handling, failure and reset illustrate what an actual handoff should expose. No messages are sent.
+
+Validation: production build passed; all 29 existing tests passed. On Windows, the existing estimate-journey fixture needed local LF normalization because its import-stripping test helper assumes LF. This introduces no tracked change to the estimate-decoder fixture. At 390 × 844, reviewed the offer and report, followed their links, checked no horizontal overflow, exercised demo failure and success, and replayed the event to confirm the illustrative record stayed the same. No buyer email, payment or live prospect form was submitted. Physical mobile hardware not tested.
+
+Sales materials are user-facing local outputs, not published customer evidence: first-sale plan, 20 research candidates with public source URLs, five opening-message drafts, scope/payment note, report template, delivery checklist and self-contained sample/demo. Candidate needs, ownership, contactability and response performance are unverified; Mark reviews and sends individual outreach. No contacts were enrolled or contacted.
+
+Release: merge after checks and preview review. Then use https://www.midsizeai.com/missed-lead-audit as the offer link. Mark still needs to confirm his inbox and issue invoices through an existing payment method; the page honestly explains the manual payment step. No implementation or ongoing monitoring is included in the $99 check.
