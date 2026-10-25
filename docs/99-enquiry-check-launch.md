@@ -8,4 +8,6 @@ Validation: production build passed; all 29 existing tests passed. On Windows, t
 
 Sales materials are user-facing local outputs, not published customer evidence: first-sale plan, 20 research candidates with public source URLs, five opening-message drafts, scope/payment note, report template, delivery checklist and self-contained sample/demo. Candidate needs, ownership, contactability and response performance are unverified; Mark reviews and sends individual outreach. No contacts were enrolled or contacted.
 
+Hosted verification found that the website-root Vercel configuration lacked the existing /missed-lead-audit rewrite, although the repository-root configuration had it. Added exact and trailing-slash rewrites in website/vercel.json so direct offer links reach the React page. Public sample/demo files remain ordinary static assets.
+
 Release: merge after checks and preview review. Then use https://www.midsizeai.com/missed-lead-audit as the offer link. Mark still needs to confirm his inbox and issue invoices through an existing payment method; the page honestly explains the manual payment step. No implementation or ongoing monitoring is included in the $99 check.
