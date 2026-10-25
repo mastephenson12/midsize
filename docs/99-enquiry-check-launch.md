@@ -10,4 +10,6 @@ Sales materials are user-facing local outputs, not published customer evidence: 
 
 Hosted verification found that the website-root Vercel configuration lacked the existing /missed-lead-audit rewrite, although the repository-root configuration had it. Added exact and trailing-slash rewrites in website/vercel.json so direct offer links reach the React page. Public sample/demo files remain ordinary static assets.
 
+The CI dependency audit flagged GHSA-mrhx-c7xc-m3w5 in the existing transitive Zod 4.1.11 dependency pinned by @vercel/cli-config. Added a scoped override to patched Zod 4.6.6, keeping @vercel/functions unchanged. npm audit now reports zero vulnerabilities; all 29 tests and imports of @vercel/functions and @vercel/cli-config pass. Advisory: https://github.com/advisories/GHSA-mrhx-c7xc-m3w5.
+
 Release: merge after checks and preview review. Then use https://www.midsizeai.com/missed-lead-audit as the offer link. Mark still needs to confirm his inbox and issue invoices through an existing payment method; the page honestly explains the manual payment step. No implementation or ongoing monitoring is included in the $99 check.
