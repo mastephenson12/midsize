@@ -74,6 +74,7 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
       name: data.get('name'),
       email: data.get('email'),
       phone: data.get('phone'),
+      contactMethod: data.get('contactMethod') || 'email',
       zip: data.get('zip'),
       roofType: data.get('roofType'),
       timeline: data.get('timeline'),
@@ -97,7 +98,7 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
       const responseData = await response.json();
       if (!response.ok) throw new Error(responseData.error || 'We could not send your request.');
       message.className = 'message ok';
-      message.textContent = 'Request received. These details will be used only to help with the roofing request you selected.';
+      message.textContent = 'Request received for MidSizeAI review. No roofer or inspection has been assigned. We may contact you about next steps.';
       trackMicroApp('micro_app_lead_submitted', { tool, situation: payload.situation, result: payload.result, urgency: payload.urgency });
       form.reset();
     } catch (error) {

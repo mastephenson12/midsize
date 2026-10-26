@@ -35,6 +35,11 @@ export default async function handler(req, res) {
     const roofType = String(body.roofType || '').trim().slice(0, 80);
     const timeline = String(body.timeline || '').trim().slice(0, 80);
     const consent = body.consent === true;
+    const contactMethod = body.contactMethod === undefined ? 'email' : body.contactMethod;
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (!['email', 'phone'].includes(contactMethod) || (contactMethod === 'phone' && !phone) || (phone && (!/^\+?[\d\s().-]+$/.test(phone) || phoneDigits.length < 10 || phoneDigits.length > 15))) {
+      return res.status(400).json({ ok: false, error: 'Choose email or phone call and provide a valid phone number for calls.' });
+    }
     const score = body.score !== null && body.score !== undefined && body.score !== '' && Number.isFinite(Number(body.score)) ? Math.max(0, Math.min(100, Number(body.score))) : null;
     const tool = String(body.tool || 'estimate-decoder').trim();
     const result = String(body.result || '').trim().slice(0, 80);
@@ -55,6 +60,7 @@ export default async function handler(req, res) {
       name,
       email,
       phone,
+      contactMethod,
       zip,
       situation,
       roofType,
@@ -63,8 +69,10 @@ export default async function handler(req, res) {
       microApp: tool,
       appResult: result,
       urgency,
-      consentText: "I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share my request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.",
-      consentVersion: "2026-10-03",
+      consentText: "I agree that The Honest Roofer / MidSizeAI may contact me about this request. MidSizeAI will ask before sharing my contact details with a roofing professional. I am not agreeing to marketing texts by checking this box.",
+      consentVersion: "2026-10-26",
+      routingStatus: "pending-midsize-review",
+      rooferAssigned: false,
       consent: true
     };
 

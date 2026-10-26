@@ -36,3 +36,20 @@ test('homeowner intake rejects cross-site, non-JSON, malformed and oversized req
   assert.equal(requests,0);
  } finally {global.fetch=previous;}
 });
+
+test('contact preference is validated and forwarded to the integration',async()=>{
+ const prior=process.env.HOMEOWNER_LEAD_WEBHOOK_URL, oldFetch=global.fetch;
+ const lead={name:'Test',email:'test@example.com',zip:'85001',situation:'find-roofer',tool:'roof-leak-triage',consent:true};
+ let sent, calls=0;
+ try {
+  process.env.HOMEOWNER_LEAD_WEBHOOK_URL='https://example.com/test';
+  global.fetch=async(url,options)=>{calls++;sent=JSON.parse(options.body);return {ok:true};};
+  for(const changes of [{contactMethod:'text'},{contactMethod:'phone'},{phone:'abcdefghij'},{phone:'123'}]) {
+   assert.equal((await call('POST',{...lead,...changes})).code,400);
+  }
+  assert.equal(calls,0);
+  assert.equal((await call('POST',{...lead,phone:'+1 (202) 555-0123',contactMethod:'phone',urgency:'today'})).code,200);
+  assert.equal(sent.contactMethod,'phone');assert.equal(sent.urgency,'today');assert.equal(sent.routingStatus,'pending-midsize-review');assert.equal(sent.rooferAssigned,false);assert.equal(sent.consentVersion,'2026-10-26');
+  assert.equal((await call('POST',lead)).code,200);assert.equal(sent.contactMethod,'email');
+ } finally {global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
+});

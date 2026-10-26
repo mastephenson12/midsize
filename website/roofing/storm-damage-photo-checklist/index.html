@@ -86,10 +86,10 @@
           <div class="warning" id="safetyMessage"></div>
           <div class="next-app"><h3>If you receive a written estimate</h3><p>Paste the scope into the free Estimate Decoder to identify missing details, vague wording, and questions to ask before approving work.</p><a class="btn secondary" href="/estimate-decoder/">Decode my estimate</a></div>
 
-          <section class="help" id="helpSection"><h3>Want help with the next call?</h3><p>Your checklist is complete. Sharing your information is optional.</p><div class="help-choices">
-            <button class="help-choice" type="button" data-situation="roofer-contact"><strong>Ask for roofer contact</strong><span>Share your storm notes with a participating professional.</span></button>
-            <button class="help-choice" type="button" data-situation="second-opinion"><strong>Get a second opinion</strong><span>Useful when damage, claims, or recommendations feel unclear.</span></button>
-            <button class="help-choice" type="button" data-situation="another-estimate"><strong>Get another estimate</strong><span>Compare written scopes after the storm.</span></button>
+          <section class="help" id="helpSection"><h3>Want help with the next call?</h3><p>Your checklist is complete. Sharing your information is optional. MidSizeAI will review your request. We are building our roofer network, and local roofer availability is not guaranteed. This does not book an inspection.</p><div class="help-choices">
+            <button class="help-choice" type="button" data-situation="roofer-contact"><strong>Request Roofing Help</strong><span>Send your request to MidSizeAI for review.</span></button>
+            <button class="help-choice" type="button" data-situation="second-opinion"><strong>Ask about a second opinion</strong><span>Useful when damage, claims, or recommendations feel unclear.</span></button>
+            <button class="help-choice" type="button" data-situation="another-estimate"><strong>Ask about another estimate</strong><span>Compare written scopes after the storm.</span></button>
           </div>
           <form class="lead-form" id="leadForm">
             <input type="hidden" name="situation">
@@ -97,10 +97,11 @@
               <div class="field"><label for="name">Name *</label><input id="name" name="name" autocomplete="name" required></div>
               <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
               <div class="field"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+              <div class="field"><label for="contactMethod">How should we respond?</label><select id="contactMethod" name="contactMethod"><option value="email">Email</option><option value="phone">Phone call (enter a phone number)</option></select></div>
               <div class="field"><label for="zip">ZIP code *</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
               <div class="field"><label for="leadRoofType">Roof type</label><select id="leadRoofType" name="roofType"><option value="">Not sure</option><option>Asphalt shingles</option><option>Concrete or clay tile</option><option>Metal</option><option>Flat / low-slope</option></select></div>
               <div class="field"><label for="timeline">When do you need help?</label><select id="timeline" name="timeline"><option value="">Choose one</option><option>Emergency / active leak</option><option>Within 7 days</option><option>Within 30 days</option><option>Just documenting for now</option></select></div>
-              <label class="consent full"><input name="consent" value="yes" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share these request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.</span></label>
+              <label class="consent full"><input name="consent" value="yes" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request. MidSizeAI will ask before sharing my contact details with a roofing professional. I am not agreeing to marketing texts by checking this box.</span></label>
               <div class="full"><button class="btn" type="submit">Request help</button><div class="message" aria-live="polite"></div></div>
             </div>
           </form></section>
