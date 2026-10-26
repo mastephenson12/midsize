@@ -45,9 +45,9 @@
           <h3>Want help beyond this checklist?</h3>
           <p>Keep your results without signing up. Optional: choose the kind of help you want. Availability is checked before the contact form opens. Your estimate and quoted text stay in this browser.</p>
           <div class="choicegrid">
-            <button class="choice" type="button" aria-pressed="false" data-situation="second-opinion"><strong>Get a second opinion</strong><span>Tell us what has you unsure.</span></button>
-            <button class="choice" type="button" aria-pressed="false" data-situation="another-estimate"><strong>Get another estimate</strong><span>Compare more than one roofing proposal.</span></button>
-            <button class="choice" type="button" aria-pressed="false" data-situation="find-roofer"><strong>Find an Honest Roofer</strong><span>Request help locating a participating contractor.</span></button>
+            <button class="choice" type="button" aria-pressed="false" data-situation="second-opinion"><strong>Ask about a second opinion</strong><span>Tell us what has you unsure.</span></button>
+            <button class="choice" type="button" aria-pressed="false" data-situation="another-estimate"><strong>Ask about another estimate</strong><span>Compare more than one roofing proposal.</span></button>
+            <button class="choice" type="button" aria-pressed="false" data-situation="find-roofer"><strong>Request Roofing Help</strong><span>Send your request to MidSizeAI for review.</span></button>
           </div>
           <p id="helpStatus" role="status"></p>
           <p id="helpFallback" hidden>Online requests are temporarily unavailable. <a href="mailto:mark@midsizeai.com">Email Mark about your roofing question</a>, or keep your evaluation and questions. No request has been sent.</p>
@@ -61,7 +61,7 @@
               <div class="field"><label for="zip">ZIP code *</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
               <div class="field"><label for="roofType">Roof type</label><select id="roofType" name="roofType"><option value="">Not sure</option><option>Asphalt shingles</option><option>Concrete or clay tile</option><option>Metal</option><option>Flat / low-slope</option><option>Foam / coating</option><option>Other</option></select></div>
               <div class="field"><label for="timeline">When do you need help?</label><select id="timeline" name="timeline"><option value="">Choose one</option><option>Emergency / active leak</option><option>Within 7 days</option><option>Within 30 days</option><option>1–3 months</option><option>Just researching</option></select></div>
-              <label class="consent full"><input id="consent" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share my request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.</span></label>
+              <label class="consent full"><input id="consent" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request. MidSizeAI will ask before sharing my contact details with a roofing professional. I am not agreeing to marketing texts by checking this box.</span></label>
               <div class="full"><button class="btn" type="submit" id="submitLead">Request help</button><div class="leadmsg" id="leadmsg" aria-live="polite"></div></div>
             </div>
           </form>
@@ -177,7 +177,7 @@ document.querySelectorAll('.choice').forEach(button => button.addEventListener('
     if(check!==helpCheck)return;
     if(!response.ok||!state.ready)throw new Error('unavailable');
     document.getElementById('situation').value=button.dataset.situation;
-    status.textContent='Complete the form only if you want us to respond to this request.';
+    status.textContent='Complete the form only if you want us to respond to this request. MidSizeAI will review your request. We are building our roofer network, and local roofer availability is not guaranteed. This does not book an inspection.';
     message.textContent='Only the contact and request details below are sent. No estimate text or file is sent.';
     submit.disabled=false;form.style.display='block';document.getElementById('name').focus();
   } catch {
@@ -193,7 +193,7 @@ document.getElementById('leadform').addEventListener('submit', async (event)=>{
   try {
     const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}); const data = await response.json();
     if(!response.ok) throw new Error(data.error || 'We could not send your request.');
-    leadRequestId=crypto.randomUUID();msg.className='leadmsg ok'; msg.textContent='Request received. We will use these details only to help with the roofing request you selected.'; document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+    leadRequestId=crypto.randomUUID();msg.className='leadmsg ok'; msg.textContent='Request received for MidSizeAI review. No roofer or inspection has been assigned. We may contact you about next steps.'; document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
   } catch(error) { msg.className='leadmsg err'; msg.textContent=error.message || 'We could not send your request. Please try again.'; }
   finally { submit.disabled=false; }
 });

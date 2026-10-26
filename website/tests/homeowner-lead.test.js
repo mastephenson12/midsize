@@ -49,7 +49,7 @@ test('contact preference is validated and forwarded to the integration',async()=
   }
   assert.equal(calls,0);
   assert.equal((await call('POST',{...lead,phone:'+1 (202) 555-0123',contactMethod:'phone',urgency:'today'})).code,200);
-  assert.equal(sent.contactMethod,'phone');assert.equal(sent.urgency,'today');
+  assert.equal(sent.contactMethod,'phone');assert.equal(sent.urgency,'today');assert.equal(sent.routingStatus,'pending-midsize-review');assert.equal(sent.rooferAssigned,false);assert.equal(sent.consentVersion,'2026-10-26');
   assert.equal((await call('POST',lead)).code,200);assert.equal(sent.contactMethod,'email');
  } finally {global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
 });

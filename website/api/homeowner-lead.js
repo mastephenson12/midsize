@@ -69,8 +69,10 @@ export default async function handler(req, res) {
       microApp: tool,
       appResult: result,
       urgency,
-      consentText: "I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share my request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.",
-      consentVersion: "2026-10-03",
+      consentText: "I agree that The Honest Roofer / MidSizeAI may contact me about this request. MidSizeAI will ask before sharing my contact details with a roofing professional. I am not agreeing to marketing texts by checking this box.",
+      consentVersion: "2026-10-26",
+      routingStatus: "pending-midsize-review",
+      rooferAssigned: false,
       consent: true
     };
 

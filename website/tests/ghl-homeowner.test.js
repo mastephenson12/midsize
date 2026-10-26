@@ -22,7 +22,7 @@ test('tool urgency survives a routine timeline and task preserves contact prefer
   await deliverToGhl({...lead,timeline:'Just researching',urgency,contactMethod:'phone',phone:'+12025550123'},{env,now,fetchImpl:api.fetchImpl});
   assert.match(api.tasks[0].title,/URGENT/);
   assert.equal(api.tasks[0].dueDate,now.toISOString());
-  assert.match(api.tasks[0].body,/Preferred contact: Phone call/);
+  assert.match(api.tasks[0].body,/Preferred contact: Phone call/);assert.match(api.tasks[0].body,/MidSizeAI review. No roofer assigned/);
   assert.ok(api.tasks[0].body.includes('\nTool urgency: '+urgency));
  }
 });

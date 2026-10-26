@@ -95,10 +95,10 @@
           <div class="warning" id="safetyMessage"></div>
           <div class="next-app"><h3>Already have a roofing estimate?</h3><p>Use the private Estimate Decoder to see which common scope details appear and which deserve clarification.</p><a class="btn secondary" href="/estimate-decoder/">Decode my estimate</a></div>
 
-          <section class="help" id="helpSection"><h3>Would professional help make this decision easier?</h3><p>Your result is already complete. Sharing your information is optional.</p><div class="help-choices">
-            <button class="help-choice" type="button" data-situation="second-opinion"><strong>Get a second opinion</strong><span>Ask another professional to explain the options.</span></button>
-            <button class="help-choice" type="button" data-situation="another-estimate"><strong>Get another estimate</strong><span>Compare equivalent written scopes.</span></button>
-            <button class="help-choice" type="button" data-situation="find-roofer"><strong>Find an Honest Roofer</strong><span>Request a participating roofing professional.</span></button>
+          <section class="help" id="helpSection"><h3>Would professional help make this decision easier?</h3><p>Your result is already complete. Sharing your information is optional. MidSizeAI will review your request. We are building our roofer network, and local roofer availability is not guaranteed. This does not book an inspection.</p><div class="help-choices">
+            <button class="help-choice" type="button" data-situation="second-opinion"><strong>Ask about a second opinion</strong><span>Tell MidSizeAI which options you need help understanding.</span></button>
+            <button class="help-choice" type="button" data-situation="another-estimate"><strong>Ask about another estimate</strong><span>Compare equivalent written scopes.</span></button>
+            <button class="help-choice" type="button" data-situation="find-roofer"><strong>Request Roofing Help</strong><span>Send your request to MidSizeAI for review.</span></button>
           </div>
           <form class="lead-form" id="leadForm">
             <input type="hidden" name="situation">
@@ -110,7 +110,7 @@
               <div class="field"><label for="zip">ZIP code *</label><input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" required></div>
               <div class="field"><label for="leadRoofType">Roof type</label><select id="leadRoofType" name="roofType"><option value="">Use my answer above</option><option>Asphalt shingles</option><option>Concrete or clay tile</option><option>Metal</option><option>Flat / low-slope</option><option>Not sure</option></select></div>
               <div class="field"><label for="timeline">When do you need help?</label><select id="timeline" name="timeline"><option value="">Choose one</option><option>Emergency / active leak</option><option>Within 7 days</option><option>Within 30 days</option><option>1–3 months</option><option>Just researching</option></select></div>
-              <label class="consent full"><input name="consent" value="yes" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request and may share these request details with a participating roofing professional when necessary to help fulfill it. I am not agreeing to marketing texts by checking this box.</span></label>
+              <label class="consent full"><input name="consent" value="yes" type="checkbox" required><span>I agree that The Honest Roofer / MidSizeAI may contact me about this request. MidSizeAI will ask before sharing my contact details with a roofing professional. I am not agreeing to marketing texts by checking this box.</span></label>
               <div class="full"><button class="btn" type="submit">Request help</button><div class="message" aria-live="polite"></div></div>
             </div>
           </form></section>
