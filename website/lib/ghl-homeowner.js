@@ -25,9 +25,9 @@ export async function deliverToGhl(lead, {env=process.env, fetchImpl=fetch, now=
   const existing=await request(base+'/tasks');
   if(!Array.isArray(existing.tasks))throw new Error('GHL task list unavailable');
   if(existing.tasks.some(task=>String(task.body||'').includes(marker)))return {ok:true};
-  const urgent=lead.timeline==='Emergency / active leak';
+  const urgent=lead.timeline==='Emergency / active leak' || ['immediate', 'immediate-safety-concern', 'today'].includes(lead.urgency);
   const labels={'second-opinion':'Second opinion','another-estimate':'Another estimate','find-roofer':'Find a roofer','roofer-contact':'Roofer contact'};
-  const body=[marker,`Received: ${lead.submittedAt}`,`Source: ${lead.source}`,`Request: ${labels[lead.situation]||lead.situation}`,`ZIP: ${lead.zip}`,`Roof: ${lead.roofType||'Not specified'}`,`Timeline: ${lead.timeline||'Not specified'}`,`Tool result: ${lead.appResult||'Not specified'}`,`Consent version: ${lead.consentVersion}`,`Consent: ${lead.consentText}`,'No estimate document or estimate text was transmitted.','Follow up about this request only. Respect existing do-not-contact preferences. No marketing text consent was collected.'].join('\n');
+  const body=[marker,`Received: ${lead.submittedAt}`,`Source: ${lead.source}`,`Request: ${labels[lead.situation]||lead.situation}`,`ZIP: ${lead.zip}`,`Roof: ${lead.roofType||'Not specified'}`,`Timeline: ${lead.timeline||'Not specified'}`,`Preferred contact: ${lead.contactMethod==='phone'?'Phone call':'Email'}`,`Tool urgency: ${lead.urgency||'Not specified'}`,`Tool result: ${lead.appResult||'Not specified'}`,`Consent version: ${lead.consentVersion}`,`Consent: ${lead.consentText}`,'No estimate document or estimate text was transmitted.','Follow up about this request only. Respect existing do-not-contact preferences. No marketing text consent was collected.'].join('\n');
   const task=await request(base+'/tasks','POST',{
     title:`${urgent?'URGENT — ':''}Homeowner: ${labels[lead.situation]||'Follow up'}`,
     body,completed:false,dueDate:new Date(now.getTime()+(urgent?0:24*60*60*1000)).toISOString(),

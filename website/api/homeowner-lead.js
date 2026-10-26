@@ -35,6 +35,11 @@ export default async function handler(req, res) {
     const roofType = String(body.roofType || '').trim().slice(0, 80);
     const timeline = String(body.timeline || '').trim().slice(0, 80);
     const consent = body.consent === true;
+    const contactMethod = body.contactMethod === undefined ? 'email' : body.contactMethod;
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (!['email', 'phone'].includes(contactMethod) || (contactMethod === 'phone' && !phone) || (phone && (!/^\+?[\d\s().-]+$/.test(phone) || phoneDigits.length < 10 || phoneDigits.length > 15))) {
+      return res.status(400).json({ ok: false, error: 'Choose email or phone call and provide a valid phone number for calls.' });
+    }
     const score = body.score !== null && body.score !== undefined && body.score !== '' && Number.isFinite(Number(body.score)) ? Math.max(0, Math.min(100, Number(body.score))) : null;
     const tool = String(body.tool || 'estimate-decoder').trim();
     const result = String(body.result || '').trim().slice(0, 80);
@@ -55,6 +60,7 @@ export default async function handler(req, res) {
       name,
       email,
       phone,
+      contactMethod,
       zip,
       situation,
       roofType,

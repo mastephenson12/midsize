@@ -74,6 +74,7 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
       name: data.get('name'),
       email: data.get('email'),
       phone: data.get('phone'),
+      contactMethod: data.get('contactMethod') || 'email',
       zip: data.get('zip'),
       roofType: data.get('roofType'),
       timeline: data.get('timeline'),
