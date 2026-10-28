@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import { ghlConfigured, deliverToGhl } from '../lib/ghl-homeowner.js';
 const productionOrigins = ['https://midsizeai.com', 'https://www.midsizeai.com', 'https://homeowner.midsizeai.com', 'https://roofers.midsizeai.com'];
 
@@ -53,8 +54,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: 'Please enter a valid email address.' });
     }
 
-    const requestId = /^[a-zA-Z0-9-]{16,64}$/.test(String(body.requestId||'')) ? body.requestId : undefined;
+    const requestId = /^[a-zA-Z0-9-]{16,64}$/.test(String(body.requestId||'')) ? String(body.requestId) : randomUUID();
     const payload = {
+      requestId,
       source: `honest-roofer-${tool}`,
       submittedAt: new Date().toISOString(),
       name,
@@ -80,7 +82,7 @@ export default async function handler(req, res) {
       if(!ghlConfigured())return res.status(503).json({ok:false,error:'Follow-up is temporarily unavailable. Please email mark@midsizeai.com.'});
       try {
         await deliverToGhl({...payload,requestId});
-        return res.status(200).json({ok:true});
+        return res.status(200).json({ok:true, requestId, routingStatus: payload.routingStatus, rooferAssigned: false});
       } catch {
         console.error('GHL homeowner intake did not complete');
         return res.status(502).json({ok:false,error:'We could not confirm your follow-up task. Please try again or email mark@midsizeai.com.'});
@@ -109,7 +111,7 @@ export default async function handler(req, res) {
       return res.status(502).json({ ok: false, error: 'We could not send your request. Please try again.' });
     }
 
-    return res.status(200).json({ ok: true });
+    return res.status(200).json({ ok: true, requestId, routingStatus: payload.routingStatus, rooferAssigned: false });
   } catch (error) {
     console.error('homeowner-lead request failed');
     return res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });

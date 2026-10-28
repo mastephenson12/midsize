@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import { evaluateEstimate, reportText } from '../src/estimateEvaluator.js';
 
 function page(fetch) {
-  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, scrollIntoView(){} });
+  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
   const nodes = new Map();
   const get = id => { if(!nodes.has(id))nodes.set(id,element()); return nodes.get(id); };
   get('project').value='replacement';
@@ -13,7 +13,8 @@ function page(fetch) {
   const details=[{open:false},{open:true}];
   const events={}; let copied='';
   const document={getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
-  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-id'},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
+  let sequence=0;
+  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
   const script=readFileSync(new URL('../estimate-decoder/index.html',import.meta.url),'utf8').match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;\n/gm,'');
   vm.runInContext(script,context);
   return {get,choices,events,details,context,copy:()=>copied};
@@ -48,4 +49,19 @@ test('old readiness responses cannot reopen stale requests or override the lates
   const editing=p.choices[2].handlers.click();p.context.invalidate();
   pending[2]({ok:true,json:async()=>({ready:true})});await editing;
   assert.equal(p.get('leadform').style.display,'none');assert.ok(p.choices.every(c=>c.attrs['aria-pressed']==='false'));
+});
+
+
+test('follow-up retries retain a reference, block overlapping submits, and require explicit acceptance',async()=>{
+ const pending=[],sent=[];
+ const p=page((url,options)=>{sent.push(JSON.parse(options.body));return new Promise(resolve=>pending.push(resolve));});
+ const submit=()=>p.get('leadform').handlers.submit({preventDefault(){}});
+ const first=submit();await submit();assert.equal(sent.length,1);
+ pending.shift()({ok:true,json:async()=>({ok:false,error:'Not accepted'})});await first;
+ assert.equal(p.get('leadmsg').className,'leadmsg err');
+ const retry=submit();assert.equal(sent[0].requestId,sent[1].requestId);
+ pending.shift()({ok:true,json:async()=>({ok:true,requestId:sent[1].requestId})});await retry;
+ assert.ok(p.get('leadmsg').textContent.includes(sent[1].requestId));assert.match(p.get('leadmsg').textContent,/No roofer or inspection/);
+ const next=submit();assert.notEqual(sent[2].requestId,sent[1].requestId);
+ pending.shift()({ok:false,json:async()=>({error:'Unavailable'})});await next;
 });
