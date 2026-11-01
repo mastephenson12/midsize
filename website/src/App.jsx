@@ -52,10 +52,10 @@ export default function App() {
               Roofing AI Guide
             </a>
             <a
-              href="/resources/sops/missed-call-recovery/"
+              href="/resources/#contractors"
               className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
             >
-              Contractor SOPs
+              Free Roofer Resources
             </a>
             <a
               href="/missed-lead-calculator"
@@ -70,6 +70,9 @@ export default function App() {
               Request Free Audit
             </a>
           </div>
+        </div>
+        <div className="mx-auto max-w-7xl pt-2 text-center xl:hidden">
+          <a href="/resources/#contractors" className="inline-block py-1 text-sm font-semibold text-amber-300 underline underline-offset-4 hover:text-white">Free Roofer Resources →</a>
         </div>
       </nav>
 
