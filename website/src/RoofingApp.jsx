@@ -3,6 +3,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 const ESTIMATOR_URL = 'https://estimator.midsizeai.com';
 const APPLICATION_URL = 'https://apply.midsizeai.com/application';
 const CHECKLIST_URL = '/downloads/10-questions-before-hiring-a-roofer.pdf';
+const PILOT_URL = '/estimate-follow-up-pilot/';
+const PILOT_FIT_URL = 'https://api.leadconnectorhq.com/widget/form/pon1U90FNbhXU2bgqniw?utm_source=roofer_page&utm_medium=website&utm_campaign=estimate_follow_up_pilot&utm_content=sample';
 
 const contractorSolutions = [
   ['Answer when your team cannot', 'Samantha supports consistent first-line and after-hours call intake using information and escalation rules approved by your company.'],
@@ -102,7 +104,7 @@ function RoofingApp() {
             <a className="hidden text-slate-400 transition hover:text-white xl:block" href="/lead-recovery/">Lead Recovery</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#services">Services</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
-            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=navigation&utm_campaign=workflow_review">Request Free Review</a>
+            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href={PILOT_URL}>Explore the $500 Pilot</a>
           </div>
         </div>
       </nav>
@@ -116,12 +118,53 @@ function RoofingApp() {
             </h1>
             <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">Answer missed and after-hours calls, capture the right project details, and move qualified homeowners toward the next step—without adding another full-time office role or replacing the systems your team already uses.</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href="#missed-lead-estimate" className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Calculate My Missed-Lead Opportunity</a>
-              <a href="https://apply.midsizeai.com/application?utm_source=roofers.midsizeai.com&utm_medium=hero&utm_campaign=workflow_review" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Request My Free Workflow Review</a>
+              <a href={PILOT_URL} className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Explore the $500, 14-Day Pilot</a>
+              <a href="#follow-up-example" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">See a Follow-Up Example</a>
             </div>
-            <p className="mt-4 text-xs text-slate-500">Use the calculator without an email. Share contact details only if you choose to request a workflow review.</p>
+            <p className="mt-4 text-sm text-slate-400">One team. One estimate follow-up process. $500 fixed fee; no automatic subscription. Confirm fit and scope before payment.</p>
+            <a href="#missed-lead-estimate" className="mt-5 inline-block text-sm text-slate-300 underline underline-offset-4 hover:text-white">Just exploring? Try the free missed-lead calculator.</a>
           </div>
         </header>
+        <section id="follow-up-example" aria-labelledby="follow-up-example-title" className="scroll-mt-28 border-t border-amber-400/20 bg-slate-900/50 px-6 py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">See what your team gets</p>
+            <h2 id="follow-up-example-title" className="mt-3 max-w-3xl text-3xl font-extrabold text-white sm:text-5xl">Every open estimate needs an owner and a next step.</h2>
+            <p className="mt-5 max-w-3xl leading-relaxed text-slate-300">The 14-day pilot helps you put a tracker and three personalized message templates into practice with your team. Here is a small example of how that can look.</p>
+            <div className="mt-9 rounded-2xl border border-slate-700 bg-slate-950 p-5 sm:p-7">
+              <div className="flex flex-wrap items-center justify-between gap-3"><h3 className="text-xl font-bold text-white">A follow-up tracker your team can use</h3><span className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">Illustrative sample · fictional records</span></div>
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
+                {[
+                  ['Sample estimate A', 'Jordan', 'Sent; receipt not confirmed', 'Ask whether the estimate arrived and offer to clarify the scope.'],
+                  ['Sample estimate B', 'Casey', 'Homeowner has a scope question', 'Confirm the flashing detail with the estimator before replying.'],
+                  ['Sample estimate C', 'Jordan', 'Waiting for a decision', 'Follow up on the agreed day; record a decision or the next action.'],
+                ].map(([name, owner, status, next]) => (
+                  <article key={name} className="rounded-xl border border-slate-800 bg-slate-900 p-5">
+                    <h4 className="font-bold text-white">{name}</h4>
+                    <dl className="mt-4 space-y-4 text-sm"><div><dt className="text-slate-400">Owner</dt><dd className="mt-1 text-white">{owner}</dd></div><div><dt className="text-slate-400">Current status</dt><dd className="mt-1 text-slate-200">{status}</dd></div><div><dt className="text-amber-300">Next action</dt><dd className="mt-1 leading-relaxed text-slate-200">{next}</dd></div></dl>
+                  </article>
+                ))}
+              </div>
+              <p className="mt-5 text-xs leading-relaxed text-slate-400">Your working tracker also records the last contact, next follow-up date, replies, and outcomes. These examples show the process, not customer results.</p>
+            </div>
+            <div className="mt-6 grid gap-6 lg:grid-cols-2">
+              <article className="rounded-2xl border border-slate-700 bg-slate-950 p-6 sm:p-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-amber-400">Example message · check receipt</p>
+                <h3 className="mt-3 text-xl font-bold text-white">A useful reason to follow up.</h3>
+                <blockquote className="mt-5 border-l-2 border-amber-400 pl-5 leading-relaxed text-slate-200">Hi [First name], this is [Your name] with [Company]. Did the roofing estimate we sent on [Date] reach you? If any part of the scope is unclear, I can help get it clarified. Would a quick call be useful, or would you prefer to reply here?</blockquote>
+                <p className="mt-5 text-sm text-slate-400">Personalize and review before sending through your usual customer communication channel.</p>
+                <a href="/resources/estimate-follow-up/" className="mt-5 inline-block text-sm font-bold text-amber-300 underline underline-offset-4">Try the free message builder →</a>
+              </article>
+              <div className="rounded-2xl border border-amber-400/30 bg-amber-400/10 p-6 sm:p-8">
+                <p className="text-xs font-bold uppercase tracking-widest text-amber-300">14 days · $500 fixed fee</p>
+                <h3 className="mt-3 text-2xl font-bold text-white">Put this into practice with your team.</h3>
+                <p className="mt-4 leading-relaxed text-slate-300">Get a tracker, three personalized messages, a kickoff, a midpoint check-in, and a closing review. Your team owns the customer conversations; this pilot covers process setup and coaching.</p>
+                <a href={PILOT_URL} className="mt-6 inline-flex rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Review the Pilot Details →</a>
+                <a href={PILOT_FIT_URL} className="mt-5 block text-sm font-bold text-amber-300 underline underline-offset-4">Ready to discuss fit? Request a pilot fit review →</a>
+                <p className="mt-5 text-xs leading-relaxed text-slate-400">An inquiry does not purchase or book a pilot. We agree on scope and a start date before payment. Automated calling, texting, custom integrations, and ongoing management are outside this pilot. Results are not guaranteed.</p>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="border-t border-slate-900 px-6 py-16">
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 text-center"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">A practical path to more captured opportunities</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">The outcome matters. So does how you get there.</h2></div>
