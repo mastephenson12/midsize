@@ -100,12 +100,15 @@ function RoofingApp() {
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:block">Roofing Division</span>
           </a>
           <div className="flex items-center gap-3 text-sm">
-            <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/roofing-after-hours-call-script/">Free Call Script</a>
+            <a className="hidden text-slate-400 transition hover:text-white md:block" href="/resources/#contractors">Free Roofer Resources</a>
             <a className="hidden text-slate-400 transition hover:text-white xl:block" href="/lead-recovery/">Lead Recovery</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#services">Services</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
             <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href={PILOT_URL}>Explore the $500 Pilot</a>
           </div>
+        </div>
+        <div className="mx-auto max-w-7xl pt-2 text-center md:hidden">
+          <a href="/resources/#contractors" className="inline-block py-1 text-sm font-semibold text-amber-300 underline underline-offset-4 hover:text-white">Free Roofer Resources →</a>
         </div>
       </nav>
       <main>
