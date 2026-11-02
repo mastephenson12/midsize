@@ -77,6 +77,7 @@ import { evaluateEstimate, reportText } from '/src/estimateEvaluator.js';
 import { createUploadReader } from '/src/estimateUpload.js';
 let latestScore = null;
 let leadRequestId = crypto.randomUUID();
+let leadSending = false;
 let latestEvaluation = null;
 let helpCheck = 0;
 let fileJob = 0;
@@ -187,15 +188,15 @@ document.querySelectorAll('.choice').forEach(button => button.addEventListener('
 }));
 
 document.getElementById('leadform').addEventListener('submit', async (event)=>{
-  event.preventDefault(); const msg = document.getElementById('leadmsg'); const submit = document.getElementById('submitLead');
+  event.preventDefault(); if(leadSending)return; leadSending=true; const msg = document.getElementById('leadmsg'); const submit = document.getElementById('submitLead');
   msg.className='leadmsg'; msg.textContent='Sending your request…'; submit.disabled=true;
   const payload = {requestId:leadRequestId,name:document.getElementById('name').value,email:document.getElementById('email').value,phone:document.getElementById('phone').value,contactMethod:document.getElementById('contactMethod').value,zip:document.getElementById('zip').value,situation:document.getElementById('situation').value,roofType:document.getElementById('roofType').value,timeline:document.getElementById('timeline').value,consent:document.getElementById('consent').checked,tool:'estimate-decoder',result:'reading-checklist',score:null};
   try {
-    const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}); const data = await response.json();
-    if(!response.ok) throw new Error(data.error || 'We could not send your request.');
-    leadRequestId=crypto.randomUUID();msg.className='leadmsg ok'; msg.textContent='Request received for MidSizeAI review. No roofer or inspection has been assigned. We may contact you about next steps.'; document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+    const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)}); const data = await response.json();
+    if(!response.ok||data.ok!==true) throw new Error(data.error || 'We could not send your request.');
+    msg.className='leadmsg ok'; msg.textContent='Request received for MidSizeAI review. Reference: '+(data.requestId||leadRequestId)+'. No roofer or inspection has been assigned. We may contact you about next steps.'; leadRequestId=crypto.randomUUID(); document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
   } catch(error) { msg.className='leadmsg err'; msg.textContent=error.message || 'We could not send your request. Please try again.'; }
-  finally { submit.disabled=false; }
+  finally { submit.disabled=false; leadSending=false; }
 });
 </script>
 </body>

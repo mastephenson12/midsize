@@ -53,3 +53,17 @@ test('contact preference is validated and forwarded to the integration',async()=
   assert.equal((await call('POST',lead)).code,200);assert.equal(sent.contactMethod,'email');
  } finally {global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
 });
+
+test('request reference survives webhook retries and is returned only on acceptance',async()=>{
+ const prior=process.env.HOMEOWNER_LEAD_WEBHOOK_URL, oldFetch=global.fetch;
+ const lead={name:'Test',email:'test@example.com',zip:'85001',situation:'find-roofer',tool:'roof-leak-triage',consent:true,requestId:'12345678-1234-1234-1234-123456789012'};
+ const sent=[];
+ try {
+  process.env.HOMEOWNER_LEAD_WEBHOOK_URL='https://example.com/test';
+  global.fetch=async(url,options)=>{sent.push(JSON.parse(options.body));return {ok:sent.length>1,status:503};};
+  const failed=await call('POST',lead);assert.equal(failed.code,502);assert.equal(failed.data.ok,false);
+  const accepted=await call('POST',lead);assert.equal(accepted.code,200);assert.equal(accepted.data.requestId,lead.requestId);
+  assert.equal(sent[0].requestId,sent[1].requestId);assert.equal(accepted.data.routingStatus,'pending-midsize-review');assert.equal(accepted.data.rooferAssigned,false);
+  const legacy=await call('POST',{...lead,requestId:undefined});assert.match(legacy.data.requestId,/^[a-f0-9-]{36}$/);assert.equal(sent.at(-1).requestId,legacy.data.requestId);
+ } finally {global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
+});

@@ -54,6 +54,8 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
   const situationField = form.querySelector('[name="situation"]');
   const message = form.querySelector('.message');
   const submit = form.querySelector('[type="submit"]');
+  let requestId = crypto.randomUUID();
+  let sending = false;
 
   container.querySelectorAll('.help-choice').forEach((button) => {
     button.addEventListener('click', () => {
@@ -68,9 +70,12 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    if (sending) return;
+    sending = true;
     const data = new FormData(form);
     const result = getResult();
     const payload = {
+      requestId,
       name: data.get('name'),
       email: data.get('email'),
       phone: data.get('phone'),
@@ -94,11 +99,13 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(15000),
       });
       const responseData = await response.json();
-      if (!response.ok) throw new Error(responseData.error || 'We could not send your request.');
+      if (!response.ok || responseData.ok !== true) throw new Error(responseData.error || 'We could not send your request.');
       message.className = 'message ok';
-      message.textContent = 'Request received for MidSizeAI review. No roofer or inspection has been assigned. We may contact you about next steps.';
+      message.textContent = 'Request received for MidSizeAI review. Reference: ' + (responseData.requestId || requestId) + '. No roofer or inspection has been assigned. We may contact you about next steps.';
+      requestId = crypto.randomUUID();
       trackMicroApp('micro_app_lead_submitted', { tool, situation: payload.situation, result: payload.result, urgency: payload.urgency });
       form.reset();
     } catch (error) {
@@ -106,6 +113,7 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
       message.textContent = error.message || 'We could not send your request. Please try again.';
     } finally {
       submit.disabled = false;
+      sending = false;
     }
   });
 }
