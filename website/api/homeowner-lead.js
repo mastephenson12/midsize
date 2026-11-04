@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { waitUntil } from '@vercel/functions';
 import { notifyHomeownerRequest } from '../lib/homeowner-alert.js';
 import { ghlConfigured, deliverToGhl } from '../lib/ghl-homeowner.js';
 const productionOrigins = ['https://midsizeai.com', 'https://www.midsizeai.com', 'https://homeowner.midsizeai.com', 'https://roofers.midsizeai.com'];
@@ -83,7 +84,7 @@ export default async function handler(req, res) {
       if(!ghlConfigured())return res.status(503).json({ok:false,error:'Follow-up is temporarily unavailable. Please email mark@midsizeai.com.'});
       try {
         await deliverToGhl({...payload,requestId});
-        await notifyHomeownerRequest(payload);
+        waitUntil(notifyHomeownerRequest(payload));
         return res.status(200).json({ok:true, requestId, routingStatus: payload.routingStatus, rooferAssigned: false});
       } catch {
         console.error('GHL homeowner intake did not complete');
@@ -113,7 +114,7 @@ export default async function handler(req, res) {
       return res.status(502).json({ ok: false, error: 'We could not send your request. Please try again.' });
     }
 
-    await notifyHomeownerRequest(payload);
+    waitUntil(notifyHomeownerRequest(payload));
     return res.status(200).json({ ok: true, requestId, routingStatus: payload.routingStatus, rooferAssigned: false });
   } catch (error) {
     console.error('homeowner-lead request failed');
