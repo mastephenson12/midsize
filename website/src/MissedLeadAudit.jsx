@@ -1,105 +1,26 @@
 import React, { useEffect } from 'react';
 
-const bullets = [
-  'Missed-call and after-hours coverage review',
-  'Website and form response-time check',
-  'Lead follow-up and handoff review',
-  'Google Business Profile conversion check',
-  'Booking and scheduling friction review',
-  'One-page prioritized action plan',
-];
-
-export default function MissedLeadAudit() {
-  useEffect(() => {
-    const originalTitle = document.title;
-    const description = document.querySelector('meta[name="description"]');
-    const originalDescription = description?.getAttribute('content') || '';
-    document.title = '$99 Missed Lead Audit for Home-Service Companies | MidSize AI';
-    description?.setAttribute('content', 'A focused $99 review of where your roofing, HVAC, plumbing or other home-service company may be losing inbound leads and what to fix first.');
-    return () => {
-      document.title = originalTitle;
-      description?.setAttribute('content', originalDescription);
-    };
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <nav className="border-b border-slate-800 bg-slate-950 px-5 py-3">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-5">
-          <a href="/" className="rounded-lg bg-white px-2 py-1" aria-label="MidSize AI home">
-            <img src="/midsize-ai-logo.webp" alt="MidSize AI" className="h-12 w-auto sm:h-14" />
-          </a>
-          <a href="/missed-lead-calculator" className="text-sm font-bold text-slate-300 hover:text-white">Run the free calculator</a>
-        </div>
-      </nav>
-
-      <main>
-        <header className="border-b border-slate-900 px-6 py-16 text-center sm:py-24">
-          <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-amber-400">For roofing, HVAC, plumbing, electrical & home services</p>
-          <h1 className="mx-auto mt-5 max-w-5xl text-4xl font-black tracking-tight text-white sm:text-6xl">
-            Find out where your next customer is falling through the cracks.
-          </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-400 sm:text-xl">
-            I’ll review the path from first call or form submission through follow-up and booking, then give you a short action plan showing what to fix first.
-          </p>
-          <div className="mx-auto mt-8 inline-flex items-end gap-2 rounded-2xl border border-amber-400/30 bg-amber-400/10 px-6 py-4">
-            <span className="text-4xl font-black text-amber-300">$99</span>
-            <span className="pb-1 text-sm font-bold text-slate-300">one-time audit</span>
-          </div>
-          <div className="mt-7">
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=website&utm_campaign=99_missed_lead_audit&utm_content=hero" className="inline-block rounded-xl bg-amber-400 px-7 py-4 text-base font-black text-slate-950 transition hover:bg-amber-300">
-              Start My $99 Audit
-            </a>
-          </div>
-          <p className="mx-auto mt-3 max-w-xl text-xs text-slate-500">Submit the short application first. We’ll confirm fit and send payment instructions before the audit begins.</p>
-        </header>
-
-        <section className="px-6 py-14 sm:py-18">
-          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_.9fr]">
-            <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-blue-400">What gets reviewed</p>
-              <h2 className="mt-3 text-3xl font-black text-white">A revenue-leak review, not a 73-page consultant artifact.</h2>
-              <p className="mt-4 max-w-2xl text-slate-400">The goal is to identify obvious places where good leads wait too long, get lost, fail to book, or never receive a useful follow-up.</p>
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {bullets.map((item) => (
-                  <div key={item} className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
-                    <span className="font-bold text-amber-300">✓</span> <span className="font-bold text-white">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <aside className="rounded-3xl border border-slate-800 bg-slate-900/70 p-7 sm:p-8">
-              <h2 className="text-2xl font-black text-white">What you get</h2>
-              <ol className="mt-6 space-y-5 text-slate-300">
-                <li><strong className="text-white">1. Leak map.</strong> Where leads are most likely being lost or slowed down.</li>
-                <li><strong className="text-white">2. Priority fixes.</strong> The few changes most likely to improve response and booking.</li>
-                <li><strong className="text-white">3. Practical action plan.</strong> What you can fix yourself and where automation may actually help.</li>
-                <li><strong className="text-white">4. No forced software rebuild.</strong> We work around useful systems you already have instead of replacing things for sport.</li>
-              </ol>
-              <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=website&utm_campaign=99_missed_lead_audit&utm_content=sidebar" className="mt-8 block rounded-xl bg-blue-500 px-6 py-4 text-center font-black text-white hover:bg-blue-400">Request the Audit</a>
-            </aside>
-          </div>
-        </section>
-
-        <section className="border-y border-slate-900 bg-slate-900/30 px-6 py-14">
-          <div className="mx-auto max-w-5xl text-center">
-            <h2 className="text-3xl font-black text-white">Who this is for</h2>
-            <p className="mx-auto mt-4 max-w-3xl text-slate-400">Home-service companies already getting calls, forms, referrals or paid leads, but unsure how many opportunities disappear between first contact and a booked appointment.</p>
-            <p className="mx-auto mt-4 max-w-3xl text-sm text-slate-500">This is not a revenue guarantee. The audit identifies workflow opportunities based on the information you can provide.</p>
-          </div>
-        </section>
-
-        <section className="px-6 py-16 text-center">
-          <div className="mx-auto max-w-3xl rounded-3xl border border-amber-400/20 bg-gradient-to-br from-amber-400/10 to-blue-500/10 p-8 sm:p-12">
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-amber-400">First-dollar offer</p>
-            <h2 className="mt-3 text-3xl font-black text-white sm:text-4xl">Spend $99 to learn where leads may be leaking before spending thousands on another tool.</h2>
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=website&utm_campaign=99_missed_lead_audit&utm_content=bottom" className="mt-7 inline-block rounded-xl bg-amber-400 px-7 py-4 font-black text-slate-950 hover:bg-amber-300">Start My Audit</a>
-          </div>
-        </section>
-      </main>
-
-      <footer className="border-t border-slate-900 px-6 py-9 text-center text-xs text-slate-500">© {new Date().getFullYear()} MidSize AI</footer>
-    </div>
-  );
+const requestUrl='mailto:mark@midsizeai.com?subject='+encodeURIComponent('$99 enquiry-flow check — fit request')+'&body='+encodeURIComponent('Hi Mark,\n\nI would like to discuss the $99 enquiry-flow check.\n\nBusiness:\nWebsite:\nOne form to review:\nCurrent inbox or CRM:\nMy role:\n\nPlease confirm fit, delivery availability and written scope before sending payment instructions. I have not authorized a test submission yet.\n');
+const cta='inline-flex min-h-12 items-center rounded-xl bg-amber-400 px-6 py-4 font-bold text-slate-950 hover:bg-amber-300';
+const link='inline-flex min-h-11 items-center font-bold text-amber-300 underline';
+export default function MissedLeadAudit(){
+  useEffect(()=>{
+    const title=document.title,description=document.querySelector('meta[name="description"]'),original=description?.getAttribute('content')||'';
+    document.title='$99 Website Enquiry-Flow Check | MidSize AI';
+    description?.setAttribute('content','A fixed-scope check of one website form, its inbox or CRM destination, and the internal follow-up handoff. $99 once; implementation quoted separately.');
+    return()=>{document.title=title;description?.setAttribute('content',original);};
+  },[]);
+  return <div className="min-h-screen bg-slate-950 text-slate-100">
+    <nav aria-label="Main navigation" className="border-b border-slate-800 px-5 py-4"><div className="mx-auto flex max-w-5xl items-center justify-between gap-5"><a href="/" aria-label="MidSize AI home" className="rounded-lg bg-white px-2 py-1"><img src="/midsize-ai-logo.webp" alt="MidSize AI" className="h-12 w-auto" /></a><a href="/enquiry-flow-sample/" className={link}>See a sample report</a></div></nav>
+    <main>
+      <header className="mx-auto max-w-5xl px-6 py-14 sm:py-20"><p className="text-sm font-bold uppercase tracking-widest text-amber-300">For independent roofing and home-service businesses</p><h1 className="mt-5 max-w-4xl text-4xl font-black tracking-tight sm:text-6xl">Know where your website enquiries go—and who follows up.</h1><p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">We trace one website enquiry form to its inbox or CRM, then check the handoff to your team. You get a short evidence-based report and the fixes to tackle first.</p><p className="mt-7"><strong className="text-4xl text-amber-300">$99</strong><span className="ml-3 text-slate-300">one-time check · no subscription</span></p><a href={requestUrl} className={cta+' mt-7'}>Ask Mark about the $99 check</a><p className="mt-3 max-w-2xl text-sm text-slate-400">Opens your email app. We confirm fit, scope and delivery availability, then send payment instructions. Work starts after payment and your testing permission.</p><p className="mt-3 text-sm text-slate-300">Email app not opening? Write to <a href="mailto:mark@midsizeai.com" className={link}>mark@midsizeai.com</a>.</p></header>
+      <section aria-labelledby="scope-title" className="border-y border-slate-800 bg-slate-900/60 px-6 py-12"><div className="mx-auto grid max-w-5xl gap-9 md:grid-cols-2"><div><h2 id="scope-title" className="text-2xl font-bold">One form. One destination. One clear handoff.</h2><ul className="mt-5 list-disc space-y-3 pl-5 text-slate-300"><li>Review the form and confirmation message on mobile and desktop.</li><li>With your permission, submit one clearly labeled test enquiry and check its arrival with your team.</li><li>Check who receives it, who owns the next action, and how that action is recorded.</li><li>Deliver a concise report: observations, unverified steps, and up to three prioritized fixes.</li></ul></div><div><h2 className="text-2xl font-bold">Keep the purchase small.</h2><p className="mt-5 leading-relaxed text-slate-300">This reviews an existing process. Repairs, new integrations, AI agents, customer messaging, paid software and ongoing management require a separate quote. No revenue or booking outcome is promised.</p><p className="mt-4 leading-relaxed text-slate-300">You stay in control of your accounts. A screen share can be enough; do not email passwords, API keys or customer lists. If we cannot verify a step, the report says “not verified.”</p></div></div></section>
+      <section aria-labelledby="process-title" className="mx-auto max-w-5xl px-6 py-12"><h2 id="process-title" className="text-3xl font-bold">How the check works</h2><ol className="mt-6 grid gap-5 md:grid-cols-3">{[
+        ['1. Confirm the scope','Send your website and the form you want checked. We agree on the destination, test permission and delivery date in writing.'],
+        ['2. Pay, then test together','After the $99 payment, we run the agreed check with you or your designated staff member. No disguised homeowner enquiries.'],
+        ['3. Get a practical report','Review the evidence and next steps. Make changes yourself or request a separate implementation quote.'],
+      ].map(([title,body])=><li key={title} className="rounded-2xl border border-slate-700 p-5"><h3 className="font-bold text-amber-300">{title}</h3><p className="mt-3 text-slate-300">{body}</p></li>)}</ol><div className="mt-9 flex flex-wrap gap-5"><a href="/enquiry-flow-sample/" className={link}>Read the fictional sample report →</a><a href="/enquiry-flow-demo/" className={link}>Try the illustrative workflow demo →</a></div></section>
+      <section className="border-t border-slate-800 px-6 py-12"><div className="mx-auto max-w-5xl"><h2 className="text-2xl font-bold">Already getting website enquiries?</h2><p className="mt-4 max-w-2xl text-slate-300">This fits a business with a working website, an enquiry form, and someone able to show where submissions arrive. If you need a new website or full CRM setup, we will explain that before taking payment.</p><a href={requestUrl} className={cta+' mt-6'}>Ask about fit and availability</a></div></section>
+    </main><footer className="border-t border-slate-800 px-6 py-7 text-sm text-slate-400"><div className="mx-auto max-w-5xl">© {new Date().getFullYear()} MidSize AI · <a href="mailto:mark@midsizeai.com" className={link}>Contact Mark</a></div></footer>
+  </div>;
 }
