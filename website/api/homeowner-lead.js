@@ -111,13 +111,13 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Lead webhook returned', response.status);
-      return res.status(502).json({ ok: false, error: 'We could not send your request. Please try again.' });
+      return res.status(502).json({ ok: false, error: 'We could not confirm your request. Please try again or email mark@midsizeai.com.' });
     }
 
     waitUntil(notifyHomeownerRequest(payload));
     return res.status(200).json({ ok: true, requestId, routingStatus: payload.routingStatus, rooferAssigned: false });
   } catch (error) {
     console.error('homeowner-lead request failed');
-    return res.status(500).json({ ok: false, error: 'Something went wrong. Please try again.' });
+    return res.status(500).json({ ok: false, error: 'We could not confirm your request. Please try again or email mark@midsizeai.com.' });
   }
 }
