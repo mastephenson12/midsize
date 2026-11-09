@@ -110,7 +110,9 @@ export function wireHelpRequest({ container, form, tool, getResult }) {
       form.reset();
     } catch (error) {
       message.className = 'message error';
-      message.textContent = error.message || 'We could not send your request. Please try again.';
+      message.textContent = ['TimeoutError', 'AbortError', 'TypeError'].includes(error.name)
+        ? 'We could not confirm your request. Reference: ' + requestId + '. Retry here to use the same reference, or email mark@midsizeai.com and include it.'
+        : (error.message || 'We could not confirm your request. Please try again or email mark@midsizeai.com.');
     } finally {
       submit.disabled = false;
       sending = false;
