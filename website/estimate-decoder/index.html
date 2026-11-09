@@ -195,7 +195,7 @@ document.getElementById('leadform').addEventListener('submit', async (event)=>{
     const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)}); const data = await response.json();
     if(!response.ok||data.ok!==true) throw new Error(data.error || 'We could not send your request.');
     msg.className='leadmsg ok'; msg.textContent='Request received for MidSizeAI review. Reference: '+(data.requestId||leadRequestId)+'. No roofer or inspection has been assigned. We may contact you about next steps.'; leadRequestId=crypto.randomUUID(); document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
-  } catch(error) { msg.className='leadmsg err'; msg.textContent=error.message || 'We could not send your request. Please try again.'; }
+  } catch(error) { msg.className='leadmsg err'; msg.textContent=['TimeoutError','AbortError','TypeError'].includes(error.name) ? 'We could not confirm your request. Please retry with the same request reference or email mark@midsizeai.com.' : (error.message || 'We could not confirm your request. Please try again or email mark@midsizeai.com.'); }
   finally { submit.disabled=false; leadSending=false; }
 });
 </script>
