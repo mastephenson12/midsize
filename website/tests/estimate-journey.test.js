@@ -65,3 +65,28 @@ test('follow-up retries retain a reference, block overlapping submits, and requi
  const next=submit();assert.notEqual(sent[2].requestId,sent[1].requestId);
  pending.shift()({ok:false,json:async()=>({error:'Unavailable'})});await next;
 });
+
+for (const failure of ['TimeoutError', 'AbortError', 'TypeError']) {
+ test(`${failure} preserves request details and reference for a safe retry`, async()=>{
+  const sent=[]; let fail=true;
+  const p=page(async(url,options)=>{
+   sent.push(JSON.parse(options.body));
+   if(fail){const error=new Error('Technical detail');error.name=failure;throw error;}
+   return {ok:true,json:async()=>({ok:true,requestId:sent.at(-1).requestId})};
+  });
+  p.get('name').value='Example Homeowner';p.get('email').value='example@example.com';
+  p.get('estimate').value='PRIVATE ESTIMATE TEXT';
+  const submit=()=>p.get('leadform').handlers.submit({preventDefault(){}});
+  await submit();
+  assert.equal(p.get('leadmsg').className,'leadmsg err');
+  assert.ok(p.get('leadmsg').textContent.includes(sent[0].requestId));
+  assert.match(p.get('leadmsg').textContent,/could not confirm|mark@midsizeai.com/);
+  assert.doesNotMatch(p.get('leadmsg').textContent,/Request received|Technical detail/);
+  assert.equal(p.get('submitLead').disabled,false);
+  assert.equal(p.get('name').value,'Example Homeowner');
+  assert.ok(!JSON.stringify(sent[0]).includes('PRIVATE ESTIMATE TEXT'));
+  fail=false;await submit();
+  assert.equal(sent[1].requestId,sent[0].requestId);
+  assert.equal(p.get('leadmsg').className,'leadmsg ok');
+ });
+}
