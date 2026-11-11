@@ -152,6 +152,14 @@
       "destination": "/roofers"
     },
     {
+      "source": "/missed-lead-audit",
+      "destination": "/"
+    },
+    {
+      "source": "/missed-lead-audit/",
+      "destination": "/"
+    },
+    {
       "source": "/missed-lead-calculator",
       "destination": "/calculator"
     },
