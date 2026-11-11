@@ -6,6 +6,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
+      <div className="bg-amber-400 text-slate-950 text-center px-4 py-2 text-sm font-semibold">Explore our approved service packages and transparent starting prices: <a className="underline font-extrabold" href="https://www.midsizeai.com/pricing/">Services &amp; Pricing</a></div>
       {/* Top Utility Bar */}
       <div className="bg-amber-400/10 border-b border-amber-400/20 py-2 px-6 text-center text-xs text-amber-300 font-medium">
         Have a roofing estimate you want to understand?{' '}
