@@ -23,9 +23,9 @@ export default function App() {
           <div className="flex items-center gap-3">
             <a href="/" aria-label="MidSize AI home" className="shrink-0 rounded-lg bg-white px-2 py-1">
               <img
-                src="/midsize-ai-logo.webp"
+                src="/midsizeai-header-logo.png"
                 alt="MidSize AI — Smart AI solutions for home service businesses"
-                className="h-14 sm:h-16 w-auto"
+                className="block w-[min(45vw,12rem)] sm:w-56 aspect-[4.8/1] object-cover object-[50%_48.5%]"
               />
             </a>
             <span className="hidden sm:inline-flex text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
