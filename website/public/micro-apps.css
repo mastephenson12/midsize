@@ -112,3 +112,6 @@ button, input, select { font: inherit; }
   .question { min-height: 0; }
   .full { grid-column: auto; }
 }
+
+/* Wide current MidSizeAI wordmark: preserve the complete roof and name. */
+.brand img[src*="midsizeai-header-"]{width:min(38vw,180px);height:auto;border-radius:6px;object-fit:contain;background:#fff;padding:4px;flex-shrink:0}
