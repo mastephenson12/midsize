@@ -35,7 +35,7 @@
       <label id="reviewUpload" hidden style="margin-top:16px;font-weight:500"><input type="checkbox" id="reviewed"> I checked the extracted text against every page, including amounts and exclusions.</label><div class="actions"><button class="btn" id="analyze">Evaluate my estimate</button><button class="btn secondary" id="sample">Try a sample estimate</button><button class="btn secondary" id="clear">Clear</button></div>
 
       <p id="inputError" role="alert" class="helper"></p><div class="results" id="results" aria-live="polite">
-        <div class="scorebox" style="grid-template-columns:1fr"><div class="scorecopy"><p class="eyebrow">Your estimate, explained</p><h2 id="headline" tabindex="-1">Your reading checklist</h2><p id="summary"></p><p style="margin-top:12px;font-size:.85rem">This checks wording, not workmanship, price fairness, or whether work is actually included.</p></div></div><section class="nextstep" aria-labelledby="nextStepTitle"><p class="eyebrow">Your next step</p><h3 id="nextStepTitle">Ask your roofer for written clarification</h3><p>Start with these questions from your estimate. Ask for the answers in an updated written scope before deciding.</p><ol id="nextQuestions"></ol><button class="btn" id="copyQuestions">Copy questions for my roofer</button><p class="helper">Copies the full question list without your estimate text or personal details. Paste it into your own email or message; nothing is sent automatically.</p></section><div class="actions"><button class="btn secondary" id="downloadReport">Download my evaluation</button><button class="btn secondary" id="printReport">Print</button></div><p id="reportStatus" role="status" class="helper"></p>
+        <div class="scorebox" style="grid-template-columns:1fr"><div class="scorecopy"><p class="eyebrow">Your estimate, explained</p><h2 id="headline" tabindex="-1">Your reading checklist</h2><p id="summary"></p><p style="margin-top:12px;font-size:.85rem">This checks wording, not workmanship, price fairness, or whether work is actually included.</p></div></div><section class="nextstep" aria-labelledby="nextStepTitle"><p class="eyebrow">Your next step</p><h3 id="nextStepTitle">Ask your roofer for written clarification</h3><p>Start with these questions from your estimate. Ask for the answers in an updated written scope before deciding.</p><ol id="nextQuestions"></ol><button class="btn" id="copyQuestions">Copy message for my roofer</button><button class="btn secondary" id="downloadQuestions" type="button">Download message</button><details><summary>Preview the message</summary><pre id="contractorMessage" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit"></pre></details><p class="helper">Creates a polite message with the full question list, without your estimate text or personal details. Paste it into your own email or message; nothing is sent automatically.</p></section><div class="actions"><button class="btn secondary" id="downloadReport">Download my evaluation</button><button class="btn secondary" id="printReport">Print</button></div><p id="reportStatus" role="status" class="helper"></p>
         <div class="panel questions" id="attentionPanel"><h3>Check these first</h3><div id="attention"></div></div><div class="columns"><details class="panel"><summary>Topics mentioned in your estimate</summary><div id="coverage"></div></details><div class="panel"><h3>Clarify before you compare</h3><div id="clarify"></div></div></div>
         <details class="panel questions"><summary>View the full question list</summary><ol id="questions"></ol></details>
         <div class="notice"><strong>Important:</strong> This is an educational text check, not a roof inspection, contract review, engineering opinion, legal opinion, or insurance coverage determination. A missing keyword does not prove a contractor omitted the work. Ask for clarification in writing.</div>
@@ -73,7 +73,7 @@
   <footer class="wrap footer"><p><a href="https://www.midsizeai.com/#homeowner-tools">More homeowner tools</a> · <a href="https://www.midsizeai.com/">Explore MidSize AI</a></p>Built by <a href="https://www.midsizeai.com/#homeowner-tools">The Honest Roofer</a>, a homeowner-first MidSizeAI resource. Educational use only.</footer>
 
 <script type="module">
-import { evaluateEstimate, reportText } from '/src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, contractorMessage } from '/src/estimateEvaluator.js';
 import { createUploadReader } from '/src/estimateUpload.js';
 let latestScore = null;
 let leadRequestId = crypto.randomUUID();
@@ -130,6 +130,7 @@ function analyze(){
     document.getElementById('coverage').innerHTML=result.rows.filter(r=>r.status==='Mentioned').map(makeItem).join('')||'<p>No unqualified topic mentions detected. Review the questions alongside your full estimate.</p>';
     document.getElementById('clarify').innerHTML=result.rows.filter(r=>r.status!=='Mentioned').map(makeItem).join('')||'<p>No keyword gaps detected. Verify the complete scope with your contractor.</p>';
     document.getElementById('nextQuestions').innerHTML=result.questions.slice(0,3).map(q=>'<li>'+escapeHtml(q)+'</li>').join('');
+    document.getElementById('contractorMessage').textContent=contractorMessage(result);
     document.getElementById('questions').innerHTML=result.questions.map(q=>'<li>'+escapeHtml(q)+'</li>').join('');
     document.getElementById('reportStatus').textContent='Downloads include quoted text. Keep your copy private.';
     document.getElementById('results').style.display='block';
@@ -145,10 +146,21 @@ document.getElementById('downloadReport').addEventListener('click',()=>{
   const link=document.createElement('a');link.href=url;link.download='midsize-estimate-evaluation.txt';document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   document.getElementById('reportStatus').textContent='Download requested. Your report includes quoted estimate text.';
 });
+document.getElementById('downloadQuestions').addEventListener('click',()=>{
+  if(!latestEvaluation)return;
+  const status=document.getElementById('reportStatus');
+  let url, link;
+  try{
+    url=URL.createObjectURL(new Blob([contractorMessage(latestEvaluation)],{type:'text/plain;charset=utf-8'}));
+    link=document.createElement('a');link.href=url;link.download='questions-for-my-roofer.txt';document.body.appendChild(link);link.click();
+    status.textContent='Message download requested. Open questions-for-my-roofer.txt in Downloads, review it, then send it yourself. Nothing has been sent.';
+  }catch{status.textContent='Download unavailable. Copy the message or select the text in Preview the message.';}
+  finally{if(link)link.remove();if(url)setTimeout(()=>URL.revokeObjectURL(url),1000);}
+});
 document.getElementById('copyQuestions').addEventListener('click',async()=>{
   if(!latestEvaluation)return;
-  try{await navigator.clipboard.writeText(latestEvaluation.questions.map((q,i)=>(i+1)+'. '+q).join('\n'));document.getElementById('reportStatus').textContent='Questions copied. Paste them into a message to your roofer.';}
-  catch{document.getElementById('reportStatus').textContent='Copy unavailable. Download the evaluation or select the questions below.';}
+  try{await navigator.clipboard.writeText(contractorMessage(latestEvaluation));document.getElementById('reportStatus').textContent='Message copied. Review it, then paste it into your own email or message to your roofer.';}
+  catch{document.getElementById('reportStatus').textContent='Copy unavailable. Use Download message or select the text in Preview the message.';}
 });
 document.getElementById('printReport').addEventListener('click',()=>window.print());
 let printDetails=[];

@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
-import { evaluateEstimate, reportText } from '../src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, contractorMessage } from '../src/estimateEvaluator.js';
 
 function page(fetch) {
   const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
@@ -14,7 +14,7 @@ function page(fetch) {
   const events={}; let copied='';
   const document={getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
   let sequence=0;
-  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
+  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,contractorMessage,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
   const script=readFileSync(new URL('../estimate-decoder/index.html',import.meta.url),'utf8').match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;\n/gm,'');
   vm.runInContext(script,context);
   return {get,choices,events,details,context,copy:()=>copied};
@@ -28,7 +28,7 @@ test('results prioritize clarification and copy only questions while printing pr
   assert.match(p.get('nextQuestions').innerHTML,/flashing|extra charges/i);
   assert.ok((p.get('nextQuestions').innerHTML.match(/<li>/g)||[]).length<=3);
   await p.get('copyQuestions').handlers.click();
-  assert.match(p.copy(),/Which flashings/);assert.doesNotMatch(p.copy(),/PRIVATE OWNER|15000/);
+  assert.match(p.copy(),/Thank you for preparing/);assert.match(p.copy(),/updated written proposal/);assert.equal(p.get('contractorMessage').textContent,p.copy());assert.match(p.copy(),/Which flashings/);assert.doesNotMatch(p.copy(),/PRIVATE OWNER|15000/);
   p.events.beforeprint();assert.ok(p.details.every(d=>d.open));
   p.events.afterprint();assert.equal(p.details[0].open,false);assert.equal(p.details[1].open,true);
 });

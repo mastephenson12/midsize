@@ -54,3 +54,9 @@ export function evaluateEstimate(raw, project = 'replacement') {
 export function reportText(result) {
   return ['MidSize AI | Roofing estimate reading checklist', 'Automated wording check. Not a price rating, inspection or verification of included work.', '', 'CHECK THESE FIRST', ...result.attention.map(item=>`${item.title}\n${item.detail}\n${item.evidence.map(s=>`  Text: ${s}`).join('\n')}\nAsk: ${item.question}`), '', ...result.rows.map(row => `${row.name}: ${row.status}\n${row.evidence.map(line => `  Text: ${line}`).join('\n')}\nAsk: ${row.question}`), '', 'QUESTIONS TO ASK', ...result.questions.map((q,i) => `${i+1}. ${q}`), '', 'Keep this report private: quoted estimate text may contain personal information.', 'More homeowner tools: https://www.midsizeai.com/#homeowner-tools'].join('\n');
 }
+
+
+// Use generated questions only: never include quoted estimate text or intake fields.
+export function contractorMessage(result) {
+  return ['Hello,', '', 'Thank you for preparing the roofing estimate. Before I decide, could you please clarify the following in writing?', '', ...result.questions.map((q, i) => `${i + 1}. ${q}`), '', 'If an answer changes the price or scope, please include it in an updated written proposal so I can review everything together.', '', 'Thank you.'].join('\n');
+}
