@@ -117,7 +117,7 @@ export default function SamanthaDemo() {
       <nav className="border-b border-slate-800 bg-slate-950/95 px-5 py-3">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <a href="/" className="rounded-lg bg-white px-2 py-1" aria-label="MidSize AI home">
-            <img src="/midsize-ai-logo.webp" alt="MidSize AI" className="h-12 w-auto" />
+            <img src="/midsizeai-header-672.png" alt="MidSize AI" className="h-12 w-auto" />
           </a>
           <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=demo&utm_campaign=samantha_demo" className="rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950 hover:bg-amber-300">
             Request Free Workflow Review
