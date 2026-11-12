@@ -27,7 +27,7 @@ export default function MissedLeadAudit() {
       <nav className="border-b border-slate-800 bg-slate-950 px-5 py-3">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-5">
           <a href="/" className="rounded-lg bg-white px-2 py-1" aria-label="MidSize AI home">
-            <img src="/midsize-ai-logo.webp" alt="MidSize AI" className="h-12 w-auto sm:h-14" />
+            <img src="/midsizeai-header-672.png" alt="MidSize AI" className="h-12 w-auto sm:h-14" />
           </a>
           <a href="/missed-lead-calculator" className="text-sm font-bold text-slate-300 hover:text-white">Run the free calculator</a>
         </div>

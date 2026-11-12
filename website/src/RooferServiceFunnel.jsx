@@ -133,7 +133,7 @@ function RooferServiceFunnel() {
       <nav className="border-b border-slate-800 bg-slate-950 px-4 py-3 sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <a href="/" className="flex items-center gap-3" aria-label="MidSize AI roofing division home">
-            <span className="rounded-lg bg-white px-2 py-1"><img src="/midsize-ai-logo.webp" alt="MidSize AI" className="h-12 w-auto" /></span>
+            <span className="rounded-lg bg-white px-2 py-1"><img src="/midsizeai-header-672.png" alt="MidSize AI" className="h-12 w-auto" /></span>
             <span className="text-xs font-bold uppercase tracking-[0.18em] text-amber-400">Roofing Division</span>
           </a>
           <div className="flex flex-wrap gap-3 text-sm text-slate-400">
