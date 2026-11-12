@@ -97,7 +97,7 @@ function RoofingApp() {
       <nav className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/90 px-4 py-2 backdrop-blur-md sm:px-6">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <a href="/" aria-label="MidSize AI for Roofers home" className="flex items-center gap-3">
-            <span className="shrink-0 rounded-lg bg-white px-2 py-1"><img src="/midsizeai-header-672.png" alt="MidSize AI" className="h-14 w-auto sm:h-16" /></span>
+            <span className="shrink-0 rounded-lg bg-white px-2 py-1"><img src="/midsizeai-header-672.png" alt="MidSize AI" className="block h-auto w-[min(38vw,10rem)] sm:w-56" /></span>
             <span className="hidden text-xs font-bold uppercase tracking-[0.18em] text-amber-400 sm:block">Roofing Division</span>
           </a>
           <div className="flex items-center gap-3 text-sm">
