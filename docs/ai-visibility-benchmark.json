@@ -1,0 +1,60 @@
+{
+  "site": "midsizeai",
+  "created": "2026-11-13",
+  "status": "Not yet measured",
+  "instructions": "Run identical unbranded prompts in a fresh conversation with web/search enabled on each platform. Log each run separately; do not interpret one response as universal visibility.",
+  "prompts": [
+    {
+      "id": "midsizeai-01",
+      "prompt": "How can I compare two roofing estimates before signing?"
+    },
+    {
+      "id": "midsizeai-02",
+      "prompt": "Why do roofers quote different prices for the same roof?"
+    },
+    {
+      "id": "midsizeai-03",
+      "prompt": "What does a roofing estimate exclude?"
+    },
+    {
+      "id": "midsizeai-04",
+      "prompt": "How do I compare financing for a roof replacement?"
+    },
+    {
+      "id": "midsizeai-05",
+      "prompt": "What is a CLUE report and how does it affect homeowners insurance?"
+    },
+    {
+      "id": "midsizeai-06",
+      "prompt": "How can a roofing contractor organize insurance payment documents?"
+    },
+    {
+      "id": "midsizeai-07",
+      "prompt": "What should an AI receptionist for a roofing company do?"
+    },
+    {
+      "id": "midsizeai-08",
+      "prompt": "How can roofers improve estimate follow-up?"
+    }
+  ],
+  "platforms": [
+    "ChatGPT",
+    "Perplexity",
+    "Gemini",
+    "Copilot"
+  ],
+  "result_fields": [
+    "run_date",
+    "platform",
+    "model_or_mode",
+    "search_enabled",
+    "locale",
+    "prompt_id",
+    "brand_mentioned",
+    "site_cited",
+    "cited_url",
+    "response_evidence",
+    "notes"
+  ],
+  "runs": []
+}

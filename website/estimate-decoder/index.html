@@ -15,6 +15,7 @@
     .uploadbox{margin-bottom:22px;padding:22px;border:2px dashed #aebdca;border-radius:14px;background:#f7fafc;text-align:center}.uploadbox.drag{border-color:var(--orange);background:#fff5ec}.uploadbox input{position:absolute;width:1px;height:1px;overflow:hidden;opacity:0}.uploadbox label{display:inline-flex;margin:0;cursor:pointer}.uploadbox p{margin:10px 0 0;color:var(--muted);font-size:.84rem}.file-status{min-height:24px;margin:10px 0 0;font-size:.86rem;font-weight:800;color:var(--blue)}.file-status.err{color:var(--red)}.divider{display:flex;align-items:center;gap:14px;margin:4px 0 20px;color:#7a8793;font-size:.78rem;font-weight:900;text-transform:uppercase;letter-spacing:.1em}.divider:before,.divider:after{content:'';height:1px;flex:1;background:var(--line)}
   .nextstep{margin-top:20px;padding:22px;border:2px solid #f47b20;border-radius:14px;background:#fff8f1}.nextstep h3{margin:10px 0;font-size:1.35rem}.nextstep li{margin:12px 0}.nextstep .eyebrow{background:#ffe3cc;color:#7b3600}.panel summary{font-weight:900;cursor:pointer;min-height:44px}#helpStatus,#helpFallback{color:#d8e5ef}#helpFallback a{color:#ffad70;text-decoration:underline} .choice[aria-pressed="true"]{border-color:#ff9950}
   blockquote{margin:12px 0;padding:12px;border-left:3px solid #9eb4c4;background:#f5f8fa;font-size:.85rem;overflow-wrap:anywhere}[hidden]{display:none!important}.btn:disabled{opacity:.5;cursor:wait}button:focus-visible,a:focus-visible{outline:3px solid #2e6d9c;outline-offset:4px}@media print{.top,.hero,.uploadbox,.divider,textarea,#project,label,.actions,.helpbox,.cta,.footer,.helper{display:none!important}.app{margin:0;width:100%}.card{box-shadow:none;border:0;padding:0}.results{display:block!important}.columns{display:block}.item{break-inside:avoid}.scorebox{background:white;color:black}.scorecopy p{color:black}}</style>
+<script defer src="/ai-referral-tracking.js" data-ga-id="G-GMPF16SQ8L" data-site="midsizeai"></script>
 </head>
 <body>
   <header class="top"><div class="wrap"><a class="brand" href="https://www.midsizeai.com/">MidSize AI<small>Homeowner tools · The Honest Roofer</small></a><a class="back" href="https://www.midsizeai.com/#homeowner-tools">← Homeowner tools</a></div></header>
@@ -117,7 +118,7 @@ function makeItem(row){
   const note = row.status==='Mentioned' ? 'Mentioned is not confirmed coverage. Check the exact responsibility and limits.' : row.status==='Scope dependent' ? 'May not apply to this repair; confirm with your roofer.' : row.status==='Not found' ? 'No matching wording found. This could be covered elsewhere.' : 'This wording may contain an exclusion, condition or additional cost. Read the full clause.';
   return '<div class="item"><span class="status '+(row.status==='Mentioned'?'good':'check')+'">'+row.status+'</span><strong>'+escapeHtml(row.name)+'</strong><p>'+note+'</p>'+row.evidence.map(q=>'<blockquote>'+escapeHtml(q)+'</blockquote>').join('')+'<p><b>Ask:</b> '+escapeHtml(row.question)+'</p></div>';
 }
-function analyze(){
+function analyze(mode){
   invalidate();
   try {
     if(reading)throw new Error("Wait for reading to finish or cancel the upload.");
@@ -134,6 +135,7 @@ function analyze(){
     document.getElementById('questions').innerHTML=result.questions.map(q=>'<li>'+escapeHtml(q)+'</li>').join('');
     document.getElementById('reportStatus').textContent='Downloads include quoted text. Keep your copy private.';
     document.getElementById('results').style.display='block';
+    try { document.dispatchEvent(new CustomEvent('site:measurement',{detail:{action:mode==='sample'?'estimate_sample_completed':'estimate_review_completed'}})); } catch (_) { /* Measurement must never interrupt the result. */ }
     document.getElementById('headline').focus();
     document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
   } catch(error) { invalidate(); document.getElementById('inputError').textContent=error.message; }
@@ -175,7 +177,7 @@ fileInput.addEventListener('change',event=>handleFiles(event.target.files));
 ['dragenter','dragover'].forEach(name=>uploadbox.addEventListener(name,event=>{event.preventDefault();uploadbox.classList.add('drag');}));
 ['dragleave','drop'].forEach(name=>uploadbox.addEventListener(name,event=>{event.preventDefault();uploadbox.classList.remove('drag');}));
 uploadbox.addEventListener('drop',event=>handleFiles(event.dataTransfer.files));
-document.getElementById('sample').addEventListener('click',()=>{stopReading();needsReview=false;document.getElementById('reviewUpload').hidden=true;setFileStatus('');document.getElementById('estimate').value='Remove one layer of existing asphalt shingles down to roof decking. Replace damaged decking at $95 per sheet with owner approval. Install synthetic underlayment, architectural shingles, starter, ridge cap, new drip edge and pipe flashings. Install ridge ventilation where applicable. Contractor will obtain required permit and haul away roofing debris. Includes 10-year workmanship warranty and manufacturer limited warranty. Total price $18,750. Deposit $1,875, balance due after final inspection. Additional structural repairs are not included and require a written change order.'; analyze();});
+document.getElementById('sample').addEventListener('click',()=>{stopReading();needsReview=false;document.getElementById('reviewUpload').hidden=true;setFileStatus('');document.getElementById('estimate').value='Remove one layer of existing asphalt shingles down to roof decking. Replace damaged decking at $95 per sheet with owner approval. Install synthetic underlayment, architectural shingles, starter, ridge cap, new drip edge and pipe flashings. Install ridge ventilation where applicable. Contractor will obtain required permit and haul away roofing debris. Includes 10-year workmanship warranty and manufacturer limited warranty. Total price $18,750. Deposit $1,875, balance due after final inspection. Additional structural repairs are not included and require a written change order.'; analyze('sample');});
 document.getElementById('clear').addEventListener('click',()=>{stopReading();needsReview=false;document.getElementById('reviewUpload').hidden=true;invalidate();document.getElementById('estimate').value='';document.getElementById('results').style.display='none';latestScore=null;setFileStatus('');document.getElementById('estimate').focus();});
 
 document.querySelectorAll('.choice').forEach(button => button.addEventListener('click',async()=>{
