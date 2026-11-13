@@ -44,13 +44,6 @@ const resources = [
     cta: 'Check My AC Symptoms',
   },
   {
-    label: 'Free Cost Tool',
-    title: 'Roof Replacement Estimator',
-    description: 'Build a low-to-high educational roof replacement range based on square footage, pitch, and material choices before speaking with a salesperson.',
-    href: 'https://estimator.midsizeai.com/',
-    cta: 'Estimate My Roof Cost',
-  },
-  {
     label: 'Free Checklist',
     title: '10 Questions Before Hiring a Roofer',
     description: 'Use a practical pre-hire checklist to compare contractors, clarify the written scope, and slow down pressure decisions before signing.',
