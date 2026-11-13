@@ -1,5 +1,5 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import RoofingApp from './RoofingApp.jsx'
 import MissedLeadCalculator from './MissedLeadCalculator.jsx'
@@ -20,8 +20,20 @@ const isRoofingDomain =
   window.location.hostname === 'roofers.midsizeai.com' ||
   new URLSearchParams(window.location.search).get('site') === 'roofers'
 
-createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+const page = (
   <StrictMode>
     {isSamanthaDemoPath ? <SamanthaDemo /> : isAuditPath ? <MissedLeadAudit /> : isCalculatorPath ? <MissedLeadCalculator /> : isRoofingDomain && isRooferServicePath ? <RooferServiceFunnel /> : isRoofingDomain ? <RoofingApp /> : <App />}
   </StrictMode>,
 )
+
+// Rewrites also serve these HTML files for tools and service funnels. Hydrate only
+// when the requested component matches the build-time page; otherwise mount it.
+const isHomePage = !isSamanthaDemoPath && !isAuditPath && !isCalculatorPath && !isRoofingDomain
+const isRoofersPage = !isSamanthaDemoPath && !isAuditPath && !isCalculatorPath && isRoofingDomain && !isRooferServicePath
+if ((root.dataset.prerender === 'home' && isHomePage) ||
+    (root.dataset.prerender === 'roofers' && isRoofersPage)) {
+  hydrateRoot(root, page)
+} else {
+  createRoot(root).render(page)
+}
