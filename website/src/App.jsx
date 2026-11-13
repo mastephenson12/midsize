@@ -104,6 +104,12 @@ export default function App() {
             Check My Roofing Estimate
           </a>
           <a
+            href="https://estimator.midsizeai.com/"
+            className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
+          >
+            Estimate My Roof Cost
+          </a>
+          <a
             href="/roofers?utm_source=midsizeai.com&utm_medium=hero&utm_campaign=audience_split"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
