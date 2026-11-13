@@ -399,6 +399,10 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-900 py-10 text-center text-slate-500 text-xs">
         <p>&copy; {new Date().getFullYear()} MidSize AI &bull; The Honest Roofer Podcast. All rights reserved.</p>
+        <nav aria-label="Legal information" className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <a href="/privacy-policy" className="text-slate-400 underline underline-offset-4 hover:text-amber-400">Privacy Policy</a>
+          <a href="/terms-of-service" className="text-slate-400 underline underline-offset-4 hover:text-amber-400">Terms of Service</a>
+        </nav>
       </footer>
     </div>
   );
