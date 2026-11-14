@@ -2,6 +2,13 @@ import React from 'react';
 
 const resources = [
   {
+    label: 'Free Comparison Worksheet',
+    title: 'Compare Roofing Quotes',
+    description: 'Compare up to three written proposals on materials, scope, extra charges, warranties and payment milestones. Print or download your notes before deciding.',
+    href: '/compare-roofing-estimates/',
+    cta: 'Compare My Quotes',
+  },
+  {
     label: 'Homeowner Library',
     title: 'The Honest Roofer',
     description: 'Straight answers about estimates, repairs, replacement, insurance questions, ventilation, and contractor red flags before you hire a roofer.',
