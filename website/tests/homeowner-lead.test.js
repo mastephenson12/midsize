@@ -67,3 +67,16 @@ test('request reference survives webhook retries and is returned only on accepta
   const legacy=await call('POST',{...lead,requestId:undefined});assert.match(legacy.data.requestId,/^[a-f0-9-]{36}$/);assert.equal(sent.at(-1).requestId,legacy.data.requestId);
  } finally {global.fetch=oldFetch;if(prior===undefined)delete process.env.HOMEOWNER_LEAD_WEBHOOK_URL;else process.env.HOMEOWNER_LEAD_WEBHOOK_URL=prior;}
 });
+
+test('readiness identifies selected path without returning credentials or destinations',async()=>{
+ const prior=process.env.GHL_HOMEOWNER_ENABLED;
+ try {
+  for(const [flag,mode] of [['true','direct-crm'],['false','webhook'],['TRUE','webhook']]){
+   process.env.GHL_HOMEOWNER_ENABLED=flag;
+   const response=await call('GET');
+   assert.equal(response.code,200);
+   assert.equal(response.data.intakeMode,mode);
+   assert.deepEqual(Object.keys(response.data).sort(),['intakeMode','ready']);
+  }
+ }finally{if(prior===undefined)delete process.env.GHL_HOMEOWNER_ENABLED;else process.env.GHL_HOMEOWNER_ENABLED=prior;}
+});
