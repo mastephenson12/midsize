@@ -121,16 +121,16 @@ async function handleFiles(files){
 }
 document.getElementById('cancelUpload').addEventListener('click',()=>{stopReading();setFileStatus('Reading canceled. Your previous text has been kept.');});
 const componentGuides = [
-  {name:'Decking',terms:/\\b(decking|sheathing|plywood|osb|roof deck)\\b/i,
+  {name:'Decking',terms:/\b(decking|sheathing|plywood|osb|roof deck)\b/i,
     meaning:'The panels that support the roofing system. “As needed” may leave the amount and cost of hidden repairs unclear.',
     questions:['Is any decking replacement included in the total?','What is the unit price per sheet or square foot, including labor and disposal?','Will you document damage and get my written approval before extra work?']},
-  {name:'Underlayment',terms:/\\b(underlayment|felt paper|synthetic felt|ice.and.water|water barrier|self.adhered membrane)\\b/i,
+  {name:'Underlayment',terms:/\b(underlayment|felt paper|synthetic felt|ice.and.water|water barrier|self.adhered membrane)\b/i,
     meaning:'A water-resistant layer beneath the roof covering. A mention may not tell you which product or where it is installed.',
     questions:['Which manufacturer and product are specified?','Where will underlayment and any additional water protection go?','Does the assembly follow the product instructions and applicable code?']},
-  {name:'Flashing',terms:/\\b(flashing|pipe boots?|drip edge|step flash|counterflash|valley metal)\\b/i,
+  {name:'Flashing',terms:/\b(flashing|pipe boots?|drip edge|step flash|counterflash|valley metal)\b/i,
     meaning:'Details that help direct water away from joints, edges and roof penetrations. Clarify whether pieces are replaced or reused.',
     questions:['Which valleys, roof-to-wall joints, pipe boots, skylights and penetrations get new flashing?','What will be reused?','Are any flashing changes excluded or an extra charge?']},
-  {name:'Ventilation',terms:/\\b(ventilation|ridge vents?|soffit vents?|attic vents?|intake vents?|exhaust vents?)\\b/i,
+  {name:'Ventilation',terms:/\b(ventilation|ridge vents?|soffit vents?|attic vents?|intake vents?|exhaust vents?)\b/i,
     meaning:'The attic airflow plan, which may involve intake and exhaust. One type of vent alone does not establish adequacy.',
     questions:['What intake and exhaust ventilation is proposed?','How did you determine the required type and amount?','Are changes to intake vents included in this price?']}
 ];
