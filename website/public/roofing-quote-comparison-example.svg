@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+<title id="title">Sample comparison of two roofing quotes</title>
+<desc id="desc">Illustrative quote A is $12,900 with shingles, underlayment and a ten-year workmanship warranty, but decking, flashing, and payment terms need clarification. Illustrative quote B is $16,400 and specifies decking at $95 per sheet, flashing, vents and payment terms, but excludes skylight replacement. Neither bid is declared better.</desc>
+<rect width="1200" height="680" rx="28" fill="#0f2337"/>
+<path d="M0 0H1200V160L780 0Z" fill="#1d3a51"/>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="52" y="65" fill="#fbbf24" font-size="22" font-weight="700" letter-spacing="2">MIDSIZE AI  /  HOMEOWNER TOOLS</text>
+<text x="52" y="120" fill="#fff" font-size="46" font-weight="800">Same roof. <tspan fill="#fbbf24">Different price.</tspan></text>
+<text x="52" y="157" fill="#c7d5e2" font-size="23">Compare what each written quote actually includes.</text>
+<rect x="46" y="191" width="536" height="372" rx="18" fill="#fff"/>
+<rect x="46" y="191" width="536" height="77" rx="18" fill="#263f54"/>
+<rect x="46" y="249" width="536" height="19" fill="#263f54"/>
+<text x="72" y="240" fill="#fff" font-size="28" font-weight="700">Quote A</text>
+<text x="554" y="240" text-anchor="end" fill="#fbbf24" font-size="34" font-weight="800">$12,900</text>
+<rect x="614" y="191" width="540" height="372" rx="18" fill="#fff"/>
+<rect x="614" y="191" width="540" height="77" rx="18" fill="#263f54"/>
+<rect x="614" y="249" width="540" height="19" fill="#263f54"/>
+<text x="642" y="240" fill="#fff" font-size="28" font-weight="700">Quote B</text>
+<text x="1126" y="240" text-anchor="end" fill="#fbbf24" font-size="34" font-weight="800">$16,400</text>
+<g font-size="22" fill="#122b3d">
+<text x="77" y="311">✓  Remove existing shingles</text>
+<text x="77" y="355">✓  Architectural shingles</text>
+<text x="77" y="399">✓  Synthetic underlayment</text>
+<text x="77" y="443">✓  10-year workmanship warranty</text>
+<text x="77" y="492" fill="#915c05">?  Decking and flashing unclear</text>
+<text x="77" y="535" fill="#915c05">?  Payment terms unclear</text>
+<text x="645" y="311">✓  Tear-off and disposal</text>
+<text x="645" y="355">✓  Ice-and-water shield</text>
+<text x="645" y="399">✓  Decking: $95 per sheet</text>
+<text x="645" y="443">✓  New flashing and ridge vents</text>
+<text x="645" y="487">✓  Permit and cleanup</text>
+<text x="645" y="531" fill="#915c05">!  Skylight replacement excluded</text>
+</g>
+<rect x="46" y="584" width="1108" height="65" rx="12" fill="#fff3dc" stroke="#f59e0b" stroke-width="2"/>
+<text x="600" y="625" text-anchor="middle" fill="#25384a" font-size="25" font-weight="700">Lower price does not always mean comparable work.</text>
+<text x="1144" y="663" text-anchor="end" fill="#bfccd5" font-size="13">ILLUSTRATIVE EXAMPLES • NOT REAL CONTRACTOR BIDS</text>
+</g></svg>
