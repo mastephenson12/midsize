@@ -11,6 +11,11 @@ const topics = [
   ['Payments and changes', 'Deposit, milestones and written change approvals.'],
   ['Exclusions and open questions', 'Anything not included or still unclear.']
 ];
+function trackWorksheetEvent(eventName, detail = {}) {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', eventName, { tool: 'roofing_quote_comparison', ...detail });
+  }
+}
 const status = document.getElementById('status');
 const rows = document.getElementById('rows');
 topics.forEach(([topic, hint], index) => {
@@ -38,6 +43,7 @@ document.querySelectorAll('[data-message]').forEach(button => button.addEventLis
     (missing.length ? 'Could you clarify these items in an updated written proposal?\n' + missing.map(topic => '- ' + topic).join('\n') + '\n\n' : '') +
     'Please confirm the roof areas, exact products, exclusions, any conditional work or extra-charge rules, warranties, timing and payment milestones. Please explain how we approve changes in writing before extra work starts. I would like to compare equivalent work. Thank you.';
   status.textContent = `Message prepared for Quote ${'ABC'[quote]}. Review and copy it yourself; nothing has been sent.`;
+  trackWorksheetEvent('roof_comparison_message_prepared', { quote: 'ABC'[quote] });
   document.getElementById('message').focus();
 }));
 function report() {
@@ -55,13 +61,14 @@ document.getElementById('download').addEventListener('click', () => {
   const link = document.createElement('a'); link.href = url; link.download = 'my-roofing-quote-comparison.txt';
   document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 10000);
   status.textContent = 'Download requested. Keep your copy private and check your Downloads folder.';
+  trackWorksheetEvent('roof_comparison_download');
 });
 function preparePrint() {
   rows.querySelectorAll('textarea').forEach(input => { input.nextElementSibling.textContent = input.value.trim() || 'Not recorded'; });
   document.getElementById('printed-message').textContent = document.getElementById('message').value;
 }
 window.addEventListener('beforeprint', preparePrint);
-document.getElementById('print').addEventListener('click', () => { preparePrint(); window.print(); });
+document.getElementById('print').addEventListener('click', () => { preparePrint(); trackWorksheetEvent('roof_comparison_print'); window.print(); });
 document.getElementById('clear').addEventListener('click', () => {
   if (!window.confirm('Clear all quote notes and the draft message? Download a copy first if you want to keep them.')) return;
   document.querySelectorAll('textarea').forEach(input => { input.value = ''; });
