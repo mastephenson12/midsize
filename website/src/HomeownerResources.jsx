@@ -106,6 +106,34 @@ export default function HomeownerResources() {
           </figure>
         </article>
 
+        <section aria-labelledby="roof-parts-heading" className="mb-10 overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/70">
+          <div className="grid gap-6 p-6 sm:p-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+            <figure>
+              <img
+                src="/roof-components-explained.svg"
+                alt="Simplified roof cutaway identifying roof covering, water-resistant underlayment over structural decking, flashing at joints, and a ridge ventilation detail. Actual roof systems vary."
+                width="1200"
+                height="700"
+                loading="lazy"
+                className="block h-auto w-full rounded-xl"
+              />
+              <figcaption className="mt-2 text-xs text-slate-400">Illustrative diagram only. Construction details vary by roof type, climate, and local codes.</figcaption>
+            </figure>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Roofing terms explained</p>
+              <h3 id="roof-parts-heading" className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">Know what's under the shingles.</h3>
+              <dl className="mt-5 space-y-3 text-sm leading-6 text-slate-300">
+                <div><dt className="font-bold text-white">Decking</dt><dd>The wood panels supporting the roof assembly. Ask how damaged panels are priced.</dd></div>
+                <div><dt className="font-bold text-white">Underlayment</dt><dd>A water-resistant layer under the roof covering. Ask which type and where it goes.</dd></div>
+                <div><dt className="font-bold text-white">Flashing</dt><dd>Metal or other details that direct water away from joints, penetrations, and transitions.</dd></div>
+                <div><dt className="font-bold text-white">Ventilation</dt><dd>An attic air-movement system that may include intake and exhaust vents. Ask what changes are proposed.</dd></div>
+              </dl>
+              <a href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=roof_parts_education&utm_campaign=estimate_clarity"
+                 className="mt-6 inline-flex items-center justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Compare these details in my quotes &rarr;</a>
+            </div>
+          </div>
+        </section>
+
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {resources.map((resource) => (
             <article key={resource.title} className="flex flex-col rounded-2xl border border-slate-800 bg-slate-900 p-7">
