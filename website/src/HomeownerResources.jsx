@@ -59,6 +59,49 @@ const resources = [
   },
 ];
 
+const estimateLanguage = [
+  {
+    name: 'Decking',
+    phrase: '“Replace damaged decking as needed.”',
+    meaning: 'The roofer may uncover deteriorated plywood or OSB after removing the old roofing. This phrase does not establish how much work or cost is included.',
+    questions: [
+      'What is the price per sheet or square foot, including labor and disposal?',
+      'How will you show me the damage and obtain written approval before extra work?',
+      'Is any decking replacement already included in the quoted total?',
+    ],
+  },
+  {
+    name: 'Underlayment',
+    phrase: '“Install synthetic underlayment.”',
+    meaning: 'The proposal identifies a type of water-resistant layer, but not necessarily the specific product, coverage, or treatment of vulnerable areas.',
+    questions: [
+      'Which brand and product will be installed, and where?',
+      'Are self-adhered membranes or extra water protection at valleys, eaves, and penetrations included where appropriate?',
+      'Does the proposed assembly meet manufacturer instructions and applicable code?',
+    ],
+  },
+  {
+    name: 'Flashing',
+    phrase: '“Reflash roof penetrations as necessary.”',
+    meaning: '“As necessary” leaves open whether existing flashing is reused or replaced and which joints and openings are covered.',
+    questions: [
+      'Which pipe boots, walls, valleys, skylights, and other transitions will receive new flashing?',
+      'Which existing components will be reused, and why?',
+      'Are any flashing repairs excluded or separately charged?',
+    ],
+  },
+  {
+    name: 'Ventilation',
+    phrase: '“Install ridge vents.”',
+    meaning: 'Ridge vents may provide exhaust ventilation, but a complete attic ventilation plan also considers intake, roof configuration, and other conditions.',
+    questions: [
+      'What intake and exhaust ventilation is present or planned?',
+      'How did you determine the proposed amount and placement of ventilation?',
+      'Are soffit or other intake changes included, and what happens if existing vents are blocked?',
+    ],
+  },
+];
+
 export default function HomeownerResources() {
   return (
     <section id="homeowner-tools" className="border-t border-slate-900 bg-slate-950 px-6 py-20">
@@ -131,6 +174,39 @@ export default function HomeownerResources() {
               <a href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=roof_parts_education&utm_campaign=estimate_clarity"
                  className="mt-6 inline-flex items-center justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Compare these details in my quotes &rarr;</a>
             </div>
+          </div>
+        </section>
+
+        <section aria-labelledby="estimate-language-heading" className="mb-12 rounded-3xl border border-slate-800 bg-slate-900/50 p-6 sm:p-9">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">From quote wording to useful questions</p>
+          <h3 id="estimate-language-heading" className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">What does that roofing estimate actually say?</h3>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+            These are examples of common proposal language, not findings about your roof. The goal is to ask contractors to explain their scope and pricing in writing before you approve extra work.
+          </p>
+          <div className="mt-7 grid gap-5 md:grid-cols-2">
+            {estimateLanguage.map((item) => (
+              <article key={item.name} className="rounded-2xl border border-slate-700 bg-slate-950 p-6">
+                <h4 className="text-xl font-bold text-white">{item.name}</h4>
+                <p className="mt-3 text-xs font-bold uppercase tracking-wide text-amber-400">Example estimate wording</p>
+                <p className="mt-2 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-base font-semibold text-white">{item.phrase}</p>
+                <p className="mt-4 text-sm leading-6 text-slate-300">{item.meaning}</p>
+                <p className="mt-5 text-sm font-bold text-white">Ask your roofer:</p>
+                <ul className="mt-2 list-disc space-y-2 pl-5 text-sm leading-6 text-slate-300">
+                  {item.questions.map((question) => <li key={question}>{question}</li>)}
+                </ul>
+              </article>
+            ))}
+          </div>
+          <div className="mt-7 flex flex-col items-start justify-between gap-4 rounded-2xl border border-amber-400/20 bg-amber-400/10 p-5 sm:flex-row sm:items-center">
+            <p className="max-w-2xl text-sm leading-6 text-slate-200">
+              <strong className="text-white">Before signing:</strong> Get the exact products, allowances, exclusions, unit prices, and written change-order rules in your proposal. A missing mention is a question, not proof that work is excluded.
+            </p>
+            <a
+              href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=roofing_terms&utm_campaign=estimate_clarity&utm_content=questions"
+              className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-amber-400 px-5 py-3 text-center text-sm font-bold text-slate-950 hover:bg-amber-300"
+            >
+              Compare my roof quotes &rarr;
+            </a>
           </div>
         </section>
 
