@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="t d">
+<title id="t">Four roofing components to check in an estimate</title><desc id="d">Illustrative layered roof diagram identifying shingles or roof covering, water-resistant underlayment, structural roof decking, flashing at roof-to-wall joints, and attic ventilation. Actual roof assemblies vary.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#10263b"/><stop offset="1" stop-color="#23415a"/></linearGradient><pattern id="sh" width="54" height="28" patternUnits="userSpaceOnUse"><path d="M0 0H54M0 14H54M27 0V14M0 14V28" stroke="#9badbc" stroke-width="2" fill="none"/></pattern></defs>
+<rect width="1200" height="700" rx="24" fill="url(#bg)"/>
+<g font-family="Arial,Helvetica,sans-serif">
+<text x="55" y="65" fill="#f9b84e" font-size="22" font-weight="bold" letter-spacing="2">MIDSIZE AI · HOMEOWNER EDUCATION</text>
+<text x="55" y="124" fill="#fff" font-size="44" font-weight="bold">What's inside a roofing estimate?</text>
+<text x="55" y="161" fill="#cbd8e3" font-size="24">Know the parts. Ask what is included, excluded, or extra.</text>
+<!-- roof layered section -->
+<polygon points="250,300 715,207 976,360 510,455" fill="#556e80" stroke="#d4e4eb" stroke-width="4"/>
+<polygon points="250,300 715,207 976,360 510,455" fill="url(#sh)" opacity=".72"/>
+<polygon points="510,455 976,360 976,384 510,479" fill="#9cb1b9"/>
+<polygon points="250,300 510,455 510,479 250,324" fill="#8fa4b0"/>
+<polygon points="262,325 511,470 963,382 963,406 511,495 262,351" fill="#e7f1f1" stroke="#9cc8cb" stroke-width="2"/>
+<polygon points="275,352 511,489 947,405 947,435 511,519 275,385" fill="#cd904c" stroke="#f6cf8c" stroke-width="3"/>
+<path d="M513 488L737 445 737 412 760 406 760 461 513 511" fill="#d8e4eb" stroke="#7894a4" stroke-width="3"/>
+<!-- vent -->
+<path d="M655 230L730 215L770 237L693 252Z" fill="#e4b562" stroke="#fbd38d" stroke-width="3"/>
+<path d="M694 238L764 228" stroke="#18394e" stroke-width="6"/>
+<!-- connectors -->
+<g stroke="#fbbf55" stroke-width="4" fill="none"><path d="M330 304L225 244H92"/><path d="M450 463L304 551H92"/><path d="M738 425L988 485H1102"/><path d="M737 221L960 244H1102"/></g>
+<g fill="#fbbf55"><circle cx="330" cy="304" r="9"/><circle cx="450" cy="463" r="9"/><circle cx="738" cy="425" r="9"/><circle cx="737" cy="221" r="9"/></g>
+<!-- legend boxes -->
+<rect x="52" y="198" width="296" height="92" rx="12" fill="#fff"/><text x="70" y="233" font-size="23" font-weight="bold" fill="#132f43">Roof covering</text><text x="70" y="263" font-size="18" fill="#315369">Shingles, tile or other system</text>
+<rect x="52" y="526" width="326" height="91" rx="12" fill="#fff"/><text x="70" y="560" font-size="23" font-weight="bold" fill="#132f43">Decking + underlayment</text><text x="70" y="588" font-size="17" fill="#315369">Wood support + water-resistant layer</text>
+<rect x="890" y="185" width="257" height="95" rx="12" fill="#fff"/><text x="908" y="222" font-size="23" font-weight="bold" fill="#132f43">Ventilation</text><text x="908" y="249" font-size="17" fill="#315369">Planned attic airflow</text>
+<rect x="890" y="475" width="257" height="103" rx="12" fill="#fff"/><text x="908" y="513" font-size="23" font-weight="bold" fill="#132f43">Flashing</text><text x="908" y="541" font-size="17" fill="#315369">Water control at joints</text>
+<rect x="54" y="634" width="1092" height="48" rx="10" fill="#f9eacd"/><text x="600" y="665" font-size="20" text-anchor="middle" font-weight="bold" fill="#233747">Ask: What gets replaced? What is reused? What could cost extra?</text>
+</g></svg>
