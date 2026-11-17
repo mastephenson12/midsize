@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare Two Roofing Estimates | MidSizeAI</title>
+<meta name="description" content="Compare two roofing quotes side by side. Review scope, materials, flashing, warranties, exclusions and questions to ask before choosing a contractor.">
+<style>
+:root{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#17283a;background:#f4f7f9;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{background:#102b43;color:white;padding:16px max(18px,calc((100vw - 1050px)/2))}header a{color:white;text-decoration:none;font-weight:700}main{max-width:1050px;margin:auto;padding:38px 18px 65px}h1{line-height:1.15;font-size:clamp(2rem,4vw,3rem);margin:9px 0}h2{font-size:1.4rem}h3{font-size:1.1rem}p{margin:10px 0}.lead{color:#4b6272;max-width:75ch;font-size:1.12rem}.eyebrow{color:#067a78;font-weight:800;letter-spacing:.07em;font-size:.81rem;text-transform:uppercase}.panel{background:white;border:1px solid #d6e0e6;border-radius:14px;padding:19px;margin:18px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-weight:700;margin:12px 0 5px}input[type=text],input[type=number],textarea{width:100%;font:inherit;border:1px solid #9aadb9;border-radius:8px;padding:11px;color:#17283a}textarea{min-height:200px;resize:vertical}.hint{color:#536a78;font-size:.91rem}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.btn{background:#007f7b;color:white;border:0;border-radius:8px;padding:12px 17px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none;display:inline-block}.secondary{background:#e4eef2;color:#173246}.btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #e09a2d;outline-offset:2px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:650px}th,td{padding:12px;border-bottom:1px solid #dce5e9;text-align:left;vertical-align:top}th{background:#edf4f6}td:first-child{width:26%;font-weight:700}td:nth-child(2),td:nth-child(3){width:37%}.pill{font-size:.8rem;font-weight:750;padding:3px 8px;border-radius:99px;display:inline-block;background:#ecf0f3;color:#41596a}.pill.found{background:#dcf2ed;color:#126048}.pill.unknown{background:#fff0d2;color:#755019}.excerpt{font-size:.87rem;color:#49606d;margin-top:5px;word-break:break-word}.notice{border-left:4px solid #ce862e;padding:12px 15px;background:#fff8eb}.question{margin:12px 0;padding:12px;background:#f3f7f9;border-radius:8px}.footer{color:#506676;font-size:.88rem;margin-top:30px}@media(max-width:680px){.two{grid-template-columns:1fr}main{padding-top:24px}}@media print{header,.noprint,#entry{display:none!important}main{padding:0}body{background:white}.panel{border:0;padding:0}.table-wrap{overflow:visible}table{min-width:0;font-size:9pt}th,td{padding:6px}.question{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><a href="/">MidSizeAI</a> &nbsp; / &nbsp; <a href="/roof-estimate-checklist.html">Homeowner checklist</a></header>
+<main>
+<div class="eyebrow">Free homeowner tool • Private by design</div>
+<h1>Two roofing quotes. One roof. What's different?</h1>
+<p class="lead">Paste the text of two written estimates to see which important topics each one mentions. We highlight potential gaps and create questions for each contractor. <strong>This is a keyword-based comparison, not a professional review or an AI verdict.</strong></p>
+<div class="notice"><strong>Protect your privacy:</strong> Remove names, addresses, phone numbers, signatures, policy numbers and account information before pasting. Comparison happens in this browser; the quote text isn't uploaded or saved by this tool.</div>
+<section id="entry" class="panel">
+<h2>Enter your two estimates</h2>
+<div class="two">
+<div><h3>Estimate A</h3><label for="nameA">Contractor label</label><input id="nameA" type="text" maxlength="70" placeholder="Contractor A" autocomplete="off"><label for="priceA">Quoted total (optional, USD)</label><input id="priceA" type="number" min="0" step=".01" inputmode="decimal" placeholder="e.g., 14500"><label for="textA">Paste estimate text</label><textarea id="textA" placeholder="Paste material, labor, installation, warranty, and exclusions wording here."></textarea></div>
+<div><h3>Estimate B</h3><label for="nameB">Contractor label</label><input id="nameB" type="text" maxlength="70" placeholder="Contractor B" autocomplete="off"><label for="priceB">Quoted total (optional, USD)</label><input id="priceB" type="number" min="0" step=".01" inputmode="decimal" placeholder="e.g., 16800"><label for="textB">Paste estimate text</label><textarea id="textB" placeholder="Paste the second estimate here."></textarea></div>
+</div>
+<div class="buttons"><button class="btn" type="button" id="compare">Compare estimates</button><button class="btn secondary" type="button" id="clear">Clear everything</button></div>
+<p class="hint">We never declare one roofer the winner. Missing mentions aren't proof that work is excluded. Ask the contractor to clarify in writing.</p>
+</section>
+<section id="results" hidden aria-live="polite">
+<div class="panel"><h2>Side-by-side comparison</h2><p id="priceNote" class="hint"></p><div class="table-wrap"><table><thead><tr><th>What to check</th><th id="headA">Estimate A</th><th id="headB">Estimate B</th></tr></thead><tbody id="rows"></tbody></table></div>
+<p class="hint">A “mention detected” label only means we found relevant language, not that it is adequate, included, or accurately priced. Negations and exceptions can change the meaning.</p></div>
+<div class="panel"><h2>Questions to ask before you sign</h2><div id="questions"></div><div class="buttons noprint"><button class="btn secondary" type="button" id="print">Print comparison</button><a class="btn secondary" href="/roof-estimate-checklist.html">Open the 15-point checklist</a><a class="btn" href="/estimate-decoder?utm_source=midsizeai&utm_medium=estimate_comparison&utm_campaign=estimate_clarity&utm_content=decoder_cta" id="decoderLink">Explore the Estimate Decoder</a></div><p class="hint">Keep copies of both original proposals. Confirm any changes directly with the contractor in a revised written estimate.</p></div>
+</section>
+<div class="footer">MidSizeAI helps homeowners ask better questions. This tool does not provide a construction inspection, legal advice, insurance adjustment, or guarantee of contractor quality. Local regulations and roof conditions vary.</div>
+</main>
+<script>
+(()=>{'use strict';
+const fields=[
+{label:'Tear-off and disposal',terms:['tear off','tear-off','remove existing','removal of existing','disposal','dumpster','haul away'],question:'Is removal of the existing roof, disposal, and site cleanup included?'},
+{label:'Roofing material and brand',terms:['shingle','tile','metal roof','roofing membrane','tpo','modified bitumen','underlayment','manufacturer','gaf','owens corning','certainteed'],question:'Which manufacturer, product line, material type, and color will be installed?'},
+{label:'Underlayment and water barrier',terms:['underlayment','synthetic felt','ice and water','water barrier','self-adhered','self adhered'],question:'What underlayment and water barrier are included, and where?'},
+{label:'Flashing and roof penetrations',terms:['flashing','pipe boot','vent pipe','skylight','chimney','drip edge','valley metal'],question:'Will flashing and pipe boots be replaced or reused? Which penetrations are covered?'},
+{label:'Decking and hidden damage',terms:['decking','sheathing','plywood','osb','rotten wood','wood replacement'],question:'How are concealed decking repairs identified, approved and priced?'},
+{label:'Ventilation',terms:['ventilation','ridge vent','soffit vent','attic vent','roof vent'],question:'Is existing attic ventilation adequate, and are changes included?'},
+{label:'Permits and inspections',terms:['permit','inspection','building department','code compliance'],question:'Who confirms permit requirements and schedules required inspections?'},
+{label:'Labor and workmanship warranty',terms:['workmanship warranty','labor warranty','workmanship guarantee','installation warranty'],question:'What is the written workmanship warranty, and who handles service?'},
+{label:'Manufacturer warranty',terms:['manufacturer warranty','material warranty','product warranty','limited lifetime'],question:'Which manufacturer warranty applies, and is registration required?'},
+{label:'Payment terms and timeline',terms:['deposit','payment schedule','final payment','milestone','start date','completion date','estimated duration'],question:'What are the deposit, payment milestones, start date and delay policy?'},
+{label:'Exclusions and changes',terms:['exclude','exclusion','not included','change order','additional cost','extra charge','allowance'],question:'What is excluded, and how will extra work be approved in writing?'},
+{label:'Site protection and cleanup',terms:['cleanup','clean-up','magnet','landscaping','property protection','debris','nail sweep'],question:'How will landscaping be protected and nails and debris removed?'}
+];
+const el=id=>document.getElementById(id);
+const tidy=s=>s.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+const safe=s=>{const node=document.createElement('span');node.textContent=s;return node.innerHTML};
+function matches(text,terms){let clean=tidy(text);let hit=terms.find(t=>clean.includes(tidy(t)));if(!hit)return null;const idx=clean.indexOf(tidy(hit));return hit;}
+function money(v){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(v)}
+function event(name){try{if(typeof window.gtag==='function')window.gtag('event',name,{source_page:'compare_roof_estimates'});if(typeof window.va==='function')window.va('event',{name,data:{source:'compare_roof_estimates'}})}catch(e){}}
+el('compare').addEventListener('click',()=>{
+const a=el('textA').value.trim(),b=el('textB').value.trim();
+if(!a||!b){alert('Paste some text from each estimate to compare them.');return}
+const na=el('nameA').value.trim()||'Estimate A',nb=el('nameB').value.trim()||'Estimate B';el('headA').textContent=na;el('headB').textContent=nb;
+const pa=Number(el('priceA').value),pb=Number(el('priceB').value);el('priceNote').textContent=el('priceA').value&&el('priceB').value&&pa>0&&pb>0?`Quoted totals entered: ${money(pa)} vs ${money(pb)}. Difference: ${money(Math.abs(pa-pb))}. Verify that the scope and allowances are comparable before drawing conclusions.`:'Add both quoted totals above if you want to see the price difference. A lower total does not necessarily mean a better or equivalent proposal.';
+const rows=el('rows');rows.replaceChildren();const qs=el('questions');qs.replaceChildren();let missing=0;
+fields.forEach(f=>{const ma=matches(a,f.terms),mb=matches(b,f.terms);const tr=document.createElement('tr');const first=document.createElement('td');first.textContent=f.label;tr.append(first);[ma,mb].forEach(hit=>{const td=document.createElement('td');const badge=document.createElement('span');badge.className='pill '+(hit?'found':'unknown');badge.textContent=hit?'Mention detected':'Not clearly mentioned';td.append(badge);if(hit){const p=document.createElement('div');p.className='excerpt';p.textContent='Matched wording: '+hit+' (verify in the full document)';td.append(p)}tr.append(td)});rows.append(tr);if(!ma||!mb){missing++;const d=document.createElement('div');d.className='question';d.textContent=f.question+' Ask '+(!ma&&!mb?'both contractors':(!ma?na:nb))+'.';qs.append(d)}});
+if(!missing){const d=document.createElement('div');d.className='question';d.textContent='Both estimates mention all tracked topics. Ask each contractor to confirm the exact scope, product specifications, exclusions, warranty terms and price in writing.';qs.append(d)}
+el('results').hidden=false;event('roof_quote_comparison_completed');el('results').scrollIntoView({behavior:'smooth',block:'start'});
+});
+el('clear').addEventListener('click',()=>{['nameA','nameB','priceA','priceB','textA','textB'].forEach(x=>el(x).value='');el('results').hidden=true;el('rows').replaceChildren();el('questions').replaceChildren()});
+el('print').addEventListener('click',()=>{event('roof_quote_comparison_print');window.print()});
+el('decoderLink').addEventListener('click',()=>event('estimate_decoder_click'));
+})();
+</script>
+</body></html>
