@@ -89,17 +89,21 @@ export default function HomeownerResources() {
               Compare My Roofing Quotes &rarr;
             </a>
           </div>
-          <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-6" aria-label="Comparison worksheet topics">
-            <p className="text-sm font-bold text-white">Compare more than just price</p>
-            <ul className="mt-4 space-y-3 text-sm text-slate-300">
-              <li>✓ Materials and work included</li>
-              <li>✓ Repairs and possible extra charges</li>
-              <li>✓ Warranties and timing</li>
-              <li>✓ Payment terms and exclusions</li>
-              <li>✓ Questions to ask in writing</li>
-            </ul>
-            <p className="mt-4 text-xs text-slate-400">A blank item is a question to clarify, not proof that work is excluded.</p>
-          </div>
+          <figure className="overflow-hidden rounded-2xl border border-slate-700 bg-slate-950/70">
+            <a href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=homeowner_tools&utm_campaign=estimate_clarity&utm_content=sample_comparison_graphic" aria-label="Open the free roofing comparison worksheet">
+              <img
+                src="/roofing-quote-comparison-example.svg"
+                width="1200"
+                height="680"
+                loading="lazy"
+                className="block h-auto w-full"
+                alt="Example: a $12,900 roof quote mentions shingles and a 10-year workmanship warranty, while a $16,400 quote lists decking repairs, flashing, vents, and an exclusion. Compare the actual work, not just price."
+              />
+            </a>
+            <figcaption className="px-4 py-3 text-xs leading-relaxed text-slate-400">
+              Illustrative examples, not real contractor bids. Open the free worksheet to compare your own proposals. A blank item is a question, not proof that work is excluded.
+            </figcaption>
+          </figure>
         </article>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
