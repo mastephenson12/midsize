@@ -2,13 +2,6 @@ import React from 'react';
 
 const resources = [
   {
-    label: 'Free Comparison Worksheet',
-    title: 'Compare Roofing Quotes',
-    description: 'Compare up to three written proposals on materials, scope, extra charges, warranties and payment milestones. Print or download your notes before deciding.',
-    href: '/compare-roofing-estimates/',
-    cta: 'Compare My Quotes',
-  },
-  {
     label: 'Homeowner Library',
     title: 'The Honest Roofer',
     description: 'Straight answers about estimates, repairs, replacement, insurance questions, ventilation, and contractor red flags before you hire a roofer.',
@@ -77,6 +70,37 @@ export default function HomeownerResources() {
             MidSize AI builds systems for home-service businesses, but better home services also require better-informed homeowners. These free resources help people understand roofing and HVAC decisions before they sign, schedule, or spend.
           </p>
         </div>
+
+        <article className="mb-8 grid gap-6 rounded-3xl border border-amber-400/40 bg-gradient-to-br from-amber-400/15 via-slate-900 to-slate-900 p-7 sm:p-9 lg:grid-cols-[1.35fr_0.65fr] lg:items-center" aria-labelledby="compare-roofing-feature-title">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Featured free homeowner tool</p>
+            <h3 id="compare-roofing-feature-title" className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">Two roof quotes. Different prices. What are you actually getting?</h3>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">Compare the work behind the numbers with our side-by-side worksheet for two or three roofing proposals. Review materials, decking, flashing, warranties, payments, and exclusions, then prepare questions to send each roofer.</p>
+            <p className="mt-3 text-sm text-slate-400">No signup or email gate. Your notes stay in your browser while the page is open. Download or print a copy before leaving.</p>
+            <a
+              href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=homeowner_tools&utm_campaign=estimate_clarity&utm_content=featured_comparison"
+              onClick={() => {
+                if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
+                  window.gtag('event', 'compare_estimates_click', { source_page: 'homeowner_tools', placement: 'featured_comparison' });
+                }
+              }}
+              className="mt-6 inline-flex min-h-12 items-center justify-center rounded-xl bg-amber-400 px-7 py-3 font-bold text-slate-950 transition hover:bg-amber-300"
+            >
+              Compare My Roofing Quotes &rarr;
+            </a>
+          </div>
+          <div className="rounded-2xl border border-slate-700 bg-slate-950/70 p-6" aria-label="Comparison worksheet topics">
+            <p className="text-sm font-bold text-white">Compare more than just price</p>
+            <ul className="mt-4 space-y-3 text-sm text-slate-300">
+              <li>✓ Materials and work included</li>
+              <li>✓ Repairs and possible extra charges</li>
+              <li>✓ Warranties and timing</li>
+              <li>✓ Payment terms and exclusions</li>
+              <li>✓ Questions to ask in writing</li>
+            </ul>
+            <p className="mt-4 text-xs text-slate-400">A blank item is a question to clarify, not proof that work is excluded.</p>
+          </div>
+        </article>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {resources.map((resource) => (
