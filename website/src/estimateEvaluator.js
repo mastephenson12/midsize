@@ -21,7 +21,9 @@ export function evaluateEstimate(raw, project = 'replacement') {
   if (!/\b(roof\w*|shingles?|underlayment|flashing|tpo|decking)\b/i.test(text)) throw new Error('This version checks roofing estimates. Add the roofing scope, or use the homeowner hub for other questions.');
   const clauses = text.split(/\n+|[;!?]+|\.(?=\s+[A-Z]|$)/).map(s => s.trim()).filter(Boolean);
   const caution = /\b(no|not|exclude\w*|except|extra|additional|allowance|optional|by owner|owner responsibility|reuse\w*|retain\w*|as needed|if needed|where applicable|subject to|to be determined|tbd)\b/i;
+  const writtenApproval = /\b(?:written change orders?|written approval|approv\w* in writing)\b/i.test(text);
   const rows = topics.map(([name, pattern, question, only]) => {
+    if (name === 'Exclusions and changes' && writtenApproval) question = 'The estimate mentions written approval or change orders. How will extra work be documented and priced before I approve it?';
     const found = clauses.filter(line => pattern.test(line));
     const relevant = project !== 'repair' || !only || found.length > 0;
     const status = !relevant ? 'Scope dependent' : !found.length ? 'Not found' : found.some(line => caution.test(line)) ? 'Clarify wording' : 'Mentioned';
@@ -48,7 +50,7 @@ export function evaluateEstimate(raw, project = 'replacement') {
     ...rows.filter(row => row.status === 'Clarify wording' || row.status === 'Not found').map(row => row.question),
   ];
   if (!questions.length) questions.push('Can you confirm the exact materials, quantities, responsibilities and exclusions in writing?');
-  return { project, rows, questions, attention, pressure, hasPrice, mentioned: rows.filter(row => row.status === 'Mentioned').length, clarify: rows.filter(row => row.status === 'Clarify wording').length, missing: rows.filter(row => row.status === 'Not found').length };
+  return { project, rows, questions, attention, pressure, hasPrice, totals, mentioned: rows.filter(row => row.status === 'Mentioned').length, clarify: rows.filter(row => row.status === 'Clarify wording').length, missing: rows.filter(row => row.status === 'Not found').length };
 }
 
 export function reportText(result) {
@@ -59,4 +61,23 @@ export function reportText(result) {
 // Use generated questions only: never include quoted estimate text or intake fields.
 export function contractorMessage(result) {
   return ['Hello,', '', 'Thank you for preparing the roofing estimate. Before I decide, could you please clarify the following in writing?', '', ...result.questions.map((q, i) => `${i + 1}. ${q}`), '', 'If an answer changes the price or scope, please include it in an updated written proposal so I can review everything together.', '', 'Thank you.'].join('\n');
+}
+
+// Carry only labeled totals and the same quoted excerpts shown in the checklist.
+// These are editable reading notes, never verified coverage or complete clauses.
+export function comparisonFields(result, sample = false) {
+  const evidence = (...names) => [...new Set(result.rows.filter(r => names.includes(r.name)).flatMap(r => r.evidence))].join('\n').slice(0, 3000);
+  return [
+    sample ? 'Sample estimate — illustrative only' : 'Reviewed estimate — verify excerpts against your proposal',
+    [...new Set((result.totals || []).map(t => t.evidence))].join('\n').slice(0, 3000),
+    evidence('Scope and quantities', 'Removal'),
+    evidence('Materials', 'Water protection'),
+    evidence('Hidden damage and wood repair'),
+    evidence('Flashing', 'Ventilation'),
+    evidence('Permits and inspections', 'Cleanup'),
+    '',
+    evidence('Warranty'),
+    evidence('Payment schedule', 'Exclusions and changes'),
+    evidence('Exclusions and changes'),
+  ];
 }
