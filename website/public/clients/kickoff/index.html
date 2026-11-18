@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="/clients/kickoff/kickoff.css">
 </head>
 <body>
-  <header><a href="/">MidSize AI</a><a href="/estimate-follow-up-pilot/">About the pilot</a></header>
+  <header><a href="/">MidSize AI</a><a href="/clients/what-to-expect/">What to expect</a></header>
   <main>
     <p class="eyebrow">Client preparation · Estimate Follow-Up Pilot</p>
     <h1>Start with a clear plan for your team.</h1>
     <p class="intro">Prepare for your kickoff with Mark. Choose one owner, describe your current process, and set a baseline so your closing review has something concrete to compare.</p>
     <p class="muted">Use the start date agreed with Mark. This public planning tool does not book, purchase, or activate a pilot. Details stay on this page and are not sent to MidSize AI. Download your plan before leaving; entries are not saved.</p>
     <form id="kickoff-form" class="panel">
-      <h2>Your pilot details</h2>
+      <h2>Your pilot details</h2><p class="muted">At kickoff, agree on a communication channel, update owner, and dates for the midpoint and closing reviews. Record any change to scope, cost, or dates before proceeding.</p>
       <div class="grid">
         <label>Company or team<input id="company" maxlength="120" required autocomplete="organization"></label>
         <label>Follow-up owner<input id="owner" maxlength="100" required placeholder="Name or team role"></label>
@@ -44,6 +44,19 @@
       <p class="muted no-print">This saves a copy to your device. It does not send anything to Mark. Share the plan through your agreed channel.</p>
     </section>
     <section class="panel no-print"><h2>Bring these to your kickoff</h2><ul><li>A list of estimate IDs in the pilot, kept in your company’s system.</li><li>Your current follow-up process and message examples.</li><li>A team owner who can review messages and record responses.</li><li>Any customer contact preferences or stop requests your team must respect.</li></ul><a href="/resources/estimate-follow-up/">Prepare a follow-up message →</a><p>Need to agree on a start date? <a href="mailto:mark@midsizeai.com?subject=Pilot%20kickoff%20question">Email Mark</a>.</p></section>
+    <form id="update-form" class="panel no-print">
+      <h2>Draft an honest project update</h2>
+      <p>For Mark or your project owner to complete from verified information. This tool has no connection to your project, CRM, or email. Nothing is sent or saved automatically. Review and share through your agreed channel.</p>
+      <div class="grid"><label>Company<input id="update-company" maxlength="120" required></label><label>Person providing this update<input id="update-owner" maxlength="100" required></label></div>
+      <label>Current stage<select id="update-stage" required><option value="">Choose the actual stage</option><option value="planned">Planned — not started</option><option value="progress">In progress</option><option value="approval">Waiting for client approval</option><option value="blocked">Blocked or paused</option><option value="review">Ready for client review</option><option value="complete">Completed</option></select></label>
+      <label>Completed and verified<textarea id="update-completed" maxlength="2000" required placeholder="List only what you have checked. Enter None if nothing is complete."></textarea></label>
+      <label>Remaining or not yet verified<textarea id="update-remaining" maxlength="2000" required></textarea></label>
+      <label>Blockers, approvals needed, or proposed changes<textarea id="update-blockers" maxlength="2000" required placeholder="Describe the issue and its impact. Enter None only after checking."></textarea></label>
+      <label>Next action and person responsible<textarea id="update-action" maxlength="2000" required></textarea></label>
+      <label>Agreed next update date<input type="date" id="update-date" min="2020-01-01" max="2100-12-01" required></label>
+      <button type="submit">Build update draft</button><p id="update-error" role="alert"></p>
+      <label for="update-draft">Draft to review and copy</label><textarea id="update-draft" readonly rows="20"></textarea><p id="update-status" role="status">No draft prepared. Complete the fields above.</p>
+    </form>
   </main>
   <footer>MidSize AI · Your team approves and sends customer messages.</footer>
   <script type="module" src="/clients/kickoff/kickoff.js"></script>

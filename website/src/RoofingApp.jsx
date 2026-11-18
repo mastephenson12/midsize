@@ -16,7 +16,7 @@ const rooferServiceEntryPoints = [
   ['AI Receptionist', 'Answer missed and after-hours roofing calls with approved intake questions and human handoff rules.', '/services/ai-receptionist-for-roofers'],
   ['Missed-Call Recovery', 'Respond quickly when a homeowner call slips through and route the best opportunities back to your team.', '/services/missed-call-recovery-for-roofers'],
   ['Estimate Follow-Up', 'Follow up on open proposals and unsold inspections without sounding desperate or disappearing.', '/services/estimate-follow-up-for-roofers'],
-  ['Review Automation', 'Ask happy roofing customers for reviews at the right milestone and protect the brand with internal feedback paths.', '/services/roofing-review-automation'],
+  ['Review Automation', 'Invite honest reviews consistently and give every customer a way to ask for help.', '/services/roofing-review-automation'],
 ];
 
 function RoofingMissedLeadEstimate() {
@@ -126,6 +126,7 @@ function RoofingApp() {
               <a href="#follow-up-example" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Need Estimate Follow-Up?</a>
             </div>
             <p className="mt-4 text-sm text-slate-400">Call answering and estimate follow-up are separate services. Choose the help your team needs.</p>
+            <p className="mt-4 text-sm"><a className="text-amber-300 underline" href="/clients/what-to-expect/">What happens after I inquire?</a></p>
             <a href="#missed-lead-estimate" className="mt-5 inline-block text-sm text-slate-300 underline underline-offset-4 hover:text-white">Just exploring? Try the free missed-lead calculator.</a>
           </div>
         </header>

@@ -10,7 +10,7 @@ const serviceFunnels = {
     description:
       'A roofing-specific AI receptionist workflow that answers missed and after-hours calls, captures project details, and routes real opportunities to your team.',
     canonical: 'https://roofers.midsizeai.com/services/ai-receptionist-for-roofers',
-    pain: 'Most roofing companies do not lose leads because they are bad at roofing. They lose them because a homeowner calls while the team is on a roof, in an inspection, driving, or already buried in follow-up.',
+    pain: 'A homeowner can call while your team is on a roof, in an inspection, driving, or handling another customer. A clear intake and callback process helps your team respond.',
     promise: 'Samantha gives callers a professional first response, gathers the details your team needs, and keeps the next step clear.',
     bullets: [
       'After-hours and overflow call intake',
@@ -74,23 +74,23 @@ const serviceFunnels = {
   },
   '/services/roofing-review-automation': {
     eyebrow: 'Review automation for roofers',
-    title: 'Ask Happy Roofing Customers for Reviews at the Right Time',
+    title: 'Ask Roofing Customers for Honest Reviews at the Right Time',
     highlight: 'Reviews at the Right Time',
     description:
-      'A review request workflow that helps roofing companies ask satisfied customers for feedback after the job is complete.',
+      'A review request workflow that helps roofing companies ask customers for honest feedback after the job is complete.',
     canonical: 'https://roofers.midsizeai.com/services/roofing-review-automation',
     pain: 'Roofing companies earn trust in the field, then forget to capture that trust online. Reviews often depend on whoever remembers to ask at the end of a long job.',
     promise: 'MidSize AI helps you create a consistent review request process that supports your reputation without pressuring customers.',
     bullets: [
       'Review request timing after completion or final payment',
       'Simple routing to Google Business Profile or preferred review links',
-      'Internal feedback capture for unhappy customers before public review requests',
+      'An optional support channel available to every customer, alongside the same public review invitation',
       'Lightweight reporting for review activity and response opportunities',
     ],
     workflow: [
       ['Choose the trigger', 'We pick the right completion milestone from your current workflow.'],
       ['Write the ask', 'We create short, human review requests that match your company voice.'],
-      ['Protect the brand', 'We include internal feedback paths and clear stop rules.'],
+      ['Keep the request fair', 'Use the same review invitation for customers regardless of expected sentiment, with clear stop rules.'],
     ],
     cta: 'Request a Review Automation Plan',
     proof: 'Best fit: roofers who complete good work but do not consistently turn it into online trust.',
@@ -157,7 +157,7 @@ function RooferServiceFunnel() {
                 <a className="rounded-xl bg-amber-400 px-7 py-4 text-center font-bold text-slate-950 transition hover:bg-amber-300" href={reviewUrl}>{service.cta}</a>
                 <a className="rounded-xl border border-slate-700 bg-slate-900 px-7 py-4 text-center font-bold text-white transition hover:border-slate-500" href="/resources/roofing-after-hours-call-script/">Get the Free Call Script</a>
               </div>
-              <p className="mt-4 text-sm text-slate-500">{service.proof}</p>
+              <p className="mt-4 text-sm text-slate-500">{service.proof}</p><p className="mt-4 text-sm text-slate-400">An inquiry requests a conversation. Scope, price, usage limits, and start date are agreed before payment. <a className="underline text-amber-300" href="/clients/what-to-expect/">See each step of working with us.</a></p>
             </div>
             <aside className="rounded-3xl border border-amber-400/20 bg-slate-900 p-7 shadow-2xl shadow-slate-950/40">
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-400">What this fixes</p>
