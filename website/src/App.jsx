@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReadinessAssessment from './ReadinessAssessment.jsx';
 import HomeownerResources from './HomeownerResources.jsx';
 
 export default function App() {
@@ -86,9 +85,9 @@ export default function App() {
         </div>
 
         <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6 text-white">
-          One Trust Hub for Homeowners and Roofers <br />
+          Clear roofing quotes. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-500">
-            Starting With the Roofing Estimate
+            Better follow-through.
           </span>
         </h1>
 
@@ -101,19 +100,13 @@ export default function App() {
             href="/estimate-decoder/"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Check My Roofing Estimate
-          </a>
-          <a
-            href="https://estimator.midsizeai.com/"
-            className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
-          >
-            Estimate My Roof Cost
+            Understand My Roofing Quote
           </a>
           <a
             href="/roofers?utm_source=midsizeai.com&utm_medium=hero&utm_campaign=audience_split"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            I Run a Roofing Company
+            Improve My Roofing Business
           </a>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
@@ -127,9 +120,9 @@ export default function App() {
         <div className="mx-auto max-w-6xl">
           <div className="mb-10 text-center">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Choose your side of the roof</p>
-            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Two audiences. Two clear next steps.</h2>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">What brings you here?</h2>
             <p className="mx-auto mt-4 max-w-3xl text-slate-400">
-              Homeowners need clarity before they sign. Roofers need systems that keep good leads from slipping away. MidSize AI keeps those paths connected without confusing the visitor.
+              Homeowners need clarity before they sign. Roofers need systems that keep good leads from slipping away. Choose the help you need below.
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-2">
@@ -165,62 +158,6 @@ export default function App() {
                 <a href="/missed-lead-calculator" className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-6 py-3 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800">Calculate Missed Leads</a>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="roofing-estimate-review" className="border-t border-slate-900 px-6 py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 rounded-3xl border border-amber-400/25 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-400/10 p-7 sm:p-10 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Homeowner trust entry point</p>
-            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-white sm:text-5xl">
-              Have a roofing estimate you want to understand before you sign?
-            </h2>
-            <p className="mt-5 text-lg leading-relaxed text-slate-300">
-              Start with the free Roofing Quote Checker / Estimate Decoder. MidSize AI helps homeowners spot unclear pricing, missing scope details, warranty questions, payment terms, and the next questions to ask a roofer before accepting a proposal.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="/estimate-decoder/"
-                className="inline-flex justify-center rounded-xl bg-amber-400 px-7 py-4 font-bold text-slate-950 transition hover:bg-amber-300"
-              >
-                Review My Roofing Estimate
-              </a>
-              <a
-                href="/estimate-decoder/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-7 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800"
-              >
-                Open the Free Decoder
-              </a>
-            </div>
-            <p className="mt-4 text-xs leading-relaxed text-slate-500">
-              Educational checklist only. MidSize AI is not a roofing contractor, insurance adjuster, engineer, or law firm.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-950/80 p-6">
-            <h3 className="text-xl font-bold text-white">What the review helps you check</h3>
-            <ul className="mt-5 space-y-4 text-sm leading-relaxed text-slate-300">
-              <li className="flex gap-3"><span className="font-bold text-amber-400">01</span><span>What work is clearly included, and what looks vague.</span></li>
-              <li className="flex gap-3"><span className="font-bold text-amber-400">02</span><span>Which materials, roof accessories, permits, cleanup, and warranties need written clarification.</span></li>
-              <li className="flex gap-3"><span className="font-bold text-amber-400">03</span><span>Questions to copy, save, or send to your roofer before you sign.</span></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section id="value-equation" className="border-t border-slate-900 px-6 py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10 text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Practical automation—not AI theater</p>
-            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">More captured opportunities with less operational drag</h2>
-          </div>
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Dream outcome</p><h3 className="mt-3 text-xl font-bold text-white">More booked work</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Give more callers and web leads a fast response, capture the right details, and guide qualified customers toward a scheduled next step.</p></article>
-            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Believable path</p><h3 className="mt-3 text-xl font-bold text-white">Use your real workflow</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">We review your calls, lead sources, questions, service area, capacity, calendar, and handoff rules before recommending automation.</p></article>
-            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Shorter time to value</p><h3 className="mt-3 text-xl font-bold text-white">Pilot one bottleneck</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Start with one missed-call, after-hours, speed-to-lead, scheduling, or follow-up workflow instead of waiting for a company-wide transformation.</p></article>
-            <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Less effort and sacrifice</p><h3 className="mt-3 text-xl font-bold text-white">No forced rebuild</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Keep the people and systems that work. Your team approves the script, exceptions, escalation rules, and final customer handoff.</p></article>
           </div>
         </div>
       </section>
@@ -372,11 +309,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-6 py-10"><h2 className="text-2xl font-bold">Have an estimate waiting on a reply?</h2><p className="mt-3 text-slate-400">Draft a useful follow-up, personalize it, and copy it into your usual messaging tool.</p><a className="inline-block mt-4 text-amber-400 font-bold" href="/resources/estimate-follow-up/">Use the free Estimate Follow-Up Builder →</a></section>
-      <section className="max-w-5xl mx-auto px-6 py-12"><p className="text-amber-400 font-bold">14-day contractor pilot · $500 fixed fee</p><h2 className="text-3xl font-bold mt-3">Give every open estimate a clear next step.</h2><p className="mt-4 text-slate-400">Get a follow-up tracker, personalized messages, and hands-on help putting a consistent process into practice with your team.</p><a className="inline-block mt-5 rounded-xl bg-amber-400 text-slate-950 font-bold px-6 py-3" href="/estimate-follow-up-pilot/">Explore the Estimate Follow-Up Pilot →</a></section>
       <HomeownerResources />
-
-      <ReadinessAssessment />
 
       {/* Clear Next Steps */}
       <section id="contact" className="max-w-5xl mx-auto px-6 py-20 border-t border-slate-900">

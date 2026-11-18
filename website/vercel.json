@@ -71,15 +71,15 @@
   "rewrites": [
     {
       "source": "/samantha-demo",
-      "destination": "/"
+      "destination": "/samantha-demo.html"
     },
     {
       "source": "/samantha-demo/",
-      "destination": "/"
+      "destination": "/samantha-demo.html"
     },
     {
       "source": "/samantha.html",
-      "destination": "/"
+      "destination": "/samantha-demo.html"
     },
     {
       "source": "/robots.txt",
@@ -143,12 +143,6 @@
     },
     {
       "source": "/services/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "roofers.midsizeai.com"
-        }
-      ],
       "destination": "/roofers"
     },
     {

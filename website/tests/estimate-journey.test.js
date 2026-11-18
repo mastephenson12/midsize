@@ -5,14 +5,14 @@ import vm from 'node:vm';
 import { evaluateEstimate, reportText, contractorMessage } from '../src/estimateEvaluator.js';
 
 function page(fetch) {
-  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
+  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, append(){}, replaceChildren(){}, focus(){}, reset(){}, scrollIntoView(){} });
   const nodes = new Map();
   const get = id => { if(!nodes.has(id))nodes.set(id,element()); return nodes.get(id); };
   get('project').value='replacement';
   const choices=['second-opinion','another-estimate','find-roofer'].map(situation=>({...element(),dataset:{situation}}));
   const details=[{open:false},{open:true}];
   const events={}; let copied='';
-  const document={getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
+  const document={createElement:element,getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
   let sequence=0;
   const context=vm.createContext({document,fetch,evaluateEstimate,reportText,contractorMessage,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
   const script=readFileSync(new URL('../estimate-decoder/index.html',import.meta.url),'utf8').match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;\n/gm,'');

@@ -105,7 +105,7 @@ function RoofingApp() {
             <a className="hidden text-slate-400 transition hover:text-white xl:block" href="/lead-recovery/">Lead Recovery</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#services">Services</a>
             <a className="hidden text-slate-400 transition hover:text-white lg:block" href="#how-it-works">How It Works</a>
-            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href={PILOT_URL}>Explore the $500 Pilot</a>
+            <a className="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-950 transition hover:bg-amber-300" href="/services/ai-receptionist-for-roofers">Explore Call Answering</a>
           </div>
         </div>
         <div className="mx-auto max-w-7xl pt-2 text-center md:hidden">
@@ -118,21 +118,21 @@ function RoofingApp() {
           <div className="relative mx-auto max-w-6xl text-center">
             <p className="mb-6 text-xs font-extrabold uppercase tracking-[0.25em] text-amber-400">MidSize AI for Roofing Companies</p>
             <h1 className="mx-auto max-w-5xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-              Turn More Roofing Calls Into <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Booked Opportunities</span>
+              You’re on the roof. <span className="bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">Your next customer is calling.</span>
             </h1>
             <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-slate-300 sm:text-xl">Answer missed and after-hours calls, capture the right project details, and move qualified homeowners toward the next step—without adding another full-time office role or replacing the systems your team already uses.</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a href={PILOT_URL} className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Explore the $500, 14-Day Pilot</a>
-              <a href="#follow-up-example" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">See a Follow-Up Example</a>
+              <a href="/services/ai-receptionist-for-roofers" className="w-full rounded-xl bg-amber-400 px-8 py-4 font-bold text-slate-950 transition hover:bg-amber-300 sm:w-auto">Explore AI Call Answering</a>
+              <a href="#follow-up-example" className="w-full rounded-xl border border-slate-700 bg-slate-900 px-8 py-4 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800 sm:w-auto">Need Estimate Follow-Up?</a>
             </div>
-            <p className="mt-4 text-sm text-slate-400">One team. One estimate follow-up process. $500 fixed fee; no automatic subscription. Confirm fit and scope before payment.</p>
+            <p className="mt-4 text-sm text-slate-400">Call answering and estimate follow-up are separate services. Choose the help your team needs.</p>
             <a href="#missed-lead-estimate" className="mt-5 inline-block text-sm text-slate-300 underline underline-offset-4 hover:text-white">Just exploring? Try the free missed-lead calculator.</a>
           </div>
         </header>
         <section id="follow-up-example" aria-labelledby="follow-up-example-title" className="scroll-mt-28 border-t border-amber-400/20 bg-slate-900/50 px-6 py-16 sm:py-20">
           <div className="mx-auto max-w-6xl">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">See what your team gets</p>
-            <h2 id="follow-up-example-title" className="mt-3 max-w-3xl text-3xl font-extrabold text-white sm:text-5xl">Every open estimate needs an owner and a next step.</h2>
+            <h2 id="follow-up-example-title" className="mt-3 max-w-3xl text-3xl font-extrabold text-white sm:text-5xl">You sent the estimate. What happens next?</h2>
             <p className="mt-5 max-w-3xl leading-relaxed text-slate-300">The 14-day pilot helps you put a tracker and three personalized message templates into practice with your team. Here is a small example of how that can look.</p>
             <div className="mt-9 rounded-2xl border border-slate-700 bg-slate-950 p-5 sm:p-7">
               <div className="flex flex-wrap items-center justify-between gap-3"><h3 className="text-xl font-bold text-white">A follow-up tracker your team can use</h3><span className="rounded-full border border-slate-700 px-3 py-1 text-xs text-slate-300">Illustrative sample · fictional records</span></div>
@@ -173,10 +173,10 @@ function RoofingApp() {
           <div className="mx-auto max-w-6xl">
             <div className="mb-10 text-center"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">A practical path to more captured opportunities</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">The outcome matters. So does how you get there.</h2></div>
             <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Dream outcome</p><h3 className="mt-3 text-xl font-bold text-white">More qualified appointments</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Give more inbound homeowners a fast, professional response and a clear next step instead of sending good opportunities to voicemail.</p></article>
-              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Believable path</p><h3 className="mt-3 text-xl font-bold text-white">Test the workflow first</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Review the questions, qualification rules, escalation points, and booking logic. Test calls before anything touches a real customer.</p></article>
-              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Shorter time to value</p><h3 className="mt-3 text-xl font-bold text-white">Start with one call type</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Begin with a focused missed-call or after-hours workflow and see the proposed customer experience before a larger rollout.</p></article>
-              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Less effort and sacrifice</p><h3 className="mt-3 text-xl font-bold text-white">Keep the systems that work</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Your team approves the script and exceptions. We build around your phone, calendar, CRM, and human handoff—not a forced rebuild.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Answer more inquiries</p><h3 className="mt-3 text-xl font-bold text-white">More qualified appointments</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Give more inbound homeowners a fast, professional response and a clear next step instead of sending good opportunities to voicemail.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Approve before launch</p><h3 className="mt-3 text-xl font-bold text-white">Test the workflow first</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Review the questions, qualification rules, escalation points, and booking logic. Test calls before anything touches a real customer.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Start small</p><h3 className="mt-3 text-xl font-bold text-white">Start with one call type</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Begin with a focused missed-call or after-hours workflow and see the proposed customer experience before a larger rollout.</p></article>
+              <article className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><p className="text-xs font-bold uppercase tracking-widest text-amber-400">Use your existing systems</p><h3 className="mt-3 text-xl font-bold text-white">Keep the systems that work</h3><p className="mt-3 text-sm leading-relaxed text-slate-400">Your team approves the script and exceptions. We build around your phone, calendar, CRM, and human handoff—not a forced rebuild.</p></article>
             </div>
           </div>
         </section>
@@ -185,13 +185,13 @@ function RoofingApp() {
             <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofing Contractors</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Capture more roofing opportunities without rebuilding your company.</h2><p className="mt-5 text-lg leading-relaxed text-slate-400">MidSize AI maps what happens from the first ring through qualification, scheduling, and follow-up. Then we design one controlled workflow around your company’s rules, capacity, service area, and customer experience.</p></div>
             <div id="how-it-works" className="mt-10 grid gap-5 md:grid-cols-3">{contractorSolutions.map(([title, description]) => <article key={title} className="rounded-2xl border border-slate-800 bg-slate-900 p-7"><div className="mb-5 h-1 w-12 rounded bg-amber-400" /><h3 className="text-xl font-bold text-white">{title}</h3><p className="mt-3 leading-relaxed text-slate-400">{description}</p></article>)}</div>
             <div id="services" className="mt-12 rounded-3xl border border-slate-800 bg-slate-900/70 p-6 sm:p-8">
-              <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Service entry points</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Choose the workflow that matches the leak in your roofing business.</h2><p className="mt-4 leading-relaxed text-slate-400">Each page is a focused front door for a specific roofing service, so ads, posts, and referrals can land on the exact problem instead of a generic agency page.</p></div>
+              <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Roofing services</p><h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">Choose the workflow that matches the leak in your roofing business.</h2><p className="mt-4 leading-relaxed text-slate-400">Choose help with incoming calls, missed inquiries, open estimates, or customer reviews. Each service starts with your team’s current process.</p></div>
               <div className="mt-8 grid gap-4 md:grid-cols-2">
                 {rooferServiceEntryPoints.map(([title, description, href]) => (
                   <a key={href} href={href} className="block rounded-2xl border border-slate-800 bg-slate-950 p-6 transition hover:border-amber-400/60 hover:bg-slate-900">
                     <h3 className="text-xl font-bold text-white">{title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-slate-400">{description}</p>
-                    <span className="mt-5 inline-flex text-sm font-bold text-amber-300">Open funnel page →</span>
+                    <span className="mt-5 inline-flex text-sm font-bold text-amber-300">See how this service works →</span>
                   </a>
                 ))}
               </div>
