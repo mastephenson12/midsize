@@ -52,3 +52,39 @@ Keep your tracker, three approved message templates, and operating checklist. Re
 This plan does not book or activate a pilot. Confirm scope, dates, and payment terms with Mark. No information has been sent by this tool.
 `;
 }
+
+export function makeClientUpdate(data) {
+  const labels = { planned: 'Planned — work has not started', progress: 'In progress', approval: 'Waiting for client approval', blocked: 'Blocked or paused', review: 'Ready for client review', complete: 'Completed — confirmed items below' };
+  const { company, owner, stage, completed, remaining, blockers, nextAction, nextUpdate } = data;
+  if (![company, owner, completed, remaining, blockers, nextAction].every(value => typeof value === 'string' && value.trim())) throw new Error('Complete every update field. Use “None” only when you have checked and confirmed there is nothing to report.');
+  if (!Object.hasOwn(labels, stage)) throw new Error('Choose a project stage.');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(nextUpdate)) throw new Error('Choose the agreed next update date.');
+  const date = new Date(nextUpdate + 'T12:00:00Z');
+  if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== nextUpdate || nextUpdate < '2020-01-01' || nextUpdate > '2100-12-01') throw new Error('Choose a valid next update date.');
+  const clean = value => value.trim();
+  return `DRAFT — REVIEW BEFORE SENDING
+Subject: ${clean(company).replace(/[\r\n]+/g, ' ')} | MidSize AI project update
+
+Current stage: ${labels[stage]}
+Update owner: ${clean(owner)}
+
+COMPLETED AND VERIFIED
+${clean(completed)}
+
+REMAINING OR NOT YET VERIFIED
+${clean(remaining)}
+
+BLOCKERS, APPROVALS, OR PROPOSED CHANGES
+${clean(blockers)}
+
+NEXT ACTION AND PERSON RESPONSIBLE
+${clean(nextAction)}
+
+NEXT UPDATE
+${nextUpdate} — confirm the time and communication channel in your project record.
+
+Please reply if this differs from your understanding. Any proposed scope, price, or timeline change needs agreement before that change proceeds.
+
+This is a manually prepared draft. No message has been sent, no approval recorded, and no live project status changed by this tool.
+`;
+}

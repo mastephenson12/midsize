@@ -1,4 +1,4 @@
-import { makePlan } from './plan.js';
+import { makePlan, makeClientUpdate } from './plan.js';
 const get = id => document.getElementById(id);
 let currentPlan = '';
 let dirty = false;
@@ -38,3 +38,20 @@ get('download').addEventListener('click', () => {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 get('print').addEventListener('click', () => { if (currentPlan && !dirty) window.print(); });
+
+get('update-form').addEventListener('input', () => {
+  get('update-draft').value = '';
+  get('update-status').textContent = 'Answers changed. Build a new draft before sharing.';
+});
+get('update-form').addEventListener('change', () => {
+  get('update-draft').value = '';
+  get('update-status').textContent = 'Answers changed. Build a new draft before sharing.';
+});
+get('update-form').addEventListener('submit', event => {
+  event.preventDefault(); get('update-error').textContent = ''; get('update-draft').value = '';
+  try {
+    get('update-draft').value = makeClientUpdate({ company: get('update-company').value, owner: get('update-owner').value, stage: get('update-stage').value, completed: get('update-completed').value, remaining: get('update-remaining').value, blockers: get('update-blockers').value, nextAction: get('update-action').value, nextUpdate: get('update-date').value });
+    get('update-status').textContent = 'Draft prepared. Check every claim, then copy it into your agreed communication channel. Nothing has been sent.';
+    get('update-draft').focus();
+  } catch (error) { get('update-error').textContent = error.message; }
+});
