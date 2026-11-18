@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
-const scenarios = [
+export const scenarios = [
   {
     id: 'roofer',
     label: 'Roofing owner missing calls',
@@ -77,11 +77,11 @@ const crmLabels = {
   housecall: 'Housecall Pro',
 };
 
-export default function SamanthaDemo() {
-  const [scenarioId, setScenarioId] = useState('storm');
-  const [step, setStep] = useState(0);
+export default function SamanthaDemo({ initialScenarioId = 'roofer', initialStep = 0, initialSlotsAvailable = true } = {}) {
+  const [scenarioId, setScenarioId] = useState(initialScenarioId);
+  const [step, setStep] = useState(initialStep);
   const [crm, setCrm] = useState('ghl');
-  const [slotsAvailable, setSlotsAvailable] = useState(true);
+  const [slotsAvailable, setSlotsAvailable] = useState(initialSlotsAvailable);
 
   const scenario = useMemo(
     () => scenarios.find((item) => item.id === scenarioId) || scenarios[0],
@@ -101,10 +101,10 @@ export default function SamanthaDemo() {
     setStep(0);
   }, [scenarioId]);
 
-  const visibleMessages = scenario.questions.slice(0, step + 1);
-  const complete = step >= scenario.questions.length - 1;
+  const visibleMessages = scenario.conversation.slice(0, step + 1);
+  const complete = step >= scenario.conversation.length - 1;
   const schedulingAction =
-    scenario.decision.includes('fit') && !reviewSlotsAvailable
+    scenario.id !== 'notready' && !slotsAvailable
       ? 'No review time is available now. Create a callback request instead of promising an appointment.'
       : scenario.action;
 
@@ -186,7 +186,7 @@ export default function SamanthaDemo() {
                 </div>
 
                 <div className="mt-7 rounded-xl border border-slate-800 bg-slate-950 p-4 text-sm leading-6 text-slate-300">
-                  <strong className="text-white">Prospect:</strong> “{scenario.homeowner}”
+                  <strong className="text-white">Prospect:</strong> “{scenario.prospect}”
                 </div>
 
                 <div aria-live="polite" className="mt-4 space-y-3">
@@ -202,7 +202,7 @@ export default function SamanthaDemo() {
                 </div>
 
                 {!complete && (
-                  <button type="button" onClick={() => setStep((value) => Math.min(value + 1, scenario.questions.length - 1))} className="mt-6 w-full rounded-xl bg-amber-400 px-6 py-4 font-bold text-slate-950 hover:bg-amber-300 sm:w-auto">
+                  <button type="button" onClick={() => setStep((value) => Math.min(value + 1, scenario.conversation.length - 1))} className="mt-6 w-full rounded-xl bg-amber-400 px-6 py-4 font-bold text-slate-950 hover:bg-amber-300 sm:w-auto">
                     Continue conversation →
                   </button>
                 )}
@@ -225,7 +225,7 @@ export default function SamanthaDemo() {
                   <article className="rounded-2xl border border-blue-400/20 bg-blue-400/10 p-6 md:col-span-2">
                     <h3 className="text-lg font-bold text-white">What this demonstration proves—and what it does not</h3>
                     <p className="mt-3 text-sm leading-6 text-slate-300">
-                      It demonstrates an approved decision path. It demonstrates an approved sales-discovery path. A real Samantha deployment still requires MidSize AI’s qualification criteria, claims boundaries, pricing rules, calendar permissions, CRM fields, escalation contacts, and test calls.
+                      It demonstrates a sample sales-discovery path. CRM selections illustrate a handoff; this demo does not connect to those systems. A real Samantha deployment still requires MidSize AI’s qualification criteria, claims boundaries, pricing rules, calendar permissions, CRM fields, escalation contacts, and test calls.
                     </p>
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                       <a href="/missed-lead-calculator" className="rounded-xl border border-slate-600 px-5 py-3 text-center text-sm font-bold text-white hover:bg-slate-800">Calculate missed-lead opportunity</a>
