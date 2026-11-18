@@ -119,7 +119,7 @@ export default function HomeownerResources() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Featured free homeowner tool</p>
             <h3 id="compare-roofing-feature-title" className="mt-3 text-2xl font-extrabold text-white sm:text-3xl">Two roof quotes. Different prices. What are you actually getting?</h3>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">Compare the work behind the numbers with our side-by-side worksheet for two or three roofing proposals. Review materials, decking, flashing, warranties, payments, and exclusions, then prepare questions to send each roofer.</p>
-            <p className="mt-3 text-sm text-slate-400">No signup or email gate. Your notes stay in your browser while the page is open. Download or print a copy before leaving.</p>
+            <p className="mt-3 text-sm text-slate-400">No signup or email gate. Bring reviewed excerpts from the decoder, compare your quotes, and optionally save progress in this browser. Download or print a copy to keep.</p>
             <a
               href="/compare-roofing-estimates/?utm_source=midsizeai&utm_medium=homeowner_tools&utm_campaign=estimate_clarity&utm_content=featured_comparison"
               onClick={() => {

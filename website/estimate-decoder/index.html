@@ -46,7 +46,7 @@
         </section>
         <details class="panel questions"><summary>View the full question list</summary><ol id="questions"></ol></details>
         <div class="notice"><strong>Important:</strong> This is an educational text check, not a roof inspection, contract review, engineering opinion, legal opinion, or insurance coverage determination. A missing keyword does not prove a contractor omitted the work. Ask for clarification in writing.</div>
-        <div class="cta"><h3>Have more than one quote?</h3><p>Put the written scope, products, extra charges and payment terms side by side.</p><a href="/compare-roofing-estimates/">Compare My Roofing Quotes</a></div><div class="cta"><h3>Keep the free checklist</h3><p>Compare every contractor on the same important questions instead of comparing price alone.</p><a href="/downloads/10-questions-before-hiring-a-roofer.pdf" download>Download the 10-question checklist</a></div>
+        <div class="cta"><h3>Have more than one quote?</h3><p>Put the written scope, products, extra charges and payment terms side by side.</p><button type="button" class="btn" id="compareExcerpts">Use these excerpts in comparison</button><p class="helper">Copies the quoted excerpts shown above into temporary storage in this browser tab. Review them on the worksheet before adding them to a quote. Excerpts may contain personal details. Nothing is sent to MidSizeAI. Saving beyond this tab is optional.</p><p id="comparisonStatus" role="status"></p><a href="/compare-roofing-estimates/">Open a blank comparison instead</a></div><div class="cta"><h3>Keep the free checklist</h3><p>Compare every contractor on the same important questions instead of comparing price alone.</p><a href="/downloads/10-questions-before-hiring-a-roofer.pdf" download>Download the 10-question checklist</a></div>
 
         <section class="helpbox" id="helpbox">
           <h3>Want help beyond this checklist?</h3>
@@ -79,8 +79,9 @@
 
   <footer class="wrap footer"><p><strong>Still planning your project?</strong> <a href="https://estimator.midsizeai.com/">Try the free roof replacement cost estimator</a> to get an educational cost range before comparing contractor quotes.</p><p><a href="https://www.midsizeai.com/#homeowner-tools">More homeowner tools</a> · <a href="https://www.midsizeai.com/">Explore MidSize AI</a></p>Built by <a href="https://www.midsizeai.com/#homeowner-tools">The Honest Roofer</a>, a homeowner-first MidSizeAI resource. Educational use only.</footer>
 
+<script src="/compare-roofing-estimates/draft-store.js"></script>
 <script type="module">
-import { evaluateEstimate, reportText, contractorMessage } from '/src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, contractorMessage, comparisonFields } from '/src/estimateEvaluator.js';
 import { createUploadReader } from '/src/estimateUpload.js';
 let latestScore = null;
 let leadRequestId = crypto.randomUUID();
@@ -171,6 +172,7 @@ function analyze(mode){
     if(needsReview&&!document.getElementById("reviewed").checked)throw new Error("Check the extracted text, then tick the review box before evaluating.");
     const result=evaluateEstimate(document.getElementById('estimate').value,document.getElementById('project').value);
     latestEvaluation=result;
+    latestEvaluation.sample = mode === 'sample';
     renderComponentGuides(document.getElementById('estimate').value);
     document.getElementById('inputError').textContent='';
     document.getElementById('summary').textContent=result.mentioned+' topics mentioned · '+result.clarify+' with wording to clarify · '+result.missing+' not found in this text.';
@@ -187,6 +189,12 @@ function analyze(mode){
     document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
   } catch(error) { invalidate(); document.getElementById('inputError').textContent=error.message; }
 }
+document.getElementById('compareExcerpts').addEventListener('click',()=>{
+  if(!latestEvaluation)return;
+  const ok=window.MidSizeComparisonDraft.putPending(comparisonFields(latestEvaluation, latestEvaluation.sample));
+  if(!ok){document.getElementById('comparisonStatus').textContent='This browser could not keep the excerpts for the next page. Download your evaluation or open the blank comparison and copy the details manually.';return;}
+  window.location.assign('/compare-roofing-estimates/');
+});
 document.getElementById('estimate').addEventListener('input',()=>{stopReading();invalidate();if(needsReview)document.getElementById('reviewed').checked=false;});
 document.getElementById('project').addEventListener('change',invalidate);
 document.getElementById('downloadReport').addEventListener('click',()=>{
