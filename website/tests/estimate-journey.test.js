@@ -5,19 +5,26 @@ import vm from 'node:vm';
 import { evaluateEstimate, reportText, contractorMessage } from '../src/estimateEvaluator.js';
 
 function page(fetch) {
-  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
+  const element = (tag = '') => ({ tag, dataset:{}, checked:false, children:[], value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{},
+    append(...nodes){for(const node of nodes){if(typeof node==='object')node.parent=this;this.children.push(node);}},
+    replaceChildren(){this.children=[];},
+    closest(tag){return this.tag===tag?this:this.parent?.closest(tag);},
+    querySelector(tag){return this.children.find(child=>child.tag===tag);},
+    querySelectorAll(selector){return selector==='input:checked'?this.children.flatMap(child=>child.checked?[child]:child.querySelectorAll?.(selector)??[]):[];},
+    classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
   const nodes = new Map();
   const get = id => { if(!nodes.has(id))nodes.set(id,element()); return nodes.get(id); };
   get('project').value='replacement';
   const choices=['second-opinion','another-estimate','find-roofer'].map(situation=>({...element(),dataset:{situation}}));
   const details=[{open:false},{open:true}];
   const events={}; let copied='';
-  const document={getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
+  const storage=new Map(), navigations=[];
+  const document={createElement:element,getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
   let sequence=0;
-  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,contractorMessage,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
+  const context=vm.createContext({document,fetch,sessionStorage:{setItem:(k,v)=>storage.set(k,v)},location:{assign:path=>navigations.push(path)},evaluateEstimate,reportText,contractorMessage,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
   const script=readFileSync(new URL('../estimate-decoder/index.html',import.meta.url),'utf8').match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;\n/gm,'');
   vm.runInContext(script,context);
-  return {get,choices,events,details,context,copy:()=>copied};
+  return {get,choices,events,details,context,storage,navigations,copy:()=>copied};
 }
 
 test('results prioritize clarification and copy only questions while printing preserves all detail',async()=>{
@@ -90,3 +97,22 @@ for (const failure of ['TimeoutError', 'AbortError', 'TypeError']) {
   assert.equal(p.get('leadmsg').className,'leadmsg ok');
  });
 }
+
+test('comparison handoff uses only excerpts the homeowner selected and edited',()=>{
+  const p=page();
+  p.get('estimate').value='Replace roofing shingles. Total price $15000. Flashing not included. Additional decking charges apply.';
+  p.context.analyze();
+  const fields=p.get('comparisonFields');
+  const decking=fields.children.find(field=>field.querySelector('legend').textContent==='Decking and extra charges');
+  assert.match(decking.querySelector('textarea').value,/Additional decking charges apply/);
+  p.get('openComparison').handlers.click();
+  assert.equal(p.storage.size,0);
+  assert.equal(p.navigations.length,0);
+
+  decking.querySelector('label').querySelector('input').checked=true;
+  decking.querySelector('textarea').value='Decking extra at $95 per sheet';
+  p.get('openComparison').handlers.click();
+  assert.deepEqual(JSON.parse(p.storage.get('midsize:quote-a:v1')).selected,
+    [['Decking and extra charges','Decking extra at $95 per sheet']]);
+  assert.deepEqual(p.navigations,['/compare-roofing-estimates/#quote-a']);
+});

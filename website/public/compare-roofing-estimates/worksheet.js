@@ -33,14 +33,50 @@ topics.forEach(([topic, hint], index) => {
   }
   rows.append(row);
 });
+function importQuoteA() {
+  if (window.location?.hash !== '#quote-a') return;
+  let transfer;
+  try {
+    const key = 'midsize:quote-a:v1';
+    const raw = window.sessionStorage.getItem(key);
+    window.sessionStorage.removeItem(key);
+    transfer = JSON.parse(raw);
+  } catch {
+    // Leave the worksheet usable when storage is blocked or the draft is unreadable.
+  }
+  let imported = 0;
+  if (Number.isFinite(transfer?.expires) && transfer.expires > Date.now() && Array.isArray(transfer.selected)) {
+    const excerpts = new Map(transfer.selected.filter(entry =>
+      Array.isArray(entry) && entry.length === 2 && typeof entry[0] === 'string' && typeof entry[1] === 'string'
+    ));
+    topics.forEach(([topic], index) => {
+      const input = document.getElementById(`quote-0-${index}`);
+      const excerpt = excerpts.get(topic)?.trim();
+      if (input.value.trim() || !excerpt || excerpt.length > input.maxLength) return;
+      input.value = excerpt;
+      imported++;
+    });
+  }
+  const notice = document.getElementById('quote-a');
+  notice.hidden = false;
+  notice.textContent = imported
+    ? 'Your selected excerpts are in Quote A. Check them against your written estimate, enter the total price, then add Quote B.'
+    : 'There are no excerpts to import. You can enter Quote A from your written estimate.';
+  notice.focus();
+}
+importQuoteA();
+
 const value = (quote, index) => document.getElementById(`quote-${quote}-${index}`).value.trim();
 const active = quote => topics.some((_, index) => value(quote, index));
 document.querySelectorAll('[data-message]').forEach(button => button.addEventListener('click', () => {
   const quote = Number(button.dataset.message);
   if (!active(quote)) { status.textContent = `Enter some details for Quote ${'ABC'[quote]} first.`; return; }
   const missing = topics.slice(1).filter((_, index) => !value(quote, index + 1)).map(([topic]) => topic);
+  const deckingIndex = topics.findIndex(([topic]) => topic === 'Decking and extra charges');
+  const askAboutDecking = !value(quote, deckingIndex) && [0, 1, 2].some(other => other !== quote && value(other, deckingIndex));
   document.getElementById('message').value = 'Thank you for the roofing proposal. I am comparing written scopes before deciding.\n\n' +
     (missing.length ? 'Could you clarify these items in an updated written proposal?\n' + missing.map(topic => '- ' + topic).join('\n') + '\n\n' : '') +
+    (askAboutDecking ? 'If you find damaged decking, what will you charge per sheet, and how will you get my approval before replacing it?\n\n' : '') +
     'Please confirm the roof areas, exact products, exclusions, any conditional work or extra-charge rules, warranties, timing and payment milestones. Please explain how we approve changes in writing before extra work starts. I would like to compare equivalent work. Thank you.';
   status.textContent = `Message prepared for Quote ${'ABC'[quote]}. Review and copy it yourself; nothing has been sent.`;
   trackWorksheetEvent('roof_comparison_message_prepared', { quote: 'ABC'[quote] });
@@ -72,5 +108,6 @@ document.getElementById('print').addEventListener('click', () => { preparePrint(
 document.getElementById('clear').addEventListener('click', () => {
   if (!window.confirm('Clear all quote notes and the draft message? Download a copy first if you want to keep them.')) return;
   document.querySelectorAll('textarea').forEach(input => { input.value = ''; });
+  document.getElementById('quote-a').hidden = true;
   status.textContent = 'Worksheet cleared.'; document.getElementById('quote-0-0').focus();
 });
