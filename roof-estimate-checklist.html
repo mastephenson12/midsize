@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roofing Estimate Checklist for Homeowners | MidSizeAI</title>
+<meta name="description" content="Compare roofing quotes with a free homeowner checklist. Review materials, scope, warranties, insurance, payments and change orders before signing.">
+<style>
+:root{color-scheme:light;--ink:#172738;--muted:#526474;--navy:#112b42;--teal:#087d7a;--paper:#f5f8fa;--line:#dce4e9}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55;color:var(--ink);background:var(--paper)}
+a{color:#075d79}header{background:var(--navy);color:white;padding:1rem max(1rem,calc((100vw - 940px)/2))}header a{color:white;text-decoration:none;font-weight:750}
+main{max-width:940px;margin:auto;padding:2.5rem 1rem 4rem}.eyebrow{font-size:.85rem;font-weight:750;color:var(--teal);letter-spacing:.06em;text-transform:uppercase}
+h1{font-size:clamp(2rem,4vw,3rem);line-height:1.16;margin:.5rem 0 1rem}h2{margin:0 0 .8rem;font-size:1.35rem}p{margin:.65rem 0} .lead{font-size:1.13rem;color:var(--muted);max-width:70ch}
+.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin:1.2rem 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.item{display:flex;align-items:flex-start;gap:.7rem;padding:.65rem 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}input[type=checkbox]{width:1.2rem;height:1.2rem;margin-top:.24rem;accent-color:var(--teal);flex-shrink:0}label{cursor:pointer}.hint{display:block;color:var(--muted);font-size:.92rem}
+.btn{display:inline-block;background:var(--teal);color:white;text-decoration:none;border:0;border-radius:8px;padding:.75rem 1rem;font:inherit;font-weight:700;cursor:pointer}.btn.secondary{background:#e8eff3;color:var(--navy)}
+.actions{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0}.small{font-size:.93rem;color:var(--muted)}.warning{border-left:4px solid #bd742c;padding:.9rem 1.1rem;background:#fff8ed}
+progress{width:100%;height:1rem;accent-color:var(--teal)}footer{font-size:.85rem;color:var(--muted);padding:1.5rem 0}
+@media(max-width:650px){.grid{grid-template-columns:1fr}main{padding-top:1.5rem}}
+@media print{body{background:white}header,.actions,.cta{display:none!important}.panel{break-inside:avoid}main{padding:0}h1{font-size:24pt}.item{padding:.3rem 0}}
+</style>
+</head>
+<body>
+<header><a href="/">MidSizeAI</a> &nbsp; / &nbsp; Homeowner Trust Center</header>
+<main>
+<div class="eyebrow">Free homeowner resource</div>
+<h1>Before you sign a roofing estimate, check these 15 things.</h1>
+<p class="lead">Two quotes can look almost identical in price while covering very different work. Use this checklist to ask better questions and compare apples to apples, without pressure to choose a particular contractor.</p>
+<div class="panel">
+<strong>Your review progress</strong>
+<p class="small" id="progress-text" aria-live="polite">0 of 15 items checked</p>
+<progress id="progress" max="15" value="0" aria-label="Checklist completion"></progress>
+<div class="actions"><button type="button" class="btn secondary" onclick="window.print()">Print checklist</button><button type="button" class="btn secondary" id="reset">Clear checks</button></div>
+<p class="small">Your checks stay in this browser session. No account, upload, or contact information required.</p>
+</div>
+<div class="grid" id="checks">
+<section class="panel"><h2>1. Scope & materials</h2>
+<div class="item"><input id="c1" type="checkbox"><label for="c1"><strong>Exact roofing materials</strong><span class="hint">Manufacturer, product line, color, and underlayment specified</span></label></div>
+<div class="item"><input id="c2" type="checkbox"><label for="c2"><strong>Tear-off or overlay</strong><span class="hint">Number of existing layers and disposal included</span></label></div>
+<div class="item"><input id="c3" type="checkbox"><label for="c3"><strong>Decking repair allowance</strong><span class="hint">What happens if hidden damaged wood is discovered?</span></label></div>
+<div class="item"><input id="c4" type="checkbox"><label for="c4"><strong>Flashings and penetrations</strong><span class="hint">Chimney, skylight, pipe boots, valleys, and roof-wall transitions addressed</span></label></div>
+<div class="item"><input id="c5" type="checkbox"><label for="c5"><strong>Ventilation and drainage</strong><span class="hint">Any needed changes explained and priced</span></label></div>
+</section>
+<section class="panel"><h2>2. Price & schedule</h2>
+<div class="item"><input id="c6" type="checkbox"><label for="c6"><strong>Itemized total</strong><span class="hint">Labor, materials, disposal, permit fees, taxes, and exclusions identified</span></label></div>
+<div class="item"><input id="c7" type="checkbox"><label for="c7"><strong>Payment milestones</strong><span class="hint">Deposit, progress payments, and final payment terms written down</span></label></div>
+<div class="item"><input id="c8" type="checkbox"><label for="c8"><strong>Change order process</strong><span class="hint">Extra work requires explanation and written approval</span></label></div>
+<div class="item"><input id="c9" type="checkbox"><label for="c9"><strong>Start and finish expectations</strong><span class="hint">Timeline, weather delays, and property protection discussed</span></label></div>
+</section>
+<section class="panel"><h2>3. Contractor & protection</h2>
+<div class="item"><input id="c10" type="checkbox"><label for="c10"><strong>License verified</strong><span class="hint">Check the active license and relevant classification with your state regulator</span></label></div>
+<div class="item"><input id="c11" type="checkbox"><label for="c11"><strong>Insurance confirmed</strong><span class="hint">Request current liability and workers' compensation information as applicable</span></label></div>
+<div class="item"><input id="c12" type="checkbox"><label for="c12"><strong>Permits clarified</strong><span class="hint">Who confirms requirements and obtains any necessary permit?</span></label></div>
+</section>
+<section class="panel"><h2>4. After the job</h2>
+<div class="item"><input id="c13" type="checkbox"><label for="c13"><strong>Written workmanship warranty</strong><span class="hint">Duration, exclusions, and how to request service clear</span></label></div>
+<div class="item"><input id="c14" type="checkbox"><label for="c14"><strong>Manufacturer warranty</strong><span class="hint">Product coverage and any registration requirements explained</span></label></div>
+<div class="item"><input id="c15" type="checkbox"><label for="c15"><strong>Cleanup and final inspection</strong><span class="hint">Debris, nails, landscaping protection, and completion photos included</span></label></div>
+</section>
+</div>
+<div class="warning"><strong>Watch for pressure tactics.</strong> Be cautious about signing immediately, paying a large amount without clear terms, or leaving blank spaces in a contract. If insurance is involved, ask your insurer about coverage and deductibles. A contractor should not promise that a claim will definitely be approved.</div>
+<div class="panel cta"><h2>Have a quote in front of you?</h2><p>Use MidSizeAI's Estimate Decoder to help understand line items and questions worth asking. It is educational support, not a substitute for a licensed roofer, insurer, attorney, or building official.</p><div class="actions"><a class="btn" href="/estimate-decoder?utm_source=midsizeai&utm_medium=homeowner_checklist&utm_campaign=estimate_clarity&utm_content=primary_cta" id="estimate-decoder-cta">Review my roofing estimate</a><a class="btn secondary" href="/compare-roof-estimates.html?utm_source=midsizeai&utm_medium=homeowner_checklist&utm_campaign=quote_comparison" id="compare-estimates-cta">Compare two estimates</a><a class="btn secondary" href="/">Back to MidSizeAI</a></div><p class="small">Never upload account numbers, signatures, or other sensitive personal information unless necessary.</p></div>
+<footer>MidSizeAI | Homeowner education. Local licensing, permit rules, and contract requirements vary.</footer>
+</main>
+<script>
+(function(){const checks=[...document.querySelectorAll('#checks input[type="checkbox"]')];const meter=document.getElementById('progress');const status=document.getElementById('progress-text');function update(){const count=checks.filter(c=>c.checked).length;meter.value=count;status.textContent=count+' of '+checks.length+' items checked'}checks.forEach(c=>c.addEventListener('change',update));const compareCta=document.getElementById('compare-estimates-cta');compareCta.addEventListener('click',()=>{if(typeof window.gtag==='function')window.gtag('event','compare_estimates_click',{source_page:'roof_estimate_checklist'});if(typeof window.va==='function')window.va('event',{name:'Compare Estimates Click',data:{source:'roof_estimate_checklist'}})});const cta=document.getElementById('estimate-decoder-cta');cta.addEventListener('click',()=>{if(typeof window.gtag==='function'){window.gtag('event','estimate_decoder_click',{source_page:'roof_estimate_checklist',destination:'estimate_decoder'})}if(typeof window.va==='function'){window.va('event',{name:'Estimate Decoder Click',data:{source:'roof_estimate_checklist'}})}});document.getElementById('reset').addEventListener('click',()=>{checks.forEach(c=>c.checked=false);update()});update()})();
+</script>
+</body></html>

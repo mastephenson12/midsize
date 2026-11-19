@@ -10,14 +10,17 @@ const server = await createServer({
   optimizeDeps: { noDiscovery: true, include: [] },
 });
 try {
+  const template = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
   for (const [file, component, page] of [
     ['index.html', '/src/App.jsx', 'home'],
     ['roofers.html', '/src/RoofingApp.jsx', 'roofers'],
+    ['samantha-demo.html', '/src/SamanthaDemo.jsx', 'demo'],
   ]) {
     const { default: Component } = await server.ssrLoadModule(component);
     const markup = renderToString(React.createElement(Component));
     const path = new URL(`../dist/${file}`, import.meta.url);
-    const html = await readFile(path, 'utf8');
+    let html = page === 'demo' ? template : await readFile(path, 'utf8');
+    if (page === 'demo') html = html.replace(/<title>.*?<\/title>/, '<title>Interactive Samantha Demo | MidSize AI</title>').replace('https://www.midsizeai.com/" />', 'https://www.midsizeai.com/samantha-demo" />');
     const placeholder = '<div id="root"></div>';
     if (!html.includes(placeholder)) throw new Error(`Missing root placeholder in ${file}`);
     await writeFile(path, html.replace(placeholder, () => `<div id="root" data-prerender="${page}">${markup}</div>`));

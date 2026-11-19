@@ -38,9 +38,15 @@
       <p id="inputError" role="alert" class="helper"></p><div class="results" id="results" aria-live="polite">
         <div class="scorebox" style="grid-template-columns:1fr"><div class="scorecopy"><p class="eyebrow">Your estimate, explained</p><h2 id="headline" tabindex="-1">Your reading checklist</h2><p id="summary"></p><p style="margin-top:12px;font-size:.85rem">This checks wording, not workmanship, price fairness, or whether work is actually included.</p></div></div><section class="nextstep" aria-labelledby="nextStepTitle"><p class="eyebrow">Your next step</p><h3 id="nextStepTitle">Ask your roofer for written clarification</h3><p>Start with these questions from your estimate. Ask for the answers in an updated written scope before deciding.</p><ol id="nextQuestions"></ol><button class="btn" id="copyQuestions">Copy message for my roofer</button><button class="btn secondary" id="downloadQuestions" type="button">Download message</button><details><summary>Preview the message</summary><pre id="contractorMessage" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit"></pre></details><p class="helper">Creates a polite message with the full question list, without your estimate text or personal details. Paste it into your own email or message; nothing is sent automatically.</p></section><div class="actions"><button class="btn secondary" id="downloadReport">Download my evaluation</button><button class="btn secondary" id="printReport">Print</button></div><p id="reportStatus" role="status" class="helper"></p>
         <div class="panel questions" id="attentionPanel"><h3>Check these first</h3><div id="attention"></div></div><div class="columns"><details class="panel"><summary>Topics mentioned in your estimate</summary><div id="coverage"></div></details><div class="panel"><h3>Clarify before you compare</h3><div id="clarify"></div></div></div>
+        <section class="panel" id="componentGuide" aria-labelledby="componentGuideTitle">
+          <h3 id="componentGuideTitle">Understand the roofing terms in your estimate</h3>
+          <p class="helper">We look for mentions of decking, underlayment, flashing, and ventilation in your pasted or extracted text. A match is not proof that an item is included, installed correctly, or priced.</p>
+          <div id="componentMatches"></div>
+          <p class="helper">These questions are educational starting points. Confirm exact products, written scope, exclusions and extra-work approval with your roofer.</p>
+        </section>
         <details class="panel questions"><summary>View the full question list</summary><ol id="questions"></ol></details>
         <div class="notice"><strong>Important:</strong> This is an educational text check, not a roof inspection, contract review, engineering opinion, legal opinion, or insurance coverage determination. A missing keyword does not prove a contractor omitted the work. Ask for clarification in writing.</div>
-        <div class="cta"><h3>Have more than one quote?</h3><p>Put the written scope, products, extra charges and payment terms side by side.</p><a href="/compare-roofing-estimates/">Compare My Roofing Quotes</a></div><div class="cta"><h3>Keep the free checklist</h3><p>Compare every contractor on the same important questions instead of comparing price alone.</p><a href="/downloads/10-questions-before-hiring-a-roofer.pdf" download>Download the 10-question checklist</a></div>
+        <div class="cta"><h3>Have more than one quote?</h3><p>Put the written scope, products, extra charges and payment terms side by side.</p><button type="button" class="btn" id="compareExcerpts">Use these excerpts in comparison</button><p class="helper">Copies the quoted excerpts shown above into temporary storage in this browser tab. Review them on the worksheet before adding them to a quote. Excerpts may contain personal details. Nothing is sent to MidSizeAI. Saving beyond this tab is optional.</p><p id="comparisonStatus" role="status"></p><a href="/compare-roofing-estimates/">Open a blank comparison instead</a></div><div class="cta"><h3>Keep the free checklist</h3><p>Compare every contractor on the same important questions instead of comparing price alone.</p><a href="/downloads/10-questions-before-hiring-a-roofer.pdf" download>Download the 10-question checklist</a></div>
 
         <section class="helpbox" id="helpbox">
           <h3>Want help beyond this checklist?</h3>
@@ -73,8 +79,9 @@
 
   <footer class="wrap footer"><p><strong>Still planning your project?</strong> <a href="https://estimator.midsizeai.com/">Try the free roof replacement cost estimator</a> to get an educational cost range before comparing contractor quotes.</p><p><a href="https://www.midsizeai.com/#homeowner-tools">More homeowner tools</a> · <a href="https://www.midsizeai.com/">Explore MidSize AI</a></p>Built by <a href="https://www.midsizeai.com/#homeowner-tools">The Honest Roofer</a>, a homeowner-first MidSizeAI resource. Educational use only.</footer>
 
+<script src="/compare-roofing-estimates/draft-store.js"></script>
 <script type="module">
-import { evaluateEstimate, reportText, contractorMessage } from '/src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, contractorMessage, comparisonFields } from '/src/estimateEvaluator.js';
 import { createUploadReader } from '/src/estimateUpload.js';
 let latestScore = null;
 let leadRequestId = crypto.randomUUID();
@@ -114,6 +121,46 @@ async function handleFiles(files){
   finally{if(job===fileJob){reading=false;document.getElementById('analyze').disabled=false;document.getElementById('cancelUpload').hidden=true;fileInput.value='';}}
 }
 document.getElementById('cancelUpload').addEventListener('click',()=>{stopReading();setFileStatus('Reading canceled. Your previous text has been kept.');});
+const componentGuides = [
+  {name:'Decking',terms:/\b(decking|sheathing|plywood|osb|roof deck)\b/i,
+    meaning:'The panels that support the roofing system. “As needed” may leave the amount and cost of hidden repairs unclear.',
+    questions:['Is any decking replacement included in the total?','What is the unit price per sheet or square foot, including labor and disposal?','Will you document damage and get my written approval before extra work?']},
+  {name:'Underlayment',terms:/\b(underlayment|felt paper|synthetic felt|ice.and.water|water barrier|self.adhered membrane)\b/i,
+    meaning:'A water-resistant layer beneath the roof covering. A mention may not tell you which product or where it is installed.',
+    questions:['Which manufacturer and product are specified?','Where will underlayment and any additional water protection go?','Does the assembly follow the product instructions and applicable code?']},
+  {name:'Flashing',terms:/\b(flashing|pipe boots?|drip edge|step flash|counterflash|valley metal)\b/i,
+    meaning:'Details that help direct water away from joints, edges and roof penetrations. Clarify whether pieces are replaced or reused.',
+    questions:['Which valleys, roof-to-wall joints, pipe boots, skylights and penetrations get new flashing?','What will be reused?','Are any flashing changes excluded or an extra charge?']},
+  {name:'Ventilation',terms:/\b(ventilation|ridge vents?|soffit vents?|attic vents?|intake vents?|exhaust vents?)\b/i,
+    meaning:'The attic airflow plan, which may involve intake and exhaust. One type of vent alone does not establish adequacy.',
+    questions:['What intake and exhaust ventilation is proposed?','How did you determine the required type and amount?','Are changes to intake vents included in this price?']}
+];
+function renderComponentGuides(estimateText) {
+  const target=document.getElementById('componentMatches');
+  target.replaceChildren();
+  const found=componentGuides.filter(item=>item.terms.test(estimateText));
+  const heading=document.createElement('p');
+  heading.className='helper';
+  heading.textContent=found.length
+    ? 'Related terms detected in your estimate: '+found.map(x=>x.name).join(', ')+'. Read the original clauses for qualifications or exclusions.'
+    : 'None of these four terms were clearly detected in the extracted text. They may be described differently or may not apply. You can still review the questions below.';
+  target.append(heading);
+  const selected=found.length?found:componentGuides;
+  selected.forEach(item=>{
+    const details=document.createElement('details');
+    details.className='item';
+    const summary=document.createElement('summary');
+    summary.textContent=item.name+(found.length?' — term detected':' — questions to consider');
+    summary.style.fontWeight='800';
+    const desc=document.createElement('p');
+    desc.textContent=item.meaning;
+    const ask=document.createElement('p');ask.textContent='Questions for your roofer:';ask.style.fontWeight='700';
+    const list=document.createElement('ul');
+    for(const question of item.questions){const li=document.createElement('li');li.textContent=question;list.append(li)}
+    details.append(summary,desc,ask,list);
+    target.append(details);
+  });
+}
 function makeItem(row){
   const note = row.status==='Mentioned' ? 'Mentioned is not confirmed coverage. Check the exact responsibility and limits.' : row.status==='Scope dependent' ? 'May not apply to this repair; confirm with your roofer.' : row.status==='Not found' ? 'No matching wording found. This could be covered elsewhere.' : 'This wording may contain an exclusion, condition or additional cost. Read the full clause.';
   return '<div class="item"><span class="status '+(row.status==='Mentioned'?'good':'check')+'">'+row.status+'</span><strong>'+escapeHtml(row.name)+'</strong><p>'+note+'</p>'+row.evidence.map(q=>'<blockquote>'+escapeHtml(q)+'</blockquote>').join('')+'<p><b>Ask:</b> '+escapeHtml(row.question)+'</p></div>';
@@ -125,6 +172,8 @@ function analyze(mode){
     if(needsReview&&!document.getElementById("reviewed").checked)throw new Error("Check the extracted text, then tick the review box before evaluating.");
     const result=evaluateEstimate(document.getElementById('estimate').value,document.getElementById('project').value);
     latestEvaluation=result;
+    latestEvaluation.sample = mode === 'sample';
+    renderComponentGuides(document.getElementById('estimate').value);
     document.getElementById('inputError').textContent='';
     document.getElementById('summary').textContent=result.mentioned+' topics mentioned · '+result.clarify+' with wording to clarify · '+result.missing+' not found in this text.';
     document.getElementById('attention').innerHTML=result.attention.map(item=>'<div class="item"><strong>'+escapeHtml(item.title)+'</strong><p>'+escapeHtml(item.detail)+'</p>'+item.evidence.map(q=>'<blockquote>'+escapeHtml(q)+'</blockquote>').join('')+'<p><b>Ask:</b> '+escapeHtml(item.question)+'</p></div>').join('')||'<p>No specific price or payment wording flags were detected. Review the topic questions below; this is not an all-clear.</p>';
@@ -140,6 +189,12 @@ function analyze(mode){
     document.getElementById('results').scrollIntoView({behavior:'smooth',block:'start'});
   } catch(error) { invalidate(); document.getElementById('inputError').textContent=error.message; }
 }
+document.getElementById('compareExcerpts').addEventListener('click',()=>{
+  if(!latestEvaluation)return;
+  const ok=window.MidSizeComparisonDraft.putPending(comparisonFields(latestEvaluation, latestEvaluation.sample));
+  if(!ok){document.getElementById('comparisonStatus').textContent='This browser could not keep the excerpts for the next page. Download your evaluation or open the blank comparison and copy the details manually.';return;}
+  window.location.assign('/compare-roofing-estimates/');
+});
 document.getElementById('estimate').addEventListener('input',()=>{stopReading();invalidate();if(needsReview)document.getElementById('reviewed').checked=false;});
 document.getElementById('project').addEventListener('change',invalidate);
 document.getElementById('downloadReport').addEventListener('click',()=>{

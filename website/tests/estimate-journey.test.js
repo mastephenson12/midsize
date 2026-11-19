@@ -2,22 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
-import { evaluateEstimate, reportText, contractorMessage } from '../src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, contractorMessage, comparisonFields } from '../src/estimateEvaluator.js';
 
 function page(fetch) {
-  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, focus(){}, reset(){}, scrollIntoView(){} });
+  const element = () => ({ value:'', style:{}, hidden:true, disabled:false, innerHTML:'', textContent:'', handlers:{}, attrs:{}, classList:{add(){},remove(){}}, setAttribute(k,v){this.attrs[k]=v;}, addEventListener(k,fn){this.handlers[k]=fn;}, append(){}, replaceChildren(){}, focus(){}, reset(){}, scrollIntoView(){} });
   const nodes = new Map();
   const get = id => { if(!nodes.has(id))nodes.set(id,element()); return nodes.get(id); };
   get('project').value='replacement';
   const choices=['second-opinion','another-estimate','find-roofer'].map(situation=>({...element(),dataset:{situation}}));
   const details=[{open:false},{open:true}];
   const events={}; let copied='';
-  const document={getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
+  const document={createElement:element,getElementById:get,querySelectorAll:s=>s==='.choice'?choices:s==='#results details'?details:[]};
   let sequence=0;
-  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,contractorMessage,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
+  const storage = () => { const data = new Map(); return { getItem: key => data.get(key) ?? null, setItem: (key,value) => data.set(key,value), removeItem: key => data.delete(key) }; };
+  let navigation = '';
+  const context=vm.createContext({document,fetch,evaluateEstimate,reportText,contractorMessage,comparisonFields,createUploadReader:()=>({cancel(){}}),crypto:{randomUUID:()=> 'test-request-'+(++sequence)},AbortSignal,window:{sessionStorage:storage(),localStorage:storage(),location:{assign:path=>{navigation=path;}},addEventListener:(name,fn)=>events[name]=fn},navigator:{clipboard:{writeText:async text=>{copied=text;}}}});
   const script=readFileSync(new URL('../estimate-decoder/index.html',import.meta.url),'utf8').match(/<script type="module">([\s\S]*?)<\/script>/)[1].replace(/^import .*;\n/gm,'');
+  vm.runInContext(readFileSync(new URL('../public/compare-roofing-estimates/draft-store.js',import.meta.url),'utf8'),context);
   vm.runInContext(script,context);
-  return {get,choices,events,details,context,copy:()=>copied};
+  return {get,choices,events,details,context,copy:()=>copied,navigation:()=>navigation};
 }
 
 test('results prioritize clarification and copy only questions while printing preserves all detail',async()=>{
@@ -90,3 +93,13 @@ for (const failure of ['TimeoutError', 'AbortError', 'TypeError']) {
   assert.equal(p.get('leadmsg').className,'leadmsg ok');
  });
 }
+
+test('decoder transfers excerpts only after explicit action, using a clean destination URL',()=>{
+  const p=page();p.get('estimate').value='Roof shingles replacement. Total price $18000. Flashing not included.';
+  p.context.analyze();
+  assert.equal(p.context.window.MidSizeComparisonDraft.getPending().state,'empty');
+  p.get('compareExcerpts').handlers.click();
+  assert.equal(p.navigation(),'/compare-roofing-estimates/');
+  assert.match(p.context.window.MidSizeComparisonDraft.getPending().data[5],/Flashing not included/);
+  assert.equal(p.context.window.MidSizeComparisonDraft.load().state,'empty');
+});

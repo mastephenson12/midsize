@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { evaluateEstimate, reportText } from '../src/estimateEvaluator.js';
+import { evaluateEstimate, reportText, comparisonFields } from '../src/estimateEvaluator.js';
 const row = (text,name,project) => evaluateEstimate(text,project).rows.find(r=>r.name===name);
 test('exclusions and extra charges are never treated as confirmed coverage',()=>{
   assert.equal(row('Roof replacement scope. Warranty is not included. Flashing costs extra.','Warranty').status,'Clarify wording');
@@ -47,4 +47,14 @@ test('mixed inclusion and exclusion stays in clarification',()=>{
 
 test('removing a layer of shingles is recognized as removal',()=>{
   assert.equal(row('Remove one layer of existing asphalt shingles down to roof decking.','Removal').status,'Mentioned');
+});
+
+test('comparison handoff preserves exclusions, labeled totals and unknown timing',()=>{
+  const result=evaluateEstimate('Replace roof shingles. Total price $18000. Decking $95 per sheet. Flashing not included. Additional structural repairs require a written change order.');
+  const fields=comparisonFields(result);
+  assert.equal(fields.length,11);assert.equal(fields[1],'Total price $18000');
+  assert.match(fields[5],/Flashing not included/);assert.match(fields[10],/written change order/);assert.equal(fields[7],'');
+  assert.match(comparisonFields(result,true)[0],/Sample estimate/);
+  assert.match(result.rows.find(r=>r.name==='Exclusions and changes').question,/estimate mentions written approval/);
+  assert.doesNotMatch(result.rows.find(r=>r.name==='Exclusions and changes').question,/will changes require/);
 });
