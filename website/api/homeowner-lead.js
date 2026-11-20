@@ -10,7 +10,7 @@ const allowedTools = new Set(['estimate-decoder', 'roof-repair-or-replace', 'roo
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   const directGhl = process.env.GHL_HOMEOWNER_ENABLED === 'true';
-  if (req.method === 'GET') return res.status(200).json({ ready: directGhl ? ghlConfigured() : Boolean(process.env.HOMEOWNER_LEAD_WEBHOOK_URL) });
+  if (req.method === 'GET') return res.status(200).json({ ready: directGhl ? ghlConfigured() : Boolean(process.env.HOMEOWNER_LEAD_WEBHOOK_URL), intakeMode: directGhl ? 'direct-crm' : 'webhook' });
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'GET, POST');
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
