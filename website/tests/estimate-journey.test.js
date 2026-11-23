@@ -103,3 +103,24 @@ test('decoder transfers excerpts only after explicit action, using a clean desti
   assert.match(p.context.window.MidSizeComparisonDraft.getPending().data[5],/Flashing not included/);
   assert.equal(p.context.window.MidSizeComparisonDraft.load().state,'empty');
 });
+
+test('accepted request exposes a copyable receipt without contact details or estimate text', async()=>{
+ const p=page(async()=>({ok:true,json:async()=>({ok:true,requestId:'accepted-reference-123'})}));
+ p.get('name').value='PRIVATE NAME';p.get('email').value='private@example.com';p.get('phone').value='5551234567';p.get('estimate').value='PRIVATE ESTIMATE';
+ p.get('situation').value='second-opinion';p.get('contactMethod').value='phone';
+ await p.get('leadform').handlers.submit({preventDefault(){}});
+ assert.equal(p.get('requestReceipt').hidden,false);
+ assert.match(p.get('receiptDetails').textContent,/Second opinion/);
+ assert.match(p.get('receiptDetails').textContent,/Phone call/);
+ assert.match(p.get('receiptFollowup').href,/accepted-reference-123/);
+ await p.get('copyReceipt').handlers.click();
+ const receipt=p.copy();assert.match(receipt,/accepted-reference-123/);assert.match(receipt,/No roofer or inspection has been assigned/);
+ for(const secret of ['PRIVATE NAME','private@example.com','5551234567','PRIVATE ESTIMATE']) assert.ok(!receipt.includes(secret));
+});
+
+test('unconfirmed request cannot display or copy a success receipt',async()=>{
+ const p=page(async()=>({ok:false,json:async()=>({error:'Unavailable'})}));
+ await p.get('leadform').handlers.submit({preventDefault(){}});
+ assert.equal(p.get('requestReceipt').hidden,true);
+ await p.get('copyReceipt').handlers.click();assert.equal(p.copy(),'');
+});
