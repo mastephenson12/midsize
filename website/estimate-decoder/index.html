@@ -72,6 +72,17 @@
               <div class="full"><button class="btn" type="submit" id="submitLead">Request help</button><div class="leadmsg" id="leadmsg" aria-live="polite"></div></div>
             </div>
           </form>
+          <section id="requestReceipt" class="leadform" hidden aria-labelledby="receiptTitle">
+            <h3 id="receiptTitle" tabindex="-1">Your roofing-help request was received</h3>
+            <p><strong>Status: received for MidSizeAI review.</strong> No roofer or inspection has been assigned.</p>
+            <p id="receiptDetails" style="white-space:pre-line;overflow-wrap:anywhere"></p>
+            <h4>What happens next?</h4>
+            <ol><li>MidSizeAI reviews your request and checks whether help is available.</li><li>If we can help, we may respond using your preferred contact method. A response time has not been confirmed.</li><li>We will ask before sharing your contact details with a roofing professional. An appointment is confirmed only when you agree to it.</li></ol>
+            <p>Keep your reference. To follow up, <a id="receiptFollowup" href="mailto:mark@midsizeai.com">email Mark with your reference</a>. Your estimate was not sent with this request.</p>
+            <button id="copyReceipt" class="btn secondary" type="button">Copy my request receipt</button><p id="receiptCopyStatus" role="status"></p>
+            <details><summary>View the receipt to save manually</summary><pre id="receiptText" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit"></pre></details>
+            <p>This form is not monitored for emergencies. For an active leak, contact a local roofing professional directly; do not wait for this request.</p>
+          </section>
         </section>
       </div>
     </section>
@@ -256,6 +267,24 @@ document.querySelectorAll('.choice').forEach(button => button.addEventListener('
   }
 }));
 
+let savedReceiptText='';
+function showRequestReceipt(payload, reference) {
+  const situations={'second-opinion':'Second opinion','another-estimate':'Another estimate','find-roofer':'Roofing help'};
+  const details='Reference: '+reference+'\nRequest: '+(situations[payload.situation]||'Roofing help')+'\nPreferred response: '+(payload.contactMethod==='phone'?'Phone call':'Email');
+  savedReceiptText='MidSizeAI roofing-help request\nStatus: received for MidSizeAI review.\n'+details+'\nNo roofer or inspection has been assigned.\nMidSizeAI reviews the request and checks whether help is available. A response time has not been confirmed.\nWe will ask before sharing your contact details with a roofing professional.\nFollow up: email mark@midsizeai.com with your reference.\nYour estimate was not sent with this request.\nFor an active leak, contact a local roofing professional directly; do not wait for this request.';
+  document.getElementById('receiptDetails').textContent=details;
+  document.getElementById('receiptText').textContent=savedReceiptText;
+  document.getElementById('receiptFollowup').href='mailto:mark@midsizeai.com?subject='+encodeURIComponent('Roofing-help request '+reference);
+  document.getElementById('receiptCopyStatus').textContent='';
+  const receipt=document.getElementById('requestReceipt');receipt.hidden=false;receipt.style.display='block';
+  document.getElementById('receiptTitle').focus();
+}
+document.getElementById('copyReceipt').addEventListener('click',async()=>{
+  if(!savedReceiptText)return;
+  try { await navigator.clipboard.writeText(savedReceiptText);document.getElementById('receiptCopyStatus').textContent='Receipt copied. Save it in your notes. Nothing has been sent.'; }
+  catch { document.getElementById('receiptCopyStatus').textContent='Copy is unavailable. Open “View the receipt to save manually” and select the text.'; }
+});
+
 document.getElementById('leadform').addEventListener('submit', async (event)=>{
   event.preventDefault(); if(leadSending)return; leadSending=true; const msg = document.getElementById('leadmsg'); const submit = document.getElementById('submitLead');
   msg.className='leadmsg'; msg.textContent='Sending your request…'; submit.disabled=true;
@@ -263,6 +292,7 @@ document.getElementById('leadform').addEventListener('submit', async (event)=>{
   try {
     const response = await fetch('/api/homeowner-lead',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(15000)}); const data = await response.json();
     if(!response.ok||data.ok!==true) throw new Error(data.error || 'We could not send your request.');
+    showRequestReceipt(payload,data.requestId||leadRequestId);
     msg.className='leadmsg ok'; msg.textContent='Request received for MidSizeAI review. Reference: '+(data.requestId||leadRequestId)+'. No roofer or inspection has been assigned. We may contact you about next steps.'; leadRequestId=crypto.randomUUID(); document.getElementById('leadform').reset(); document.querySelectorAll('.choice').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
   } catch(error) { msg.className='leadmsg err'; msg.textContent=['TimeoutError','AbortError','TypeError'].includes(error.name) ? 'We could not confirm your request. Reference: '+leadRequestId+'. Retry here to use the same reference, or email mark@midsizeai.com and include it.' : (error.message || 'We could not confirm your request. Please try again or email mark@midsizeai.com.'); }
   finally { submit.disabled=false; leadSending=false; }
