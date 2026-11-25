@@ -69,7 +69,7 @@ export default function App() {
               href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=header_cta"
               className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
             >
-              Request Free Audit
+              Request Free Growth Audit
             </a>
           </div>
         </div>
@@ -106,12 +106,12 @@ export default function App() {
             href="/roofers?utm_source=midsizeai.com&utm_medium=hero&utm_campaign=audience_split"
             className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-semibold px-8 py-4 rounded-xl border border-slate-800 text-base transition-all"
           >
-            Improve My Roofing Business
+            Grow My Roofing Business
           </a>
         </div>
         <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-500">
           <span>✓ Homeowner estimate clarity</span>
-          <span>✓ Roofer call intake and follow-up</span>
+          <span>✓ Contractor visibility and lead follow-up</span>
           <span>✓ Clear paths for both sides</span>
         </div>
       </header>
@@ -122,7 +122,7 @@ export default function App() {
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">Choose your side of the roof</p>
             <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">What brings you here?</h2>
             <p className="mx-auto mt-4 max-w-3xl text-slate-400">
-              Homeowners need clarity before they sign. Roofers need systems that keep good leads from slipping away. Choose the help you need below.
+              Homeowners need clarity before they sign. Contractors need a way to get found, earn trust and turn interest into booked appointments. Choose the help you need below.
             </p>
           </div>
           <div className="grid gap-5 lg:grid-cols-2">
@@ -143,21 +143,49 @@ export default function App() {
               </div>
             </article>
             <article className="rounded-3xl border border-slate-800 bg-slate-900 p-8 sm:p-10">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Roofers</p>
-              <h3 className="mt-3 text-3xl font-extrabold text-white">Capture more opportunities without more admin chaos.</h3>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-amber-400">For Home-Service Businesses</p>
+              <h3 className="mt-3 text-3xl font-extrabold text-white">Get found. Get trusted. Get booked.</h3>
               <p className="mt-4 leading-relaxed text-slate-400">
-                Use MidSize AI to map missed calls, after-hours intake, estimate follow-up, review requests, and CRM handoffs around your actual roofing workflow.
+                You do great work. Your marketing should help local homeowners discover it. We help you plan a stronger online presence, build trust and follow up with customer inquiries while your crew is working.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-300">
-                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>AI receptionist and missed-call recovery</span></li>
-                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Estimate follow-up and review automation</span></li>
-                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Workflow audit before software recommendations</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Social content and local visibility planning</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>Reviews, lead capture and automated follow-up</span></li>
+                <li className="flex gap-3"><span className="text-amber-400">✓</span><span>A growth plan before software recommendations</span></li>
               </ul>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a href="/roofers?utm_source=midsizeai.com&utm_medium=audience_gateway&utm_campaign=roofer_path" className="inline-flex justify-center rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 transition hover:bg-amber-300">Go to Roofer Services</a>
                 <a href="/missed-lead-calculator" className="inline-flex justify-center rounded-xl border border-slate-700 bg-slate-950 px-6 py-3 font-bold text-white transition hover:border-slate-500 hover:bg-slate-800">Calculate Missed Leads</a>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Contractor Growth Plan */}
+      <section id="growth-system" className="border-t border-slate-900 px-6 py-16">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto mb-10 max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-widest text-amber-400">A simple plan for home-service businesses</p>
+            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Get Found. Get Trusted. Get Booked.</h2>
+            <p className="mt-4 text-slate-400">Good contractors should not lose opportunities just because someone else is better at marketing. Start with a practical plan that connects your online presence to your customer follow-up.</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {[
+              ['01', 'Get Found', 'Plan helpful social content and improve local visibility so homeowners can discover your business.'],
+              ['02', 'Get Trusted', 'Show real project photos, answer customer questions and request honest reviews.'],
+              ['03', 'Get Booked', 'Give interested customers a clear next step, respond promptly and follow up with appropriate consent and human handoff.']
+            ].map(([number, title, description]) => (
+              <article key={number} className="rounded-3xl border border-slate-800 bg-slate-900 p-7">
+                <span className="text-sm font-bold text-amber-400">{number}</span>
+                <h3 className="mt-3 text-2xl font-bold text-white">{title}</h3>
+                <p className="mt-3 leading-relaxed text-slate-400">{description}</p>
+              </article>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=homepage&utm_campaign=workflow_audit&utm_content=growth_system" className="inline-flex rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Request My Free Growth Audit</a>
+            <p className="mt-3 text-sm text-slate-400">Start with a workflow review. Recommendations depend on your goals, capacity and existing systems.</p>
           </div>
         </div>
       </section>
@@ -321,10 +349,10 @@ export default function App() {
             <a href="/estimate-decoder/" target="_blank" rel="noopener noreferrer" className="inline-block bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Check My Estimate</a>
           </article>
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Roofing Contractors</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Ready to stop losing roofing opportunities?</h2>
-            <p className="text-slate-400 text-sm sm:text-base mb-7">Request a free review of your call coverage, speed-to-lead, scheduling, and follow-up workflow. You’ll receive a practical starting recommendation—not a generic software pitch.</p>
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=cta&utm_campaign=workflow_audit&utm_content=closing_cta" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Request My Free Workflow Audit</a>
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Home-Service Businesses</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Ready to turn more interest into booked appointments?</h2>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Start with a free workflow review of how inquiries become appointments. We’ll identify practical next steps for visibility, trust and follow-up based on your business.</p>
+            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=cta&utm_campaign=workflow_audit&utm_content=closing_cta" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Request My Free Growth Audit</a>
           </article>
         </div>
       </section>
