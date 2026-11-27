@@ -4,6 +4,7 @@ import GrowthAudit from './GrowthAudit.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-400 selection:text-slate-950">
       <div className="bg-amber-400 text-slate-950 text-center px-4 py-2 text-sm font-semibold">Explore our approved service packages and transparent starting prices: <a className="underline font-extrabold" href="https://www.midsizeai.com/pricing/">Services &amp; Pricing</a></div>
@@ -19,7 +20,12 @@ export default function App() {
       </div>
 
       {/* Main Navigation */}
-      <nav className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 sm:px-6 py-2">
+      <nav aria-label="Main navigation" onKeyDown={(event) => {
+        if (event.key === 'Escape' && menuOpen) {
+          setMenuOpen(false);
+          event.currentTarget.querySelector('button[aria-controls="site-menu"]').focus();
+        }
+      }} className="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50 px-4 sm:px-6 py-2">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3">
             <a href="/" aria-label="MidSize AI home" className="shrink-0 rounded-lg bg-white px-2 py-1">
@@ -31,51 +37,36 @@ export default function App() {
                 className="block w-[min(45vw,12rem)] sm:w-56 h-auto"
               />
             </a>
-            <span className="hidden sm:inline-flex text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
+            <span className="hidden lg:inline-flex text-xs bg-slate-800 text-slate-400 border border-slate-700 px-2.5 py-1 rounded-full font-mono">
               Home Services
             </span>
           </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="#audiences"
-              className="hidden md:inline-block text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Who We Help
-            </a>
-            <a
-              href="#homeowner-tools"
-              className="hidden lg:inline-block text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Homeowner Tools
-            </a>
-            <a
-              href="/guides/ai-receptionist-for-roofing-companies/"
-              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Roofing AI Guide
-            </a>
-            <a
-              href="/resources/#contractors"
-              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Free Roofer Resources
-            </a>
-            <a
-              href="/missed-lead-calculator"
-              className="hidden xl:inline-block text-sm text-slate-400 hover:text-white transition-colors"
-            >
-              Missed Lead Calculator
-            </a>
-            <a
-              href="#growth-audit"
-              className="bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-2 rounded-lg text-sm transition-all"
-            >
+          <div className="flex items-center gap-3">
+            <a href="#growth-audit" className="hidden md:inline-flex bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-3 rounded-lg text-sm">
               Free Growth Audit
             </a>
+            <button type="button" aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen(!menuOpen)} className="min-h-11 rounded-lg border border-slate-600 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400">
+              {menuOpen ? 'Close menu' : 'Menu'}
+            </button>
           </div>
         </div>
-        <div className="mx-auto max-w-7xl pt-2 text-center xl:hidden">
-          <a href="/resources/#contractors" className="inline-block py-1 text-sm font-semibold text-amber-300 underline underline-offset-4 hover:text-white">Free Roofer Resources →</a>
+        <div id="site-menu" hidden={!menuOpen} className="mx-auto max-w-7xl max-h-[70vh] overflow-y-auto">
+          <div className="mt-3 grid gap-1 border-t border-slate-700 py-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              ['Homeowner Tools', '#homeowner-tools'],
+              ['Roofer Services', '/roofers'],
+              ['Services & Pricing', '/pricing/'],
+              ['Roofing AI Guide', '/guides/ai-receptionist-for-roofing-companies/'],
+              ['Free Roofer Resources', '/resources/#contractors'],
+              ['Missed Lead Calculator', '/missed-lead-calculator'],
+              ['Who We Help', '#audiences'],
+              ['Request Free Growth Audit', 'https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=menu_cta'],
+            ].map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400">
+                {label}
+              </a>
+            ))}
+          </div>
         </div>
       </nav>
 
