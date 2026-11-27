@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import HomeownerResources from './HomeownerResources.jsx';
+import GrowthAudit from './GrowthAudit.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
@@ -41,8 +42,8 @@ export default function App() {
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=header_cta" className="hidden md:inline-flex bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-3 rounded-lg text-sm">
-              Request Free Growth Audit
+            <a href="#growth-audit" className="hidden md:inline-flex bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-4 py-3 rounded-lg text-sm">
+              Free Growth Audit
             </a>
             <button type="button" aria-expanded={menuOpen} aria-controls="site-menu" onClick={() => setMenuOpen(!menuOpen)} className="min-h-11 rounded-lg border border-slate-600 px-4 py-3 text-sm font-semibold text-white hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400">
               {menuOpen ? 'Close menu' : 'Menu'}
@@ -175,11 +176,13 @@ export default function App() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=homepage&utm_campaign=workflow_audit&utm_content=growth_system" className="inline-flex rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Request My Free Growth Audit</a>
-            <p className="mt-3 text-sm text-slate-400">Start with a workflow review. Recommendations depend on your goals, capacity and existing systems.</p>
+            <a href="#growth-audit" className="inline-flex rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Take My Free Growth Audit</a>
+            <p className="mt-3 text-sm text-slate-400">Get an instant self-assessment and practical recommendations, with an optional workflow review.</p>
           </div>
         </div>
       </section>
+
+      <GrowthAudit />
 
       {/* Founder / Field Context */}
       <section className="border-t border-slate-900 px-6 py-16">
@@ -342,8 +345,8 @@ export default function App() {
           <article className="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-10">
             <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">For Home-Service Businesses</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mt-3 mb-3">Ready to turn more interest into booked appointments?</h2>
-            <p className="text-slate-400 text-sm sm:text-base mb-7">Start with a free workflow review of how inquiries become appointments. We’ll identify practical next steps for visibility, trust and follow-up based on your business.</p>
-            <a href="https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=cta&utm_campaign=workflow_audit&utm_content=closing_cta" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Request My Free Growth Audit</a>
+            <p className="text-slate-400 text-sm sm:text-base mb-7">Take the free self-assessment to identify practical next steps for visibility, trust and follow-up based on your business. No email required.</p>
+            <a href="#growth-audit" className="inline-block bg-white hover:bg-slate-100 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition-all">Take My Free Growth Audit</a>
           </article>
         </div>
       </section>
