@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import HomeownerResources from './HomeownerResources.jsx';
 import GrowthAudit from './GrowthAudit.jsx';
+import RooferStart from './RooferStart.jsx';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('samantha');
@@ -59,7 +60,7 @@ export default function App() {
               ['Roofing AI Guide', '/guides/ai-receptionist-for-roofing-companies/'],
               ['Free Roofer Resources', '/resources/#contractors'],
               ['Missed Lead Calculator', '/missed-lead-calculator'],
-              ['Call Coverage & Missed Leads', '#audiences'],
+              ['Find My Starting Point', '#roofer-start'],
               ['Request Free Growth Audit', 'https://apply.midsizeai.com/application?utm_source=midsizeai.com&utm_medium=navigation&utm_campaign=workflow_audit&utm_content=menu_cta'],
             ].map(([label, href]) => (
               <a key={href} href={href} onClick={() => setMenuOpen(false)} className="rounded-lg px-4 py-3 text-sm font-semibold text-slate-100 hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-400">
@@ -89,10 +90,10 @@ export default function App() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
-            href="/samantha-demo"
+            href="#roofer-start"
             className="w-full sm:w-auto bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold px-8 py-4 rounded-xl text-base transition-all shadow-lg hover:shadow-amber-400/20"
           >
-            Explore the Samantha Demo
+            Find the Right Service
           </a>
           <a
             href="/missed-lead-calculator?utm_source=midsizeai.com&utm_medium=hero&utm_campaign=missed_leads"
@@ -108,16 +109,7 @@ export default function App() {
         </div>
       </header>
 
-      <section id="audiences" className="border-t border-slate-800 px-6 py-12">
-        <div className="mx-auto max-w-5xl rounded-3xl border border-amber-400/25 bg-slate-900 p-7 sm:p-10">
-          <p className="text-sm font-bold text-amber-400">Start with your own numbers</p>
-          <h2 className="mt-3 text-3xl font-extrabold text-white">What could missed leads mean for your roofing business?</h2>
-          <p className="mt-4 leading-relaxed text-slate-300">Use your call volume, missed-lead rate, average job value, and close rate to explore the potential opportunity. Check the estimate against your records, lead quality, and capacity.</p>
-          <a href="/missed-lead-calculator" className="mt-6 inline-flex rounded-xl bg-amber-400 px-6 py-3 font-bold text-slate-950 hover:bg-amber-300">Open the Missed Lead Calculator</a>
-          <p className="mt-4 text-sm text-slate-400">Practical AI systems for growing home-service teams, with dedicated services for roofing companies.</p>
-          <a href="/services/ai-receptionist-for-roofers" className="mt-5 inline-flex font-bold text-amber-300 underline">Explore after-hours and field-time receptionist services</a>
-        </div>
-      </section>
+      <RooferStart />
 
       {/* Contractor Growth Plan */}
       <section id="growth-system" className="border-t border-slate-900 px-6 py-16">
